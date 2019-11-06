@@ -5,4 +5,10 @@ public class SqlRequest {
             "SELECT id, login, password, role FROM profiles WHERE login =? AND password = ?";
     public static final String CHECK_USER_EXISTS =
             "SELECT id FROM profiles WHERE login = ?";
+    public static final String INSERT_USER =
+            "INSERT INTO profiles(login, password, role) VALUES (?, ?, ?)";
+    public static final String FIND_USER_BY_LOGIN =
+            "SELECT user_id, login, password, role\n" +
+                    "FROM profiles\n" +
+                    "WHERE login = ?";
 }

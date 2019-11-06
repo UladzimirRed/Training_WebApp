@@ -1,9 +1,6 @@
 package by.epam.training.command;
 
-import by.epam.training.command.impl.EmptyCommand;
-import by.epam.training.command.impl.LocaleCommand;
-import by.epam.training.command.impl.LoginCommand;
-import by.epam.training.command.impl.LogoutCommand;
+import by.epam.training.command.impl.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +9,8 @@ public enum CommandEnum {
     LOCALE(new LocaleCommand()),
     LOGIN(new LoginCommand()),
     EMPTY(new EmptyCommand()),
-    LOGOUT(new LogoutCommand());
+    LOGOUT(new LogoutCommand()),
+    REGISTER(new RegisterCommand());
 
     private static final Map<String, CommandEnum> commands = new HashMap<>();
 

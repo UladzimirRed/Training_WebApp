@@ -9,6 +9,15 @@ public class JspAttribute {
     public static final String LANGUAGE = "lang";
     public static final String PARAM_NAME_LOGIN = "login";
     public static final String PARAM_NAME_PASSWORD = "password";
+    public static final String LOGIN = "login";
+    public static final String PASSWORD = "password";
+    public static final String ROLE = "role";
+    public static final String CONFIRM_PASSWORD = "confirmPassword";
+    public static final String PASSWORD_DOES_NOT_MATCH = "passwordDoesNotMatch";
+    public static final String SIGNED_UP = "signedUp";
+    public static final String DATA_EXISTS = "dataExists";
+    public static final String USER_EXISTS = "userExists";
+
 
     private JspAttribute() {
     }

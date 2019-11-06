@@ -6,11 +6,11 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.label.allRightsReserved" var="allRightsReserved"/>
+    <fmt:message bundle="${locale}" key="locale.tag.info.allRightsReserved" var="allRightsReserved"/>
     <title>Footer</title>
 </head>
 <body>
-<div class="footer">
+<div class="footer">                         <%--TODO STYLE TO WRONG FOOTER--%>
     <span class="footer-text">
         ${allRightsReserved}
     </span>

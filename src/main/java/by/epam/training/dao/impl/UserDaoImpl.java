@@ -23,6 +23,28 @@ public class UserDaoImpl implements BaseDao<User> {
         pool = ConnectionPool.getInstance();
     }
 
+    public User register(User user) throws DaoException{
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            String login = user.getLogin();
+            String password = user.getPassword();
+            int role = user.getRole();
+            //TODO CHECK FOR LOGIN AND PASS ALREADY EXIST
+            preparedStatement = connection.prepareStatement(SqlRequest.INSERT_USER);
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2,password);
+            preparedStatement.setInt(3, role);
+            preparedStatement.executeUpdate();
+            return findUserByLogin(connection, login);
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
     public User login(String login, String password) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -69,4 +91,22 @@ public class UserDaoImpl implements BaseDao<User> {
         }
     }
 
+    private User findUserByLogin(ProxyConnection connection, String login) throws DaoException{
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet;
+        try {
+            preparedStatement = connection.prepareStatement(SqlRequest.FIND_USER_BY_LOGIN);
+            preparedStatement.setString(1, login);
+            resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                return createUserFromQueryResult(resultSet);
+            }
+            return null;  // TODO Something
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
 }

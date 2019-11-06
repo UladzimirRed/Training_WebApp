@@ -8,6 +8,8 @@
 
     <fmt:message bundle="${locale}" key="locale.lang.text.english" var="en"/>
     <fmt:message bundle="${locale}" key="locale.lang.text.russian" var="ru"/>
+    <fmt:message bundle="${locale}" key="locale.user.label.singIn" var="singIn"/>
+
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Header</title>
@@ -30,7 +32,7 @@
         </div>
         <form action="controller">
             <input type="hidden" name="command" value="locale"/>
-            <input class="singIn-button" type="submit" value="Sign In">
+            <input class="singIn-button" type="submit" value="${singIn}">
         </form>
     </div>
 </div>

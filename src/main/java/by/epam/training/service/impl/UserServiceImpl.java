@@ -21,8 +21,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registration(String login, String password, RoleEnum role) throws ServiceException {
-        return null;
+    public User registration(String login, String password, int role) throws ServiceException {
+        User user = new User(login, password, role);
+        try {
+            return userDao.register(user);
+
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
     }
 
     @Override
