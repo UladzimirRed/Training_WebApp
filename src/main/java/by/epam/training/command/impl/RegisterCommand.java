@@ -17,14 +17,10 @@ public class RegisterCommand implements ActionCommand {
 
         @Override
         public String execute(HttpServletRequest request) {
-            String login = request.getParameter(JspAttribute.LOGIN)
-                    .replace("<", "|").replace(">","|");
-            String password = request.getParameter(JspAttribute.PASSWORD)
-                    .replace("<", "|").replace(">","|");
-            String confirmPassword = request.getParameter(JspAttribute.CONFIRM_PASSWORD)
-                    .replace("<", "|").replace(">","|");
-            int role = Integer.parseInt(request.getParameter(JspAttribute.ROLE)
-                    .replace("<", "|").replace(">","|"));
+            String login = request.getParameter(JspAttribute.LOGIN);
+            String password = request.getParameter(JspAttribute.PASSWORD);
+            String confirmPassword = request.getParameter(JspAttribute.CONFIRM_PASSWORD);
+            int role = Integer.parseInt(request.getParameter(JspAttribute.ROLE));
             try {
                 if (!password.equals(confirmPassword)){
                     request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.PASSWORD_DOES_NOT_MATCH);
