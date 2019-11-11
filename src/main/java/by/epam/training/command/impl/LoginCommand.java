@@ -37,6 +37,7 @@ public class LoginCommand implements ActionCommand {
             logger.log(Level.ERROR, e);
             page = JspAddress.LOGIN_PAGE;
         }
+        session.setAttribute(JspAttribute.PAGE, page);
         return page;
     }
 }

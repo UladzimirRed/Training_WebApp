@@ -1,6 +1,7 @@
 package by.epam.training.command.impl;
 
 import by.epam.training.command.ActionCommand;
+import by.epam.training.entity.RoleEnum;
 import by.epam.training.entity.User;
 import by.epam.training.exception.ServiceException;
 import by.epam.training.service.impl.UserServiceImpl;
@@ -20,17 +21,18 @@ public class RegisterCommand implements ActionCommand {
             String login = request.getParameter(JspAttribute.LOGIN);
             String password = request.getParameter(JspAttribute.PASSWORD);
             String confirmPassword = request.getParameter(JspAttribute.CONFIRM_PASSWORD);
-            int role = Integer.parseInt(request.getParameter(JspAttribute.ROLE));
+            RoleEnum role = RoleEnum.getRoleByString(request.getParameter(JspAttribute.ROLE));
             try {
                 if (!password.equals(confirmPassword)){
                     request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.PASSWORD_DOES_NOT_MATCH);
                     return JspAddress.REGISTER_URL;
                 }
                 UserServiceImpl service = new UserServiceImpl();
-                User user = service.registration(login, password, role);
+                User user = service.register(login, password, role);
                 if (user != null) {
+                    request.getSession().setAttribute(JspAttribute.USER, login);
                     request.setAttribute(JspAttribute.MESSAGE, JspAttribute.SIGNED_UP);
-                    return JspAddress.MESSAGE_PAGE;
+                    return JspAddress.HOME_PAGE;
                 }
                 request.setAttribute(JspAttribute.DATA_EXISTS, JspAttribute.USER_EXISTS);
                 return JspAddress.REGISTER_URL;
@@ -40,4 +42,3 @@ public class RegisterCommand implements ActionCommand {
             return null;
         }
     }
-

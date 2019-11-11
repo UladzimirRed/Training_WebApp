@@ -1,23 +1,25 @@
 package by.epam.training.entity;
 
+import java.util.Objects;
+
 public class User extends Entity{
     private int id;
     private String login;
     private String password;
-    private int role;
+    private RoleEnum role;
 
     public User() {
     }
 
 
-    public User(int id, String login, String password, int role) {
+    public User(int id, String login, String password, RoleEnum role) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.role = role;
     }
 
-    public User(String login, String password, int role) {
+    public User(String login, String password, RoleEnum role) {
         this.login = login;
         this.password = password;
         this.role = role;
@@ -47,11 +49,11 @@ public class User extends Entity{
         this.password = password;
     }
 
-    public int getRole() {
+    public RoleEnum getRole() {
         return role;
     }
 
-    public void setRole(int role) {
+    public void setRole(RoleEnum role) {
         this.role = role;
     }
 
@@ -69,12 +71,9 @@ public class User extends Entity{
     }
 
     @Override
+    //todo rework
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (login != null ? login.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + role;
-        return result;
+        return Objects.hash(id, login, password, role);
     }
 
     @Override

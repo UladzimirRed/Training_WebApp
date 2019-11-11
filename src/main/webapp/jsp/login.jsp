@@ -47,9 +47,9 @@
                    pattern="[^<>]{4,}"
                    value=""
                    placeholder="${enterYourPassword}"/>
-            ${errorLoginPassMessage}
-            ${wrongAction}
-            ${nullPage}
+<%--            ${errorLoginPassMessage}--%>
+<%--            ${wrongAction}--%>
+<%--            ${nullPage}--%>
             <input type="submit" value="${log_in}" class="login-form-button"/>
             <div class="login-form-message">                                     <%--TODO CHACK STYLE WRONG CREDENTIALS--%>
                 <c:choose>

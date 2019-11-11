@@ -17,6 +17,7 @@ public class JspAttribute {
     public static final String SIGNED_UP = "signedUp";
     public static final String DATA_EXISTS = "dataExists";
     public static final String USER_EXISTS = "userExists";
+    public static final String PAGE = "page";
 
 
     private JspAttribute() {

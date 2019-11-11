@@ -17,7 +17,6 @@
     <fmt:message bundle="${locale}" key="locale.user.label.role" var="role"/>
     <fmt:message bundle="${locale}" key="locale.user.label.enterYourRole" var="enterYourRole"/>
     <fmt:message bundle="${locale}" key="locale.user.label.singUp" var="singUp"/>
-    enterYourRole
 
     <link rel="stylesheet" href="./css/style.css">
     <script src="../js/main.js"></script>
@@ -36,7 +35,7 @@
 <main>
     <div class="logIn-form-box">
         <form name="RegisterForm" method="POST" action="controller" class="login-form">
-            <input type="hidden" name="command" value="login"/>
+            <input type="hidden" name="command" value="register"/>
             <span class="form-label">${login}:</span>
             <input class="login-form-text"
                    type="text"
@@ -63,13 +62,10 @@
                    onkeyup="checkPass()"
                    placeholder="${confirmYourPassword}"/>
             <span class="form-label">${role}</span>
-            <input class="login-form-text"
-                   type="text"
-                   name="role"
-                   maxlength="1"
-                   pattern="[1-2]{1,}"
-                   value=""
-                   placeholder="${enterYourRole}"/>
+            <select name="role">
+                <option>Customer</option>
+                <option>Courier</option>
+            </select>
             <input type="submit" value="${singUp}" class="login-form-button"/>
             <div class="login-form-message">                                     <%--TODO CHACK STYLE WRONG CREDENTIALS--%>
                 <c:choose>
@@ -78,7 +74,7 @@
                     </c:when>
                 </c:choose>
             </div>
-            <form/>
+        </form>
     </div>
 </main>
 <footer>

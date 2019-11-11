@@ -32,6 +32,23 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <jsp-file>/jsp/home.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <jsp-file>/jsp/register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
 
     <jsp-config>
         <jsp-property-group>

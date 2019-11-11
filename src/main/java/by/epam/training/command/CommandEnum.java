@@ -10,7 +10,8 @@ public enum CommandEnum {
     LOGIN(new LoginCommand()),
     EMPTY(new EmptyCommand()),
     LOGOUT(new LogoutCommand()),
-    REGISTER(new RegisterCommand());
+    REGISTER(new RegisterCommand()),
+    HOME(new HomeCommand());
 
     private static final Map<String, CommandEnum> commands = new HashMap<>();
 

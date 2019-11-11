@@ -4,8 +4,10 @@ import by.epam.training.entity.RoleEnum;
 import by.epam.training.entity.User;
 import by.epam.training.exception.ServiceException;
 
+import java.sql.SQLException;
+
 public interface UserService {
     User logIn(String login, String password) throws ServiceException;
-    User registration(String login, String password, int role) throws ServiceException;
+    User register(String login, String password, RoleEnum role) throws ServiceException, SQLException;
     void changePassword(int userId, String newPassword) throws ServiceException;
 }

@@ -8,6 +8,7 @@ public class DataBaseInfo {
             "useSSL=false&useUnicode=true&" +
             "useJDBCCompliantTimezoneShift=true&" +
             "useLegacyDatetimeCode=false&" +
+            "allowPublicKeyRetrieval=true&" +
             "serverTimezone=UTC";
 }
 

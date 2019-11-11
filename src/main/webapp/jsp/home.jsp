@@ -12,11 +12,6 @@
     <title>Courier Exchange</title>
 </head>
 <body>
-<c:choose>
-    <c:when test="${not empty sessionScope.user}">
-        <jsp:forward page="/main"/>
-    </c:when>
-</c:choose>
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>

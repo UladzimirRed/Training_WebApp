@@ -3,6 +3,7 @@ package by.epam.training.dao.impl;
 import by.epam.training.connection.ConnectionPool;
 import by.epam.training.connection.ProxyConnection;
 import by.epam.training.dao.BaseDao;
+import by.epam.training.entity.RoleEnum;
 import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
 import by.epam.training.util.SqlRequest;
@@ -23,28 +24,22 @@ public class UserDaoImpl implements BaseDao<User> {
         pool = ConnectionPool.getInstance();
     }
 
-    public User register(User user) throws DaoException{
-        ProxyConnection connection = null;
+    public User register(User user, ProxyConnection connection) throws DaoException {
         PreparedStatement preparedStatement = null;
         try {
-            connection = pool.takeConnection();
-            String login = user.getLogin();
-            String password = user.getPassword();
-            int role = user.getRole();
-            //TODO CHECK FOR LOGIN AND PASS ALREADY EXIST
             preparedStatement = connection.prepareStatement(SqlRequest.INSERT_USER);
-            preparedStatement.setString(1, login);
-            preparedStatement.setString(2,password);
-            preparedStatement.setInt(3, role);
+            preparedStatement.setString(1, user.getLogin());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setInt(3, RoleEnum.getCodeByRole(user.getRole()));
             preparedStatement.executeUpdate();
-            return findUserByLogin(connection, login);
+            return user;
         } catch (SQLException e) {
-            throw new DaoException(e);
+            throw new DaoException();
         }finally {
             close(preparedStatement);
-            pool.releaseConnection(connection);
         }
     }
+
     public User login(String login, String password) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -85,20 +80,20 @@ public class UserDaoImpl implements BaseDao<User> {
             return new User(resultSet.getInt(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getInt(4));
+                    RoleEnum.getRoleByCode(resultSet.getInt(4)));
         } catch (SQLException e) {
             throw new DaoException(e);
         }
     }
 
-    private User findUserByLogin(ProxyConnection connection, String login) throws DaoException{
+    public User findUserByLogin(ProxyConnection connection, String login) throws DaoException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet;
         try {
             preparedStatement = connection.prepareStatement(SqlRequest.FIND_USER_BY_LOGIN);
             preparedStatement.setString(1, login);
             resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            if (resultSet.next()) {
                 return createUserFromQueryResult(resultSet);
             }
             return null;  // TODO Something
