@@ -32,6 +32,8 @@ ${user}, ${hello}
     <input type="hidden" name="command" value="logout">
     <input class="gray" type="submit" value=${logout}>
 </form>
-<jsp:include page="/jsp/footer.jsp"/>
+<footer>
+    <jsp:include page="/jsp/footer.jsp"/>
+</footer>
 </body>
 </html>

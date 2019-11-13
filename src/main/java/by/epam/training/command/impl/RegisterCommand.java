@@ -32,7 +32,7 @@ public class RegisterCommand implements ActionCommand {
                 if (user != null) {
                     request.getSession().setAttribute(JspAttribute.USER, login);
                     request.setAttribute(JspAttribute.MESSAGE, JspAttribute.SIGNED_UP);
-                    return JspAddress.HOME_PAGE;
+                    return JspAddress.MAIN_PAGE;
                 }
                 request.setAttribute(JspAttribute.DATA_EXISTS, JspAttribute.USER_EXISTS);
                 return JspAddress.REGISTER_URL;

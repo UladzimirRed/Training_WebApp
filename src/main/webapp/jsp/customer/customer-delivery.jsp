@@ -6,25 +6,15 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.user.label.welcomeText" var="welcomeText"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.joinUs" var="joinUs"/>
-
     <link rel="stylesheet" href="./css/style.css">
-    <title>Courier Exchange</title>
+    <title>My delivery</title>
 </head>
 <body>
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main>
-    <div class="welcome-box">
-        <span class="welcome-text">${welcomeText}</span>
-        <br/>
-        <br/>
-        <form action="register">
-            <input class="singIn-button" type="submit" value="${joinUs}">
-        </form>
-    </div>
+
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

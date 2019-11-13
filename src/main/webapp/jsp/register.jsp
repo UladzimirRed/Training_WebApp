@@ -15,8 +15,9 @@
     <fmt:message bundle="${locale}" key="locale.user.label.confirmPassword" var="confirmPassword"/>
     <fmt:message bundle="${locale}" key="locale.user.label.confirmYourPassword" var="confirmYourPassword"/>
     <fmt:message bundle="${locale}" key="locale.user.label.role" var="role"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.enterYourRole" var="enterYourRole"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.singUp" var="singUp"/>
+    <fmt:message bundle="${locale}" key="locale.user.label.customer" var="customer"/>
+    <fmt:message bundle="${locale}" key="locale.user.label.courier" var="courier"/>
+    <fmt:message bundle="${locale}" key="locale.user.label.signUp" var="signUp"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <script src="../js/main.js"></script>
@@ -63,10 +64,10 @@
                    placeholder="${confirmYourPassword}"/>
             <span class="form-label">${role}</span>
             <select name="role">
-                <option>Customer</option>
-                <option>Courier</option>
+                <option>${customer}</option>
+                <option>${courier}</option>
             </select>
-            <input type="submit" value="${singUp}" class="login-form-button"/>
+            <input type="submit" value="${signUp}" class="login-form-button"/>
             <div class="login-form-message">                                     <%--TODO CHACK STYLE WRONG CREDENTIALS--%>
                 <c:choose>
                     <c:when test="${not empty requestScope.wrongData}">

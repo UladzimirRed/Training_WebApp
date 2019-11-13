@@ -8,7 +8,7 @@
 
     <fmt:message bundle="${locale}" key="locale.lang.text.english" var="en"/>
     <fmt:message bundle="${locale}" key="locale.lang.text.russian" var="ru"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.singIn" var="singIn"/>
+    <fmt:message bundle="${locale}" key="locale.user.label.signIn" var="signIn"/>
 
 
     <link rel="stylesheet" href="./css/style.css">
@@ -36,10 +36,7 @@
         <c:choose>
             <c:when test="${empty sessionScope.user}">
                 <form action="login">
-                    <input class="singIn-button" type="submit" value="${singIn}">
-                </form>
-                <form action="register">
-                    <input class="singIn-button" type="submit" value="Register">
+                    <input class="singIn-button" type="submit" value="${signIn}">
                 </form>
             </c:when>
             <c:otherwise>
