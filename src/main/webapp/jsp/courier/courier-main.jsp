@@ -16,6 +16,7 @@
 <main>
 
 </main>
+
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>
 </footer>

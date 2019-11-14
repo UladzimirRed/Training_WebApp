@@ -24,14 +24,16 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<h3>${welcome}</h3>
-<hr/>
-${user}, ${hello}
-<hr/>
-<form action="controller" method="post">
-    <input type="hidden" name="command" value="logout">
-    <input class="gray" type="submit" value=${logout}>
-</form>
+<main class="main">
+    <div>
+        <h3>${welcome}</h3>
+        <hr/>
+        ${user}, ${hello}
+        <hr/>
+    </div>
+</main>
+
+
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>
 </footer>

@@ -22,22 +22,23 @@ body {
 
 .lang-button-box {
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    align-self: flex-start;
     align-items: flex-start;
-    width: 200px;
+    width: 600px;
     height: 50%;
     padding: 14px 0px;
 }
 
 .lang-button {
-    width: 60px;
-    height: 36px;
+    width: 40px;
+    height: 25px;
     background: #ffd21f;
     border-radius: 4px;
     cursor: pointer;
 }
 
-.singIn-button {
+.signIn-button, .join-us-button {
     width: 120px;
     height: 36px;
     background: #ffd21f;
@@ -45,7 +46,11 @@ body {
     cursor: pointer;
 }
 
-.sing-box {
+.join-us-button {
+    width: 300px;
+}
+
+.sign-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -62,7 +67,7 @@ body {
     background-color: #23283a;
 }
 
-.welcome-text{
+.welcome-text {
     color: #ffebcd;
     font-size: 28px;
 }
@@ -83,6 +88,12 @@ body {
     color: #fff;
 }
 
+.main {
+    width: 100%;
+    height: 75vh;
+    background-color: #23283a;
+}
+
 .logIn-form-box {
     display: flex;
     justify-content: center;
@@ -100,7 +111,7 @@ body {
     align-items: center;
 }
 
-.login-form-text, .login-form-password {
+.login-form-text, .login-form-password, .form-dropdown, .form-option {
     margin: 10px 0;
     background-color: #ffffff;
     border: 1px solid #ffd21f;
@@ -117,11 +128,13 @@ body {
     font-size: 20px;
 }
 
-.login-form-message{
-    align-self: flex-start;
-    margin-left: 30%;
+.login-form-message {
+    width: 60%;
+    align-self: center;
     color: #ff1717;
-    font-size: 20px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
 }
 
 .login-form-button {
@@ -131,6 +144,45 @@ body {
     cursor: pointer;
     padding: 9px 11px;
     margin-top: 10px;
+}
+
+.common-button {
+    width: 250px;
+    background: #ffd21f;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 9px 11px;
+    margin-top: 10px;
+}
+
+.navigation-bar {
+    height: 100%;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.input-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.user-area-form {
+    width: 450px;
+}
+
+.user-area-label{
+    width: fit-content;
+    color: #ffd21f;
+    font-size: 20px;
+}
+
+.change-pass-button {
+    align-self: flex-end;
 }
 
 .footer {

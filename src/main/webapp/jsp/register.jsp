@@ -63,9 +63,9 @@
                    onkeyup="checkPass()"
                    placeholder="${confirmYourPassword}"/>
             <span class="form-label">${role}</span>
-            <select name="role">
-                <option>${customer}</option>
-                <option>${courier}</option>
+            <select class=form-dropdown name="role">
+                <option class="form-option">${customer}</option>
+                <option class="form-option">${courier}</option>
             </select>
             <input type="submit" value="${signUp}" class="login-form-button"/>
             <div class="login-form-message">                                     <%--TODO CHACK STYLE WRONG CREDENTIALS--%>

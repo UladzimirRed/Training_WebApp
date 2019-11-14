@@ -13,8 +13,24 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main>
-
+<main class="main">
+    <div class="navigation-bar">
+        <form action="customer/customer-area.jsp">
+            <input type="submit" value="personal area" class="common-button">
+        </form>
+        <form action="customer-balance.jsp">
+            <input type="submit" value="My balance" class="common-button">
+        </form>
+        <form action="customer-delivery.jsp">
+            <input type="submit" value="My delivery" class="common-button">
+        </form>
+        <form action="new-order.jsp">
+            <input type="submit" value="New order" class="common-button">
+        </form>
+        <form action="rates.jsp">
+            <input type="submit" value="New order" class="common-button">
+        </form>
+    </div>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

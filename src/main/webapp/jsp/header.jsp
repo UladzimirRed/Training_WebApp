@@ -15,34 +15,34 @@
     <title>Header</title>
 </head>
 <body>
-<div class="Header">
+<div class=header>
     <form action="controller">
         <input type="hidden" name="command" value="home"/>
         <div class="logo">
-            <input type="image" src="./assets/logo.png" alt="#" width="350" height="100">
+            <input type="image" src="./assets/logo.png" alt="#" width="350" height="93.75">
         </div>
     </form>
-    <div class="sing-box">
-        <div class="lang-button-box">
-            <form action="controller">
-                <input type="hidden" name="command" value="locale"/>
-                <input class="lang-button" type="submit" name="lang" value=${en}>
-            </form>
-            <form action="controller">
-                <input type="hidden" name="command" value="locale"/>
-                <input class="lang-button" type="submit" name="lang" value=${ru}>
-            </form>
-        </div>
+    <div class="lang-button-box">
+        <form action="controller">
+            <input type="hidden" name="command" value="locale"/>
+            <input class="lang-button" type="submit" name="lang" value=${en}>
+        </form>
+        <form action="controller">
+            <input type="hidden" name="command" value="locale"/>
+            <input class="lang-button" type="submit" name="lang" value=${ru}>
+        </form>
+    </div>
+    <div class="sign-box">
         <c:choose>
             <c:when test="${empty sessionScope.user}">
                 <form action="login">
-                    <input class="singIn-button" type="submit" value="${signIn}">
+                    <input class="signIn-button" type="submit" value="${signIn}">
                 </form>
             </c:when>
             <c:otherwise>
                 <form action="controller" method="post">
                     <input type="hidden" name="command" value="logout">
-                    <input class="singIn-button" type="submit" value="SignOut">
+                    <input class="signIn-button" type="submit" value="SignOut">
                 </form>
             </c:otherwise>
         </c:choose>

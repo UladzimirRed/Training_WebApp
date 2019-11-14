@@ -27,7 +27,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main>
+<main class="main">
     <div class="logIn-form-box">
         <form name="LoginForm" method="POST" action="controller" class="login-form">
             <input type="hidden" name="command" value="login"/>
@@ -51,7 +51,7 @@
             ${wrongAction}
             ${nullPage}
             <input type="submit" value="${log_in}" class="login-form-button"/>
-            <div class="login-form-message">                                     <%--TODO CHACK STYLE WRONG CREDENTIALS--%>
+            <div class="login-form-message">
                 <c:choose>
                     <c:when test="${not empty requestScope.wrongData}">
                         ${wrongCredentials}

@@ -16,13 +16,13 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main>
+<main class="main">
     <div class="welcome-box">
         <span class="welcome-text">${welcomeText}</span>
         <br/>
         <br/>
         <form action="register">
-            <input class="singIn-button" type="submit" value="${joinUs}">
+            <input class="join-us-button" type="submit" value="${joinUs}">
         </form>
     </div>
 </main>

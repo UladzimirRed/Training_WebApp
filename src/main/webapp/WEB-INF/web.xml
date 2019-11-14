@@ -41,15 +41,6 @@
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
 
-    <servlet>
-        <servlet-name>Register</servlet-name>
-        <jsp-file>/jsp/register.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Register</servlet-name>
-        <url-pattern>/register</url-pattern>
-    </servlet-mapping>
-
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
