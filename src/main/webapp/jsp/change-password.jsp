@@ -10,7 +10,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.label.oldPass" var="oldPass"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.newPass" var="newPass"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.newPassAgain" var="newPassAgain"/>
-    <fmt:message bundle="${locale}" key="locale.customer.label.changePass" var="changePass"/>
+    <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
     <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
 
     <link rel="stylesheet" href="./css/style.css">
@@ -20,10 +20,13 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main>
-    <div class ="change-pass-form-box">
+<main class="main">
+    <div class="change-pass-form-box">
         <form action="controller">
-            <span>${ifYouWantChangePass}</span>
+            <div>
+                <br>
+                <span>${ifYouWantChangePass}</span>
+            </div>
             <input type="hidden" name="command" value="changePass"/>
             <span>${oldPass}</span>
             <input type="password"

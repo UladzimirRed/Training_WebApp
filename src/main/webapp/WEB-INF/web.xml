@@ -41,6 +41,69 @@
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <jsp-file>/jsp/register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Customer-area</servlet-name>
+        <jsp-file>/jsp/customer/customer-area.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Customer-area</servlet-name>
+        <url-pattern>/customer-area</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Change-password</servlet-name>
+        <jsp-file>/jsp/change-password.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Change-password</servlet-name>
+        <url-pattern>/change-password</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Customer-balance</servlet-name>
+        <jsp-file>/jsp/customer/customer-balance.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Customer-balance</servlet-name>
+        <url-pattern>/customer-balance</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Customer-delivery</servlet-name>
+        <jsp-file>/jsp/customer/customer-delivery.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Customer-delivery</servlet-name>
+        <url-pattern>/customer-delivery</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>New-order</servlet-name>
+        <jsp-file>/jsp/customer/new-order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>New-order</servlet-name>
+        <url-pattern>/new-order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Rate</servlet-name>
+        <jsp-file>/jsp/rate.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Rate</servlet-name>
+        <url-pattern>/rate</url-pattern>
+    </servlet-mapping>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>

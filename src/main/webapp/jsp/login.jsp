@@ -10,9 +10,9 @@
     <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
     <fmt:message bundle="${locale}" key="locale.user.label.password" var="password"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.log_in" var="log_in"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.myUserNameIs" var="myUserNameIs"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.enterYourPassword" var="enterYourPassword"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.log_in" var="log_in"/>
+    <fmt:message bundle="${locale}" key="locale.user.placeholder.myUserNameIs" var="myUserNameIs"/>
+    <fmt:message bundle="${locale}" key="locale.user.placeholder.enterYourPassword" var="enterYourPassword"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Login</title>

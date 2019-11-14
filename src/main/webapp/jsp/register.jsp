@@ -10,14 +10,14 @@
     <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
     <fmt:message bundle="${locale}" key="locale.user.label.password" var="password"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.myUserNameIs" var="myUserNameIs"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.enterYourPassword" var="enterYourPassword"/>
     <fmt:message bundle="${locale}" key="locale.user.label.confirmPassword" var="confirmPassword"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.confirmYourPassword" var="confirmYourPassword"/>
     <fmt:message bundle="${locale}" key="locale.user.label.role" var="role"/>
     <fmt:message bundle="${locale}" key="locale.user.label.customer" var="customer"/>
     <fmt:message bundle="${locale}" key="locale.user.label.courier" var="courier"/>
     <fmt:message bundle="${locale}" key="locale.user.label.signUp" var="signUp"/>
+    <fmt:message bundle="${locale}" key="locale.user.placeholder.myUserNameIs" var="myUserNameIs"/>
+    <fmt:message bundle="${locale}" key="locale.user.placeholder.enterYourPassword" var="enterYourPassword"/>
+    <fmt:message bundle="${locale}" key="locale.user.placeholder.confirmYourPassword" var="confirmYourPassword"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <script src="../js/main.js"></script>
@@ -68,7 +68,7 @@
                 <option class="form-option">${courier}</option>
             </select>
             <input type="submit" value="${signUp}" class="login-form-button"/>
-            <div class="login-form-message">                                     <%--TODO CHACK STYLE WRONG CREDENTIALS--%>
+            <div class="login-form-message">
                 <c:choose>
                     <c:when test="${not empty requestScope.wrongData}">
                         ${wrongCredentials}

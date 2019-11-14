@@ -7,7 +7,7 @@
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
     <link rel="stylesheet" href="./css/style.css">
-    <title>My balance</title>
+    <title>Rates</title>
 </head>
 <body>
 <header>

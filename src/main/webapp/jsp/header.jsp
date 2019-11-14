@@ -8,7 +8,9 @@
 
     <fmt:message bundle="${locale}" key="locale.lang.text.english" var="en"/>
     <fmt:message bundle="${locale}" key="locale.lang.text.russian" var="ru"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.signIn" var="signIn"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.signIn" var="signIn"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.logout" var="logout"/>
+
 
 
     <link rel="stylesheet" href="./css/style.css">
@@ -42,7 +44,7 @@
             <c:otherwise>
                 <form action="controller" method="post">
                     <input type="hidden" name="command" value="logout">
-                    <input class="signIn-button" type="submit" value="SignOut">
+                    <input class="signIn-button" type="submit" value="${logout}">
                 </form>
             </c:otherwise>
         </c:choose>

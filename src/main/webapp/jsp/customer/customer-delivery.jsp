@@ -13,7 +13,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main>
+<main class="main">
 
 </main>
 <footer>

@@ -7,7 +7,7 @@
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
     <fmt:message bundle="${locale}" key="locale.user.label.welcomeText" var="welcomeText"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.joinUs" var="joinUs"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.joinUs" var="joinUs"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Courier Exchange</title>
