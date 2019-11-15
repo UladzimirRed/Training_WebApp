@@ -6,6 +6,7 @@ import by.epam.training.dao.BaseDao;
 import by.epam.training.entity.RoleEnum;
 import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
+import by.epam.training.util.DataBaseInfo;
 import by.epam.training.util.SqlRequest;
 
 import org.apache.logging.log4j.LogManager;
@@ -35,7 +36,7 @@ public class UserDaoImpl implements BaseDao<User> {
             return user;
         } catch (SQLException e) {
             throw new DaoException();
-        }finally {
+        } finally {
             close(preparedStatement);
         }
     }
@@ -86,7 +87,7 @@ public class UserDaoImpl implements BaseDao<User> {
         }
     }
 
-    public User findUserByLogin(ProxyConnection connection, String login) throws DaoException {
+    private User findUserByLogin(ProxyConnection connection, String login) throws DaoException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet;
         try {
@@ -103,5 +104,46 @@ public class UserDaoImpl implements BaseDao<User> {
             close(preparedStatement);
             pool.releaseConnection(connection);
         }
+    }
+
+    public User changeUserPassword(User user, String newPassword) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            if (userMatches(user.getLogin(), user.getPassword())) {
+                preparedStatement = connection.prepareStatement(SqlRequest.SQL_CHANGE_USER_PASSWORD);
+                preparedStatement.setString(1, newPassword);
+                preparedStatement.setString(2, user.getLogin());
+                preparedStatement.executeUpdate();
+                return findUserByLogin(connection, user.getLogin());
+            }
+            return null;
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+    public boolean userMatches(String login, String password) throws DaoException {
+        PreparedStatement preparedStatement = null;
+        ProxyConnection connection = null;
+        ResultSet resultSet;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_CHECK_USER_MATCHES);
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+
     }
 }

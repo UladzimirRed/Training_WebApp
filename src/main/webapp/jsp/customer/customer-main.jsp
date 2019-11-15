@@ -15,19 +15,19 @@
 </header>
 <main class="main">
     <div class="navigation-bar">
-        <form action="customer/customer-area.jsp">
-            <input type="submit" value="personal area" class="common-button">
+        <form action="customer-area">
+            <input type="submit" value="personal areaAAaaaaa" class="common-button">
         </form>
-        <form action="customer-balance.jsp">
+        <form action="customer-balance">
             <input type="submit" value="My balance" class="common-button">
         </form>
-        <form action="customer-delivery.jsp">
+        <form action="customer-delivery">
             <input type="submit" value="My delivery" class="common-button">
         </form>
-        <form action="new-order.jsp">
+        <form action="new-order">
             <input type="submit" value="New order" class="common-button">
         </form>
-        <form action="rates.jsp">
+        <form action="rates">
             <input type="submit" value="New order" class="common-button">
         </form>
     </div>

@@ -1,6 +1,7 @@
 package by.epam.training.command;
 
 import by.epam.training.command.impl.*;
+import by.epam.training.command.impl.customer.ChangePasswordCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +12,8 @@ public enum CommandEnum {
     EMPTY(new EmptyCommand()),
     LOGOUT(new LogoutCommand()),
     REGISTER(new RegisterCommand()),
-    HOME(new HomeCommand());
+    HOME(new HomeCommand()),
+    CHANGE_PASSWORD(new ChangePasswordCommand());
 
     private static final Map<String, CommandEnum> commands = new HashMap<>();
 

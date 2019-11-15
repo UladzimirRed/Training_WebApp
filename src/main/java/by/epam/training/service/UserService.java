@@ -9,5 +9,5 @@ import java.sql.SQLException;
 public interface UserService {
     User logIn(String login, String password) throws ServiceException;
     User register(String login, String password, RoleEnum role) throws ServiceException, SQLException;
-    void changePassword(int userId, String newPassword) throws ServiceException;
+    User changePassword(String login, String oldPassword, String newPassword) throws ServiceException;
 }

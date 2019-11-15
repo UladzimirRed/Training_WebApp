@@ -18,6 +18,10 @@ public class JspAttribute {
     public static final String DATA_EXISTS = "dataExists";
     public static final String USER_EXISTS = "userExists";
     public static final String PAGE = "page";
+    public static final String OLD_PASSWORD = "oldPassword";
+    public static final String NEW_PASSWORD = "newPassword";
+    public static final String CHANGED_PASSWORD = "changedPassword";
+    public static final String WRONG_PASSWORD = "wrongPassword";
 
 
     private JspAttribute() {

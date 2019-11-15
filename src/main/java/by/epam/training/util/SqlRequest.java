@@ -11,4 +11,8 @@ public class SqlRequest {
             "SELECT user_id, login, password, role\n" +
                     "FROM profiles\n" +
                     "WHERE login = ?";
+    public static final String SQL_CHECK_USER_MATCHES =
+            "SELECT login, password FROM profiles WHERE login =? AND password = SHA1(?) AND state_id=1";
+    public static final String SQL_CHANGE_USER_PASSWORD =
+            "UPDATE profiles SET password = SHA1(?) WHERE login = ?";
 }

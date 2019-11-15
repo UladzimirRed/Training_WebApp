@@ -51,6 +51,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Customer-main</servlet-name>
+        <jsp-file>/jsp/customer/customer-main.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Customer-main</servlet-name>
+        <url-pattern>/customer-main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Customer-area</servlet-name>
         <jsp-file>/jsp/customer/customer-area.jsp</jsp-file>
     </servlet>

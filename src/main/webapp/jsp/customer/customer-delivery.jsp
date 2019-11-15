@@ -6,6 +6,12 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
+    <fmt:message bundle="${locale}" key="locale.customer.text.myDelivery" var="myDelivery"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.orderId" var="orderId"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.courierName" var="courierName"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
+
     <link rel="stylesheet" href="./css/style.css">
     <title>My delivery</title>
 </head>
@@ -15,13 +21,14 @@
 </header>
 <main class="main">
     <div class="table-container-head">
-        <h2>Delivery</h2>
+        <h2>${myDelivery}</h2>
+        <br>
         <table class="head-table">
             <tr>
-                <th># acc</th>
-                <th>courier name</th>
-                <th>price</th>
-                <th>status</th>
+                <th>${orderId}</th>
+                <th>${courierName}</th>
+                <th>${price}</th>
+                <th>${status}</th>
             </tr>
         </table>
     </div>
@@ -136,7 +143,7 @@
                 <td>in progress</td>
             </tr>
             <tr>
-                <td>user2</td>
+                <td>userLast</td>
                 <td>courier2</td>
                 <td>10$</td>
                 <td>in progress</td>

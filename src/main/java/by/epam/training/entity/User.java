@@ -25,6 +25,11 @@ public class User extends Entity{
         this.role = role;
     }
 
+    public User(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
+
     public int getId() {
         return id;
     }
@@ -65,15 +70,18 @@ public class User extends Entity{
         User user = (User) o;
 
         if (id != user.id) return false;
-        if (role != user.role) return false;
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
-        return password != null ? password.equals(user.password) : user.password == null;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        return role == user.role;
     }
 
     @Override
-    //todo rework
     public int hashCode() {
-        return Objects.hash(id, login, password, role);
+        int result = id;
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        return result;
     }
 
     @Override

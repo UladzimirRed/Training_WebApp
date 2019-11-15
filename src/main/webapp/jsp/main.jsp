@@ -3,7 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
@@ -15,24 +14,17 @@
     <fmt:message bundle="${locale}" key="locale.customer.button.newOrder" var="newOrder"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.rates" var="rates"/>
 
-
     <link rel="stylesheet" href="./css/style.css">
-
     <title>Welcome</title>
 </head>
 <body>
-<c:choose>
-    <c:when test="${empty sessionScope.user}">
-        <jsp:forward page="/login"/>
-    </c:when>
-</c:choose>
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main">
     <div>
-        <br/>
-        <span class="welcome-main-text">${welcome}, ${user}</span>
+        <br>
+        <p>${welcome}, ${user}</p>
     </div>
     <div class="navigation-bar">
         <form action="customer-area">

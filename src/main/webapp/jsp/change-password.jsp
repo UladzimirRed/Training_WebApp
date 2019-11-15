@@ -21,36 +21,44 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main">
-    <div class="change-pass-form-box">
-        <form action="controller">
+    <div>
+        <form action="controller" name="changePasswordForm" method="POST">
+            <input type="hidden" name="command" value="change-password"/>
             <div>
                 <br>
-                <span>${ifYouWantChangePass}</span>
+                <h2>${ifYouWantChangePass}</h2>
             </div>
-            <input type="hidden" name="command" value="changePass"/>
-            <span>${oldPass}</span>
-            <input type="password"
-                   maxlength="32"
-                   pattern="[^<>]{4,}"
-                   value=""/>
-            <span>${newPass}</span>
-            <input type="password"
-                   maxlength="32"
-                   pattern="[^<>]{4,}"
-                   value=""/>
-            <span>${newPassAgain}</span>
-            <input type="password"
-                   maxlength="32"
-                   pattern="[^<>]{4,}"
-                   value=""
-                   onkeyup="checkPass()"/>
-            <input type="submit" value="${changePass}">
-            <div>
-                <c:choose>
-                    <c:when test="${not empty requestScope.wrongData}">
-                        ${wrongCredentials}
-                    </c:when>
-                </c:choose>
+            <div class="logIn-form-box-2">
+                <p class="user-area-label">${oldPass}</p>
+                <input class="login-form-password"
+                       type="password"
+                       name="oldPassword"
+                       maxlength="32"
+                       pattern="[^<>]{4,}"
+                       value=""/>
+                <p class="user-area-label">${newPass}</p>
+                <input class="login-form-password"
+                       type="password"
+                       name="newPassword"
+                       maxlength="32"
+                       pattern="[^<>]{4,}"
+                       value=""/>
+                <p class="user-area-label">${newPassAgain}</p>
+                <input class="login-form-password"
+                       type="password"
+                       name="confirmPassword"
+                       maxlength="32"
+                       pattern="[^<>]{4,}"
+                       value=""
+                       onkeyup="checkPass()"/>
+                <input type="submit" value="${changePass}" class="login-form-button">
+                <div>
+                    <c:choose>
+                        <c:when test="${not empty requestScope.wrongData}">
+                            ${wrongCredentials}
+                        </c:when>
+                    </c:choose>
+                </div>
             </div>
         </form>
     </div>

@@ -8,5 +8,6 @@ public class JspAddress {
     public static final String MESSAGE_PAGE = "/message";
     public static final String HOME_PAGE = "/home";
     public static final String REGISTER_URL = "/register";
+    public static final String CHANGE_PASSWORD = "/change-password";
 }
 

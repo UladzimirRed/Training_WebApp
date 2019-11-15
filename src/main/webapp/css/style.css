@@ -42,6 +42,14 @@ td {
 
 tr:hover td {color: #ffd21f}
 
+p {
+    text-align: left;
+    margin-left: 60px;
+    margin-top: 30px;
+    color: #ffebcd;
+    font-size: 30px;
+}
+
 .header {
     width: 100%;
     height: 15vh;
@@ -144,6 +152,7 @@ tr:hover td {color: #ffd21f}
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 40px;
 }
 
 .login-form {
@@ -204,7 +213,6 @@ tr:hover td {color: #ffd21f}
 }
 
 .navigation-bar {
-    height: 100%;
     width: 30%;
     display: flex;
     flex-direction: column;

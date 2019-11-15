@@ -55,7 +55,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void changePassword(int userId, String newPassword) throws ServiceException {
+    public User changePassword(String login, String oldPassword, String newPassword) throws ServiceException {
+        User user = new User(login, oldPassword);
+        try {
+            return userDao.changeUserPassword(user, newPassword);
+        } catch (DaoException e){
+            throw new ServiceException(e);
+        }
 
     }
 }

@@ -6,8 +6,8 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.customer.text.yourPersonalArea" var="yourPersonalArea"/>
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.yourPersonalArea" var="yourPersonalArea"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.accountId" var="accountId"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.email" var="email"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
@@ -24,7 +24,7 @@
 <main class="main">
     <div>
         <br/>
-        <h1>${yourPersonalArea}</h1>              <%--todo style--%>
+        <h2>${yourPersonalArea}</h2>              <%--todo style--%>
     </div>
     <div class="logIn-form-box-2">
         <form action="change-password" class="login-form user-area-form">
