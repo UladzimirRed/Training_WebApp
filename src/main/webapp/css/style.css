@@ -2,9 +2,45 @@ body {
     margin: 0;
     padding: 0;
     background-size: cover;
-    min-height: 100vh;
     width: 100vw;
 }
+
+h2 {
+    width: 100%;
+    text-align: center;
+    color: #ffebcd;
+    font-size: 30px;
+    margin: 0;
+    margin-top: 10px;
+}
+
+table {
+    width: 80%;
+    border-collapse: collapse;
+    color: #ffebcd;
+    padding: 5px 0;
+    text-align: left;
+    position: relative;
+    box-sizing: border-box;
+}
+
+th {
+    text-align: center;
+    width: 20%;
+    color: #ffebcd;
+    border-bottom: 2px solid #ffebcd;
+    padding: 10px 8px;
+}
+
+td {
+    text-align: center;
+    width: 20%;
+    color: #ffebcd;
+    padding: 9px 8px;
+    transition: .3s linear;
+}
+
+tr:hover td {color: #ffd21f}
 
 .header {
     width: 100%;
@@ -91,6 +127,7 @@ body {
 .main {
     width: 100%;
     height: 75vh;
+    min-height: 75vh;
     background-color: #23283a;
 }
 
@@ -101,6 +138,12 @@ body {
     width: 100%;
     height: 75vh;
     background-color: #23283a;
+}
+.logIn-form-box-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .login-form {
@@ -155,7 +198,7 @@ body {
     margin-top: 10px;
 }
 
-.welcome-area {
+.welcome-area, .welcome-main-text {
     color: #ffebcd;
     font-size: 18px;
 }
@@ -188,6 +231,36 @@ body {
 
 .change-pass-button {
     align-self: flex-end;
+}
+
+.table-container-body {
+    height: 58.5vh;
+    overflow-y: auto;
+    padding-top: 0.5vh;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+.table-container-body::-webkit-scrollbar {
+    display: none;
+}
+
+.table-container-head {
+    height: 16vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body-table {
+    height: 100%;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.head-table {
+    width: 60%;
 }
 
 .footer {

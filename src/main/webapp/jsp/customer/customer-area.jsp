@@ -24,9 +24,9 @@
 <main class="main">
     <div>
         <br/>
-        <span class="welcome-main-text">${yourPersonalArea}</span>              <%--todo style--%>
+        <h1>${yourPersonalArea}</h1>              <%--todo style--%>
     </div>
-    <div class="logIn-form-box">
+    <div class="logIn-form-box-2">
         <form action="change-password" class="login-form user-area-form">
             <div class="input-wrapper">
                 <p class="user-area-label">${login}</p>
@@ -45,8 +45,8 @@
             <br/>
         </form>
         <form action="controller">
-            <input type="hidden" name="command" value="TODO VALUE"/>>             <%--            todo value command--%>
-            <input type="submit" value="${updateData}" class="login-form-button"/>
+            <input type="hidden" name="command" value="TODO VALUE"/>             <%--            todo value command--%>
+            <input type="submit" value="${updateData}" class="join-us-button"/>
         </form>
     </div>
 </main>
