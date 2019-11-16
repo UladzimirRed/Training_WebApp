@@ -19,7 +19,7 @@
     </Appenders>
     <Loggers>
         <Root level="INFO">
-            <Appender-ref ref="Console" level="info"/>
+            <Appender-ref ref="Console" level="trace"/>
             <Appender-ref ref="File" level="trace"/>
         </Root>
     </Loggers>

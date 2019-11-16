@@ -17,6 +17,6 @@ public class LocaleCommand implements ActionCommand {
         request.setAttribute(JspAttribute.MESSAGE, JspAttribute.CHANGED_LOCALE);
         String page = session.getAttribute(JspAttribute.PAGE).toString();
         session.setAttribute(JspAttribute.PAGE, page);
-        return JspAddress.HOME_PAGE;
+        return page;
     }
 }

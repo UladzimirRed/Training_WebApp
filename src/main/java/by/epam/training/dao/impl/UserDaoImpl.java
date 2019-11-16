@@ -6,7 +6,6 @@ import by.epam.training.dao.BaseDao;
 import by.epam.training.entity.RoleEnum;
 import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
-import by.epam.training.util.DataBaseInfo;
 import by.epam.training.util.SqlRequest;
 
 import org.apache.logging.log4j.LogManager;
@@ -47,7 +46,7 @@ public class UserDaoImpl implements BaseDao<User> {
         ResultSet resultSet;
         try {
             connection = pool.takeConnection();
-            preparedStatement = connection.prepareStatement(SqlRequest.FIND_PROFILE_BY_LOGIN);
+            preparedStatement = connection.prepareStatement(SqlRequest.FIND_PROFILE_BY_LOGIN_AND_PASSWORD);
             preparedStatement.setString(1, login);
             preparedStatement.setString(2, password);
             resultSet = preparedStatement.executeQuery();
@@ -91,7 +90,7 @@ public class UserDaoImpl implements BaseDao<User> {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet;
         try {
-            preparedStatement = connection.prepareStatement(SqlRequest.FIND_USER_BY_LOGIN);
+            preparedStatement = connection.prepareStatement(SqlRequest.FIND_PROFILE_BY_LOGIN);
             preparedStatement.setString(1, login);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {

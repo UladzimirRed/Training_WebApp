@@ -27,7 +27,7 @@ public class LoginCommand implements ActionCommand {
             User user = service.logIn(login, password);
             if (user != null) {
                 request.setAttribute(JspAttribute.USER, login);
-                session.setAttribute(JspAttribute.USER, login);
+                session.setAttribute(JspAttribute.USER, user);
                 page = JspAddress.MAIN_PAGE;
             } else {
                 request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_DATA);

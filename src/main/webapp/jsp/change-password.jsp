@@ -12,7 +12,8 @@
     <fmt:message bundle="${locale}" key="locale.customer.label.newPassAgain" var="newPassAgain"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
     <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
-
+    <fmt:message bundle="${locale}" key="locale.message.changedPassword" var="changedPassword"/>
+    changedPassword
     <link rel="stylesheet" href="./css/style.css">
     <title>Change password</title>
 </head>
@@ -23,7 +24,7 @@
 <main class="main">
     <div>
         <form action="controller" name="changePasswordForm" method="POST">
-            <input type="hidden" name="command" value="change-password"/>
+            <input type="hidden" name="command" value="change_password"/>
             <div>
                 <br>
                 <h2>${ifYouWantChangePass}</h2>
@@ -56,6 +57,11 @@
                     <c:choose>
                         <c:when test="${not empty requestScope.wrongData}">
                             ${wrongCredentials}
+                        </c:when>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${not empty requestScope.changedPassword}">
+                            ${changedPassword}
                         </c:when>
                     </c:choose>
                 </div>
