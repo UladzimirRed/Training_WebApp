@@ -3,7 +3,8 @@ package by.epam.training.dao.impl;
 import by.epam.training.connection.ConnectionPool;
 import by.epam.training.connection.ProxyConnection;
 import by.epam.training.dao.BaseDao;
-import by.epam.training.entity.RoleEnum;
+import by.epam.training.entity.Role;
+import by.epam.training.entity.Transport;
 import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
 import by.epam.training.util.SqlRequest;
@@ -30,7 +31,8 @@ public class UserDaoImpl implements BaseDao<User> {
             preparedStatement = connection.prepareStatement(SqlRequest.INSERT_USER);
             preparedStatement.setString(1, user.getLogin());
             preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setInt(3, RoleEnum.getCodeByRole(user.getRole()));
+            preparedStatement.setInt(3, Role.getCodeByRole(user.getRole()));
+            preparedStatement.setObject(4, Transport.getCodeByTransport(user.getTransport()));
             preparedStatement.executeUpdate();
             return user;
         } catch (SQLException e) {
@@ -80,17 +82,19 @@ public class UserDaoImpl implements BaseDao<User> {
             return new User(resultSet.getInt(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    RoleEnum.getRoleByCode(resultSet.getInt(4)));
+                    Role.getRoleByString(resultSet.getString(4)),
+                    Transport.getTransportByString(resultSet.getString(5)),
+                    resultSet.getDouble(6));
         } catch (SQLException e) {
             throw new DaoException(e);
         }
     }
 
-    private User findUserByLogin(ProxyConnection connection, String login) throws DaoException {
+    public User findUserByLogin(ProxyConnection connection, String login) throws DaoException {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet;
         try {
-            preparedStatement = connection.prepareStatement(SqlRequest.FIND_PROFILE_BY_LOGIN);
+            preparedStatement = connection.prepareStatement(SqlRequest.FIND_USER_BY_LOGIN);
             preparedStatement.setString(1, login);
             resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {

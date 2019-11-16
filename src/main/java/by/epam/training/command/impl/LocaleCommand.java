@@ -1,5 +1,6 @@
 package by.epam.training.command.impl;
 
+import by.epam.training.util.JspAddress;
 import by.epam.training.util.JspAttribute;
 import by.epam.training.command.ActionCommand;
 
@@ -14,8 +15,6 @@ public class LocaleCommand implements ActionCommand {
         request.getSession().setAttribute(JspAttribute.LOCAL, lang);
         request.getSession().setAttribute(JspAttribute.MESSAGE, JspAttribute.CHANGED_LOCALE);
         request.setAttribute(JspAttribute.MESSAGE, JspAttribute.CHANGED_LOCALE);
-        String page = session.getAttribute(JspAttribute.PAGE).toString();
-        session.setAttribute(JspAttribute.PAGE, page);
-        return page;
+        return JspAddress.HOME_PAGE;
     }
 }

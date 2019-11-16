@@ -3,10 +3,10 @@ package by.epam.training.service.impl;
 import by.epam.training.connection.ConnectionPool;
 import by.epam.training.connection.ProxyConnection;
 import by.epam.training.dao.impl.UserDaoImpl;
-import by.epam.training.entity.RoleEnum;
 import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
 import by.epam.training.exception.ServiceException;
+import by.epam.training.exception.UserExistsException;
 import by.epam.training.service.UserService;
 
 import java.sql.SQLException;
@@ -30,24 +30,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User register(String login, String password, RoleEnum role) throws ServiceException {
-        User user = new User(login, password, role);
+    public User register(User user) throws ServiceException, UserExistsException {
+
         ProxyConnection connection = pool.takeConnection();
 
         try {
-            connection.setAutoCommit(false);
-            if (userDao.userExists(connection, login)) {
-                return null;
+            if (userDao.userExists(connection, user.getLogin())) {
+                throw new UserExistsException("User with this login already exists");
             }
-            User result = userDao.register(user, connection);
-            connection.commit();
-            return result;
-        } catch (DaoException | SQLException e) {
-            try {
-                connection.rollback();
-            } catch (SQLException ex) {
-                throw new ServiceException(e);
-            }
+            userDao.register(user, connection);
+            return userDao.findUserByLogin(connection, user.getLogin());
+        } catch (DaoException e) {
             throw new ServiceException(e);
         } finally {
             pool.releaseConnection(connection);

@@ -12,7 +12,6 @@ public class LogoutCommand implements ActionCommand {
     public String execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
         session.removeAttribute(JspAttribute.USER);
-        session.setAttribute(JspAttribute.PAGE, JspAddress.HOME_PAGE);
         return JspAddress.HOME_PAGE;
     }
 }

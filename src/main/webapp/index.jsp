@@ -5,9 +5,6 @@
     <title>Index</title>
 </head>
 <body>
-<%--<jsp:forward page="/jsp/register.jsp"/>--%>
-<%--<jsp:forward page="/jsp/customer/customer-area.jsp"/>--%>
-<%--<jsp:forward page="/jsp/change-password.jsp"/>--%>
 <jsp:forward page="/controller?command=home"/>
 </body>
 </html>

@@ -22,6 +22,7 @@ public class JspAttribute {
     public static final String NEW_PASSWORD = "newPassword";
     public static final String CHANGED_PASSWORD = "changedPassword";
     public static final String WRONG_PASSWORD = "wrongPassword";
+    public static final String TRANSPORT = "transport";
 
 
     private JspAttribute() {

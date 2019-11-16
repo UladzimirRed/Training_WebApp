@@ -42,12 +42,21 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Register</servlet-name>
-        <jsp-file>/jsp/register.jsp</jsp-file>
+        <servlet-name>Register As</servlet-name>
+        <jsp-file>/jsp/register-as.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Register</servlet-name>
-        <url-pattern>/register</url-pattern>
+        <servlet-name>Register As</servlet-name>
+        <url-pattern>/register-as</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Customer-register</servlet-name>
+        <jsp-file>/jsp/customer/customer-register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Customer-register</servlet-name>
+        <url-pattern>/customer-register</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -111,6 +120,15 @@
     <servlet-mapping>
         <servlet-name>Rate</servlet-name>
         <url-pattern>/rate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Courier-register</servlet-name>
+        <jsp-file>/jsp/courier/courier-register.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Courier-register</servlet-name>
+        <url-pattern>/courier-register</url-pattern>
     </servlet-mapping>
 
     <jsp-config>

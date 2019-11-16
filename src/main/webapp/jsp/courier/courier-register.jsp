@@ -20,7 +20,7 @@
     <fmt:message bundle="${locale}" key="locale.user.placeholder.confirmYourPassword" var="confirmYourPassword"/>
 
     <link rel="stylesheet" href="./css/style.css">
-    <script src="../js/main.js"></script>
+    <script src="../../js/main.js"></script>
 
     <title>Register Page</title>
 </head>
@@ -30,13 +30,14 @@
 </header>
 <c:choose>
     <c:when test="${not empty sessionScope.user}">
-        <jsp:forward page="main.jsp"/>
+        <jsp:forward page="../main.jsp"/>
     </c:when>
 </c:choose>
 <main>
     <div class="logIn-form-box">
         <form name="RegisterForm" method="POST" action="controller" class="login-form">
             <input type="hidden" name="command" value="register"/>
+            <input type="hidden" name="role" value="courier"/>
             <span class="form-label">${login}:</span>
             <input class="login-form-text"
                    type="text"
@@ -63,9 +64,10 @@
                    onkeyup="checkPass()"
                    placeholder="${confirmYourPassword}"/>
             <span class="form-label">${role}</span>
-            <select class=form-dropdown name="role">
-                <option class="form-option">${customer}</option>
-                <option class="form-option">${courier}</option>
+            <select class=form-dropdown name="transport">
+                <option class="form-option">Truck</option>
+                <option class="form-option">Car</option>
+                <option class="form-option">НОГИ</option>
             </select>
             <input type="submit" value="${signUp}" class="login-form-button"/>
             <div class="login-form-message">

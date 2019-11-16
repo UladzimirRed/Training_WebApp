@@ -11,29 +11,20 @@
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
 
     <link rel="stylesheet" href="./css/style.css">
-    <title>Courier Exchange</title>
+    <title>Register As</title>
 </head>
 <body>
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main">
-    <div class="welcome-box">
-        <span class="welcome-text">${welcomeText}</span>
-        <br/>
-        <br/>
-        <c:choose>
-            <c:when test="${empty sessionScope.user.role}">
-                <form action="register-as">
-                    <input class="join-us-button" type="submit" value="${joinUs}">
-                </form>
-            </c:when>
-            <c:otherwise>
-                <form action="main">
-                    <input class="join-us-button" type="submit" value="${personalRoom}">
-                </form>
-            </c:otherwise>
-        </c:choose>
+    <div>
+        <form action="customer-register">
+            <input class="join-us-button" type="submit" value="Как Заказчик">
+        </form>
+        <form action="courier-register">
+            <input class="join-us-button" type="submit" value="как курьер">
+        </form>
     </div>
 </main>
 <footer>

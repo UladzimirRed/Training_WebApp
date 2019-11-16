@@ -12,8 +12,6 @@ public class EmptyCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-        HttpSession session = request.getSession();
-        session.setAttribute(JspAttribute.PAGE, HOME_PAGE);
         return HOME_PAGE;
     }
 }

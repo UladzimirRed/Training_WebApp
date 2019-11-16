@@ -60,7 +60,7 @@
                         </c:when>
                     </c:choose>
                     <c:choose>
-                        <c:when test="${not empty requestScope.changedPassword}">
+                        <c:when test="${not empty requestScope.message}">
                             ${changedPassword}
                         </c:when>
                     </c:choose>
