@@ -13,7 +13,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
     <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
     <fmt:message bundle="${locale}" key="locale.message.changedPassword" var="changedPassword"/>
-    changedPassword
+
     <link rel="stylesheet" href="./css/style.css">
     <title>Change password</title>
 </head>

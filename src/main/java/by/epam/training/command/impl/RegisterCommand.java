@@ -30,8 +30,8 @@ public class RegisterCommand implements ActionCommand {
         try {
             if (!password.equals(confirmPassword)) {
                 request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.PASSWORD_DOES_NOT_MATCH);
-                session.setAttribute(JspAttribute.PAGE, JspAddress.REGISTER_URL);
-                return JspAddress.REGISTER_URL;
+                session.setAttribute(JspAttribute.PAGE, JspAddress.REGISTER_PAGE);
+                return JspAddress.REGISTER_PAGE;
             }
             UserServiceImpl service = new UserServiceImpl();
             User user = service.register(login, password, role);
@@ -42,9 +42,9 @@ public class RegisterCommand implements ActionCommand {
                 request.setAttribute(JspAttribute.MESSAGE, JspAttribute.SIGNED_UP);
                 return JspAddress.MAIN_PAGE;
             }
-            session.setAttribute(JspAttribute.PAGE, JspAddress.REGISTER_URL);
+            session.setAttribute(JspAttribute.PAGE, JspAddress.REGISTER_PAGE);
             request.setAttribute(JspAttribute.DATA_EXISTS, JspAttribute.USER_EXISTS);
-            return JspAddress.REGISTER_URL;
+            return JspAddress.REGISTER_PAGE;
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
             session.setAttribute(JspAttribute.PAGE, HOME_PAGE);

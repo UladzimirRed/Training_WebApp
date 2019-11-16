@@ -24,7 +24,7 @@
 <main class="main">
     <div>
         <br>
-        <p>${welcome}, ${user}</p>
+        <p>${welcome}, ${sessionScope.user.login}</p>
     </div>
     <div class="navigation-bar">
         <form action="customer-area">

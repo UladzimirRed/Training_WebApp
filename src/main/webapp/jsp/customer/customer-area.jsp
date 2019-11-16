@@ -30,11 +30,11 @@
         <form action="change-password" class="login-form user-area-form">
             <div class="input-wrapper">
                 <p class="user-area-label">${login}</p>
-                <input type="text" value="${user}" class="login-form-text">
+                <input type="text" value="${sessionScope.user.login}" class="login-form-text">
             </div>
             <div class="input-wrapper">
                 <p class="user-area-label">${accountId}</p>
-                <input type="text" value="Тут должен быть ID из БД" class="login-form-text">
+                <input type="text" value="${sessionScope.user.id}" class="login-form-text">
             </div>
             <div class="input-wrapper">
                 <p class="user-area-label">${email}</p>

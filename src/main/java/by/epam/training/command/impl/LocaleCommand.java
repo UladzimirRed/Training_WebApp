@@ -1,6 +1,5 @@
 package by.epam.training.command.impl;
 
-import by.epam.training.util.JspAddress;
 import by.epam.training.util.JspAttribute;
 import by.epam.training.command.ActionCommand;
 

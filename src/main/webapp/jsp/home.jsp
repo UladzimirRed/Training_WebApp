@@ -8,6 +8,7 @@
 
     <fmt:message bundle="${locale}" key="locale.user.label.welcomeText" var="welcomeText"/>
     <fmt:message bundle="${locale}" key="locale.user.button.joinUs" var="joinUs"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Courier Exchange</title>
@@ -21,9 +22,18 @@
         <span class="welcome-text">${welcomeText}</span>
         <br/>
         <br/>
-        <form action="register">
-            <input class="join-us-button" type="submit" value="${joinUs}">
-        </form>
+        <c:choose>
+            <c:when test="${empty sessionScope.user.role}">
+                <form action="register">
+                    <input class="join-us-button" type="submit" value="${joinUs}">
+                </form>
+            </c:when>
+            <c:otherwise>
+                <form action="main">
+                    <input class="join-us-button" type="submit" value="${personalRoom}">
+                </form>
+            </c:otherwise>
+        </c:choose>
     </div>
 </main>
 <footer>

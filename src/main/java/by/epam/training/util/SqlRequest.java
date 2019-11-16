@@ -8,9 +8,7 @@ public class SqlRequest {
     public static final String INSERT_USER =
             "INSERT INTO profiles(login, password, role) VALUES (?, SHA1(?), ?)";
     public static final String FIND_PROFILE_BY_LOGIN =
-            "SELECT id, login, password, role\n" +
-                    "FROM profiles\n" +
-                    "WHERE login = ?";
+            "SELECT id, login, password, role FROM profiles WHERE login = ?";
     public static final String SQL_CHECK_USER_MATCHES =
             "SELECT login, password FROM profiles WHERE login =? AND password = SHA1(?)";
     public static final String SQL_CHANGE_USER_PASSWORD =
