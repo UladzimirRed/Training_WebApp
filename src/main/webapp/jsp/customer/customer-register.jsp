@@ -8,6 +8,8 @@
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
     <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.register" var="register"/>
+
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
     <fmt:message bundle="${locale}" key="locale.user.label.password" var="password"/>
     <fmt:message bundle="${locale}" key="locale.user.label.confirmPassword" var="confirmPassword"/>
@@ -33,8 +35,12 @@
         <jsp:forward page="../main.jsp"/>
     </c:when>
 </c:choose>
-<main>
-    <div class="logIn-form-box">
+<main class="main">
+    <div>
+        <br/>
+        <h2>${register}</h2>
+    </div>
+    <div class="logIn-form-box-2">
         <form name="RegisterForm" method="POST" action="controller" class="login-form">
             <input type="hidden" name="command" value="register"/>
             <input type="hidden" name="role" value="customer"/>

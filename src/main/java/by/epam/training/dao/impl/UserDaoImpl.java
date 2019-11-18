@@ -3,6 +3,7 @@ package by.epam.training.dao.impl;
 import by.epam.training.connection.ConnectionPool;
 import by.epam.training.connection.ProxyConnection;
 import by.epam.training.dao.BaseDao;
+import by.epam.training.entity.Order;
 import by.epam.training.entity.Role;
 import by.epam.training.entity.Transport;
 import by.epam.training.entity.User;
@@ -147,6 +148,26 @@ public class UserDaoImpl implements BaseDao<User> {
             close(preparedStatement);
             pool.releaseConnection(connection);
         }
+    }
 
+    // TODO add distance and total cost set
+    public Order makeOrder(Order order, int userId, int rateCode) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_MAKE_NEW_ORDER);
+            preparedStatement.setString(1, order.getSubject());
+            preparedStatement.setInt(2, userId);
+            preparedStatement.setObject(3, Transport.getCodeByTransport(order.getTransport()));
+            preparedStatement.setInt(4, rateCode);
+            preparedStatement.executeUpdate();
+            return order;
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
     }
 }

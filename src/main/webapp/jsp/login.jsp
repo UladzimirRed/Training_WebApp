@@ -10,6 +10,7 @@
     <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
     <fmt:message bundle="${locale}" key="locale.user.label.password" var="password"/>
+    <fmt:message bundle="${locale}" key="locale.user.label.signUp" var="signUp"/>
     <fmt:message bundle="${locale}" key="locale.user.button.log_in" var="log_in"/>
     <fmt:message bundle="${locale}" key="locale.user.placeholder.myUserNameIs" var="myUserNameIs"/>
     <fmt:message bundle="${locale}" key="locale.user.placeholder.enterYourPassword" var="enterYourPassword"/>
@@ -48,8 +49,6 @@
                    value=""
                    placeholder="${enterYourPassword}"/>
             ${errorLoginPassMessage}
-            ${wrongAction}
-            ${nullPage}
             <input type="submit" value="${log_in}" class="login-form-button"/>
             <div class="login-form-message">
                 <c:choose>
@@ -58,7 +57,10 @@
                     </c:when>
                 </c:choose>
             </div>
-            <form/>
+        </form>
+        <form action="register-as" class="login-form">
+            <input type="submit" value="${signUp}" class="login-form-button"/>
+        </form>
     </div>
 </main>
 <footer>

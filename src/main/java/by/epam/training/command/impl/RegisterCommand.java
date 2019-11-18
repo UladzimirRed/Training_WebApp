@@ -42,6 +42,7 @@ public class RegisterCommand implements ActionCommand {
 
             session.setAttribute(JspAttribute.USER, resultUser);
             return JspAddress.MAIN_PAGE;
+
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
             return JspAddress.ERROR_PAGE;

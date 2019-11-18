@@ -13,7 +13,7 @@ public class SqlRequest {
     public static final String CHECK_USER_EXISTS =
             "SELECT user_id FROM user WHERE login = ?";
     public static final String INSERT_USER =
-            "INSERT INTO user(login, password, role_id, transport_id) VALUES (?, SHA1(?), ?, ?);";
+            "INSERT INTO user(login, password, role_id, transport_id) VALUES (?, SHA1(?), ?, ?)";
     public static final String FIND_USER_BY_LOGIN =
             "SELECT user_id, login, password, role_name, transport_name, rating " +
                     "FROM user " +
@@ -26,4 +26,7 @@ public class SqlRequest {
             "SELECT login, password FROM user WHERE login =? AND password = SHA1(?)";
     public static final String SQL_CHANGE_USER_PASSWORD =
             "UPDATE user SET password = SHA1(?) WHERE login = ?";
+    public static final String SQL_MAKE_NEW_ORDER =
+            "INSERT INTO `order`(subject, user_id, transport_id, express_rate) VALUES (?, ?, ?, ?)";
+
 }

@@ -7,7 +7,8 @@
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
     <fmt:message bundle="${locale}" key="locale.user.label.welcomeText" var="welcomeText"/>
-    <fmt:message bundle="${locale}" key="locale.user.button.joinUs" var="joinUs"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.joinAsCourier" var="joinAsCourier"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.joinAsCustomer" var="joinAsCustomer"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
 
     <link rel="stylesheet" href="./css/style.css">
@@ -24,8 +25,11 @@
         <br/>
         <c:choose>
             <c:when test="${empty sessionScope.user.role}">
-                <form action="register-as">
-                    <input class="join-us-button" type="submit" value="${joinUs}">
+                <form action="courier-register">
+                    <input class="join-us-button" type="submit" value="${joinAsCourier}">
+                </form>
+                <form action="customer-register">
+                    <input class="join-us-button" type="submit" value="${joinAsCustomer}">
                 </form>
             </c:when>
             <c:otherwise>

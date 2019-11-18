@@ -9,8 +9,6 @@
     <fmt:message bundle="${locale}" key="locale.message.helloMessage" var="hello"/>
     <fmt:message bundle="${locale}" key="locale.message.welcome" var="welcome"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.personalArea" var="personalArea"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.myBalance" var="myBalance"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.myDelivery" var="myDelivery"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.newOrder" var="newOrder"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.rates" var="rates"/>
 
@@ -29,12 +27,6 @@
     <div class="navigation-bar">
         <form action="customer-area">
             <input type="submit" value="${personalArea}" class="common-button">
-        </form>
-        <form action="customer-balance">
-            <input type="submit" value="${myBalance}" class="common-button">
-        </form>
-        <form action="customer-delivery">
-            <input type="submit" value="${myDelivery}" class="common-button">
         </form>
         <form action="new-order">
             <input type="submit" value="${newOrder}" class="common-button">

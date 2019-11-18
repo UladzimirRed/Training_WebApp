@@ -15,6 +15,15 @@
     </session-config>
 
     <servlet>
+        <servlet-name>Error</servlet-name>
+        <jsp-file>/jsp/error/error.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Error</servlet-name>
+        <url-pattern>/error</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Main</servlet-name>
         <jsp-file>/jsp/main.jsp</jsp-file>
     </servlet>

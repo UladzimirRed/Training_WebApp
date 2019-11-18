@@ -6,7 +6,17 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
+
+    <fmt:message bundle="${locale}" key="locale.user.text.truck" var="truck"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.car" var="car"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.withoutTransport" var="withoutTransport"/>
     <fmt:message bundle="${locale}" key="locale.customer.text.newOrder" var="newOrder"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.express" var="express"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.regular" var="regular"/>
+    <fmt:message bundle="${locale}" key="locale.customer.label.subjectOfTransportation" var="subjectOfTransportation"/>
+    <fmt:message bundle="${locale}" key="locale.customer.label.transportForCargo" var="transportForCargo"/>
+    <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
+    <fmt:message bundle="${locale}" key="locale.customer.button.orderTransportation" var="orderTransportation"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>New Order</title>
@@ -18,51 +28,29 @@
 <main class="main">
     <div>
         <form action="controller" name="newOrder" method="POST">
-            <input type="hidden" name="command" value="new-order"/>
+            <input type="hidden" name="command" value="new_order_command"/>
+            <input type="hidden" name="userId" value="${sessionScope.user.id}"/>
             <div>
                 <br>
                 <h2>${newOrder}</h2>
             </div>
             <div class="logIn-form-box-2">
-                <span class="form-label">Что везём?:</span>
+                <span class="form-label">${subjectOfTransportation}</span>
                 <input class="login-form-text"
-                       type="text">
-                <p class="user-area-label">Вид перевозки</p>
-                <label class="checkbox-container">Truck
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Car
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Legs
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <p class="user-area-label">Вес содержимого</p>
-                <label class="checkbox-container">1-5
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">5-50
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">50-1000
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <p class="user-area-label">Тариф</p>
-                <label class="checkbox-container">Экспресс
-                    <input type="checkbox" checked="checked">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="checkbox-container">Эконом
-                    <input type="checkbox">
-                    <span class="checkmark"></span>
-                </label>
-                <input type="submit" value="Заказать перевозку" class="login-form-button">
+                       type="text"
+                       name="subject">
+                <span class="form-label">${transportForCargo}</span>
+                <select class=form-dropdown name="transport">
+                    <option class="form-option">${truck}</option>
+                    <option class="form-option">${car}</option>
+                    <option class="form-option">${withoutTransport}</option>
+                </select>
+                <span class="form-label">${rate}</span>
+                <select class=form-dropdown name="rate">
+                    <option class="form-option">${express}</option>
+                    <option class="form-option">${regular}</option>
+                </select>
+                <input type="submit" value="${orderTransportation}" class="login-form-button">
                 <div>
                     <c:choose>
                         <c:when test="${not empty requestScope.wrongData}">

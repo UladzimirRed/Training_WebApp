@@ -32,7 +32,6 @@ public enum  OrderStatus {
         return ORDER_STATUS_INTEGER_MAP.get(roleEnum);
     }
 
-
     public static OrderStatus getOrderStatusByString(String name) {
         return STRING_ORDER_STATUS_MAP.get(name.toUpperCase());
     }

@@ -6,9 +6,10 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.user.label.welcomeText" var="welcomeText"/>
-    <fmt:message bundle="${locale}" key="locale.user.button.joinUs" var="joinUs"/>
-    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.howWantRegister" var="howWantRegister"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.asCustomer" var="asCustomer"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.asCourier" var="asCourier"/>
+
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Register As</title>
@@ -19,11 +20,15 @@
 </header>
 <main class="main">
     <div>
+        <br/>
+        <h2>${howWantRegister}</h2>
+    </div>
+    <div>
         <form action="customer-register">
-            <input class="join-us-button" type="submit" value="Как Заказчик">
+            <input class="join-us-button" type="submit" value="${asCustomer}">
         </form>
         <form action="courier-register">
-            <input class="join-us-button" type="submit" value="как курьер">
+            <input class="join-us-button" type="submit" value="${asCourier}">
         </form>
     </div>
 </main>
