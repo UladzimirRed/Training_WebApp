@@ -26,6 +26,7 @@
         <table class="head-table">
             <tr>
                 <th>${orderId}</th>
+                <th>ПРЕДМЕТ</th>
                 <th>${courierName}</th>
                 <th>${price}</th>
                 <th>${status}</th>
@@ -34,122 +35,133 @@
     </div>
     <div class="table-container-body">
         <table class="body-table">
+
+                <tr>
+                    <td>${sessionScope.order.order_id}</td>
+                    <td>${sessionScope.order.subject}</td>
+                    <td>${sessionScope.order.user.login}</td>
+                    <td>${sessionScope.order.totalPrice}</td>
+                    <td>${sessionScope.order.status}</td>
+                </tr>
+
+
             <tr>
-                <td>user1</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
+
             </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user3</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>user2</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
-            <tr>
-                <td>userLast</td>
-                <td>courier2</td>
-                <td>10$</td>
-                <td>in progress</td>
-            </tr>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user3</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>user2</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
+<%--            <tr>--%>
+<%--                <td>userLast</td>--%>
+<%--                <td>courier2</td>--%>
+<%--                <td>10$</td>--%>
+<%--                <td>in progress</td>--%>
+<%--            </tr>--%>
         </table>
     </div>
+    <form action="controller" name="newOrder" method="POST">
+        <input type="hidden" name="command" value="refresh_delivery_command">
+    <input type="submit" value="refresh" class="login-form-button">
+    </form>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

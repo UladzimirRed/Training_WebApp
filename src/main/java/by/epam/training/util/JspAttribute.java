@@ -26,6 +26,9 @@ public class JspAttribute {
     public static final String TRANSPORT = "transport";
     public static final String SUBJECT = "subject";
     public static final String RATE = "rate";
+    public static final String DISTANCE = "distance";
+    public static final String USER_FROM_TABLE = "userFromTable";
+
 
 
     private JspAttribute() {

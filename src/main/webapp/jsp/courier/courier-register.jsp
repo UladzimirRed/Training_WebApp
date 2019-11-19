@@ -15,7 +15,7 @@
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
     <fmt:message bundle="${locale}" key="locale.user.label.password" var="password"/>
     <fmt:message bundle="${locale}" key="locale.user.label.confirmPassword" var="confirmPassword"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.role" var="role"/>
+    <fmt:message bundle="${locale}" key="locale.user.label.transport" var="transport"/>
     <fmt:message bundle="${locale}" key="locale.user.label.customer" var="customer"/>
     <fmt:message bundle="${locale}" key="locale.user.label.courier" var="courier"/>
     <fmt:message bundle="${locale}" key="locale.user.label.signUp" var="signUp"/>
@@ -71,7 +71,7 @@
                    value=""
                    onkeyup="checkPass()"
                    placeholder="${confirmYourPassword}"/>
-            <span class="form-label">${role}</span>
+            <span class="form-label">${transport}</span>
             <select class=form-dropdown name="transport">
                 <option class="form-option">${truck}</option>
                 <option class="form-option">${car}</option>

@@ -3,10 +3,7 @@ package by.epam.training.dao.impl;
 import by.epam.training.connection.ConnectionPool;
 import by.epam.training.connection.ProxyConnection;
 import by.epam.training.dao.BaseDao;
-import by.epam.training.entity.Order;
-import by.epam.training.entity.Role;
-import by.epam.training.entity.Transport;
-import by.epam.training.entity.User;
+import by.epam.training.entity.*;
 import by.epam.training.exception.DaoException;
 import by.epam.training.util.SqlRequest;
 
@@ -151,16 +148,17 @@ public class UserDaoImpl implements BaseDao<User> {
     }
 
     // TODO add distance and total cost set
-    public Order makeOrder(Order order, int userId, int rateCode) throws DaoException {
+    public Order makeOrder(Order order, int rateCode) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
         try {
             connection = pool.takeConnection();
             preparedStatement = connection.prepareStatement(SqlRequest.SQL_MAKE_NEW_ORDER);
             preparedStatement.setString(1, order.getSubject());
-            preparedStatement.setInt(2, userId);
-            preparedStatement.setObject(3, Transport.getCodeByTransport(order.getTransport()));
-            preparedStatement.setInt(4, rateCode);
+            preparedStatement.setInt(2, order.getUser().getId());
+            preparedStatement.setInt(3, order.getDistance());
+            preparedStatement.setObject(4, Transport.getCodeByTransport(order.getTransport()));
+            preparedStatement.setInt(5, rateCode);
             preparedStatement.executeUpdate();
             return order;
         } catch (SQLException e) {
@@ -168,6 +166,56 @@ public class UserDaoImpl implements BaseDao<User> {
         } finally {
             close(preparedStatement);
             pool.releaseConnection(connection);
+        }
+    }
+
+    public Order writeDownCost(Order order, double totalCost) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_WRITE_DOWN_COST);
+            preparedStatement.setDouble(1, totalCost);
+            preparedStatement.executeUpdate();
+            return order;
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+    public Order selectCurrentDelivery(int userId) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_CUSTOMER_DELIVERY);
+            preparedStatement.setInt(1, userId);
+            resultSet = preparedStatement.executeQuery();
+            return resultSet.next() ? createCustomerDeliveryFromQueryResult(resultSet) : null;
+        } catch (SQLException e) {
+            throw new DaoException();
+        }finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+    private Order createCustomerDeliveryFromQueryResult(ResultSet resultSet) throws DaoException {
+        User user = new User();
+        try {
+            user.setLogin(resultSet.getString(3));
+            String login = user.getLogin();
+            return new Order(resultSet.getInt(1),
+                    resultSet.getString(2),
+                    new User(login),
+                    OrderStatus.getOrderStatusByString(resultSet.getString(4)),
+                    resultSet.getBigDecimal(5));
+        } catch (SQLException e) {
+            throw new DaoException(e);
         }
     }
 }

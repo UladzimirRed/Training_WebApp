@@ -29,7 +29,7 @@
     <div>
         <form action="controller" name="newOrder" method="POST">
             <input type="hidden" name="command" value="new_order_command"/>
-            <input type="hidden" name="userId" value="${sessionScope.user.id}"/>
+            <input type="hidden" name="command" value="count_cost">
             <div>
                 <br>
                 <h2>${newOrder}</h2>
@@ -50,6 +50,20 @@
                     <option class="form-option">${express}</option>
                     <option class="form-option">${regular}</option>
                 </select>
+                <span class="form-label">Distance</span>
+                <input class="login-form-text"
+                       type="number"
+                       name="distance"
+                       value=""
+                       placeholder="enter the number of km from 1 to 1000"
+                       min="1"
+                       max="1000">
+                <span class="form-label">Total cost</span>
+                <input class="login-form-text"
+                       type="text"
+                       name="total"
+                       value="${sessionScope.order.totalPrice}">
+                <input type="submit" value="count cost" class="login-form-button">
                 <input type="submit" value="${orderTransportation}" class="login-form-button">
                 <div>
                     <c:choose>

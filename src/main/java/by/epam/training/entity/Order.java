@@ -11,12 +11,36 @@ public class Order {
     private BigDecimal totalPrice;
     private Transport transport;
     private String rate;
-    private double distance;
+    private int distance;
 
-    public Order(String subject, Transport transport, String rate) {
+
+    public Order(String subject, User user, Transport transport, String rate, int distance) {
+        this.subject = subject;
+        this.user = user;
+        this.transport = transport;
+        this.rate = rate;
+        this.distance = distance;
+    }
+
+    public Order(String subject, Transport transport, String rate, int distance) {
         this.subject = subject;
         this.transport = transport;
         this.rate = rate;
+        this.distance = distance;
+    }
+
+    public Order(int order_id, String subject, User courier, OrderStatus status, BigDecimal totalPrice) {
+        this.order_id = order_id;
+        this.subject = subject;
+        this.courier = courier;
+        this.status = status;
+        this.totalPrice = totalPrice;
+    }
+
+    public Order(Transport transport, String rate, int distance) {
+        this.transport = transport;
+        this.rate = rate;
+        this.distance = distance;
     }
 
     public int getOrder_id() {
@@ -83,11 +107,11 @@ public class Order {
         this.rate = rate;
     }
 
-    public double getDistance() {
+    public int getDistance() {
         return distance;
     }
 
-    public void setDistance(double distance) {
+    public void setDistance(int distance) {
         this.distance = distance;
     }
 
@@ -99,7 +123,7 @@ public class Order {
         Order order = (Order) o;
 
         if (order_id != order.order_id) return false;
-        if (Double.compare(order.distance, distance) != 0) return false;
+        if (distance != order.distance) return false;
         if (subject != null ? !subject.equals(order.subject) : order.subject != null) return false;
         if (user != null ? !user.equals(order.user) : order.user != null) return false;
         if (courier != null ? !courier.equals(order.courier) : order.courier != null) return false;
@@ -111,9 +135,7 @@ public class Order {
 
     @Override
     public int hashCode() {
-        int result;
-        long temp;
-        result = order_id;
+        int result = order_id;
         result = 31 * result + (subject != null ? subject.hashCode() : 0);
         result = 31 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (courier != null ? courier.hashCode() : 0);
@@ -121,8 +143,7 @@ public class Order {
         result = 31 * result + (totalPrice != null ? totalPrice.hashCode() : 0);
         result = 31 * result + (transport != null ? transport.hashCode() : 0);
         result = 31 * result + (rate != null ? rate.hashCode() : 0);
-        temp = Double.doubleToLongBits(distance);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + distance;
         return result;
     }
 }

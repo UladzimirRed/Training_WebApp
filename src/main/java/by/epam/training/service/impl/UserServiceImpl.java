@@ -4,14 +4,11 @@ import by.epam.training.connection.ConnectionPool;
 import by.epam.training.connection.ProxyConnection;
 import by.epam.training.dao.impl.UserDaoImpl;
 import by.epam.training.entity.Order;
-import by.epam.training.entity.Transport;
 import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
 import by.epam.training.exception.ServiceException;
 import by.epam.training.exception.UserExistsException;
 import by.epam.training.service.UserService;
-
-import java.sql.SQLException;
 
 
 public class UserServiceImpl implements UserService {
@@ -62,7 +59,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     //TODO locale_RU doesn't work..
-    public Order checkout(Order order, int userId) throws ServiceException {
+    public Order checkout(Order order) throws ServiceException {
         int rateCode;
         if (order.getRate().equals("Express") || order.getRate().equals("Экспресс")){
             rateCode = 1;
@@ -70,9 +67,44 @@ public class UserServiceImpl implements UserService {
             rateCode = 0;
         }
         try {
-            return userDao.makeOrder(order, userId, rateCode);
+            return userDao.makeOrder(order, rateCode);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public Order countTotalCost(Order order) throws ServiceException {
+        double totalCost = 0;
+        switch (order.getTransport()){
+            case CAR:
+                totalCost = order.getDistance() * 70;
+                break;
+            case TRUCK:
+                totalCost = order.getDistance() * 100;
+                break;
+            case NONE:
+                totalCost = order.getDistance() * 30;
+                break;
+        }
+        if (order.getRate().equals("Express")){
+            totalCost = totalCost * 0.75;
+        }
+        try {
+            return userDao.writeDownCost(order, totalCost);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+
+    }
+
+    @Override
+    public Order showCustomerDelivery(int userId) throws ServiceException {
+        try {
+            return userDao.selectCurrentDelivery(userId);
+        } catch (DaoException e){
+            throw new ServiceException(e);
+        }
+    }
+
 }

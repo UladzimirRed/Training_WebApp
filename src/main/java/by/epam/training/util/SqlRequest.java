@@ -27,6 +27,15 @@ public class SqlRequest {
     public static final String SQL_CHANGE_USER_PASSWORD =
             "UPDATE user SET password = SHA1(?) WHERE login = ?";
     public static final String SQL_MAKE_NEW_ORDER =
-            "INSERT INTO `order`(subject, user_id, transport_id, express_rate) VALUES (?, ?, ?, ?)";
-
+            "INSERT INTO shipping_order(subject, customer_id, distance, transport_id, express_rate) VALUES (?, ?, ?, ?, ?)";
+    public static final String SQL_WRITE_DOWN_COST =
+            "INSERT INTO `order` (total_price) VALUE (?)";
+    public static final String SQL_FIND_CUSTOMER_DELIVERY =
+            "SELECT order_id, subject, login, status, total_price " +
+                    "FROM shipping_order " +
+                    "JOIN order_status " +
+                    "ON shipping_order.order_status_id = order_status.id_status " +
+                    "LEFT JOIN user " +
+                    "ON shipping_order.courier_id = user.user_id " +
+                    "WHERE customer_id = ?";
 }
