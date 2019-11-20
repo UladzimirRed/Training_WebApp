@@ -10,10 +10,18 @@ import by.epam.training.exception.ServiceException;
 import by.epam.training.exception.UserExistsException;
 import by.epam.training.service.UserService;
 
+import java.util.List;
+
 
 public class UserServiceImpl implements UserService {
     private UserDaoImpl userDao = new UserDaoImpl();
     private final ConnectionPool pool;
+    private final double TRUCK_PRICE_PER_KM = 2;
+    private final double CAR_PRICE_PER_KM = 0.75;
+    private final double FOOT_COURIER_PRICE_PER_KM = 0.5;
+    private final double EXPRESS_RATE_COEFFICIENT = 1.5;
+
+
 
     public UserServiceImpl() {
         pool = ConnectionPool.getInstance();
@@ -58,48 +66,38 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    //TODO locale_RU doesn't work..
     public Order checkout(Order order) throws ServiceException {
-        int rateCode;
-        if (order.getRate().equals("Express") || order.getRate().equals("Экспресс")){
-            rateCode = 1;
-        } else {
-            rateCode = 0;
-        }
         try {
-            return userDao.makeOrder(order, rateCode);
+            return userDao.makeOrder(order);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
 
     @Override
-    public Order countTotalCost(Order order) throws ServiceException {
+    public Order countTotalCost(Order order) {
         double totalCost = 0;
         switch (order.getTransport()){
             case CAR:
-                totalCost = order.getDistance() * 70;
+                totalCost = order.getDistance() * CAR_PRICE_PER_KM;
                 break;
             case TRUCK:
-                totalCost = order.getDistance() * 100;
+                totalCost = order.getDistance() * TRUCK_PRICE_PER_KM;
                 break;
             case NONE:
-                totalCost = order.getDistance() * 30;
+                totalCost = order.getDistance() * FOOT_COURIER_PRICE_PER_KM;
                 break;
         }
-        if (order.getRate().equals("Express")){
-            totalCost = totalCost * 0.75;
+        if (order.getRate()){
+            totalCost = totalCost * EXPRESS_RATE_COEFFICIENT;
         }
-        try {
-            return userDao.writeDownCost(order, totalCost);
-        } catch (DaoException e) {
-            throw new ServiceException(e);
-        }
-
+        double roundedTotalCost = (double) Math.round(totalCost * 100) / 100;
+        order.setTotalPrice(roundedTotalCost);
+        return order;
     }
 
     @Override
-    public Order showCustomerDelivery(int userId) throws ServiceException {
+    public List<Order> showCustomerDelivery(int userId) throws ServiceException {
         try {
             return userDao.selectCurrentDelivery(userId);
         } catch (DaoException e){

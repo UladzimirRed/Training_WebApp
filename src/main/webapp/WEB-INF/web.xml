@@ -123,6 +123,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Confirm-order</servlet-name>
+        <jsp-file>/jsp/customer/confirm-order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Confirm-order</servlet-name>
+        <url-pattern>/confirm-order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Rate</servlet-name>
         <jsp-file>/jsp/rate.jsp</jsp-file>
     </servlet>

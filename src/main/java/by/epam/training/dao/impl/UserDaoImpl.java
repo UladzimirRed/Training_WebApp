@@ -13,6 +13,8 @@ import org.apache.logging.log4j.Logger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UserDaoImpl implements BaseDao<User> {
@@ -147,8 +149,7 @@ public class UserDaoImpl implements BaseDao<User> {
         }
     }
 
-    // TODO add distance and total cost set
-    public Order makeOrder(Order order, int rateCode) throws DaoException {
+    public Order makeOrder(Order order) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
         try {
@@ -156,9 +157,10 @@ public class UserDaoImpl implements BaseDao<User> {
             preparedStatement = connection.prepareStatement(SqlRequest.SQL_MAKE_NEW_ORDER);
             preparedStatement.setString(1, order.getSubject());
             preparedStatement.setInt(2, order.getUser().getId());
-            preparedStatement.setInt(3, order.getDistance());
-            preparedStatement.setObject(4, Transport.getCodeByTransport(order.getTransport()));
-            preparedStatement.setInt(5, rateCode);
+            preparedStatement.setDouble(3, order.getTotalPrice());
+            preparedStatement.setInt(4, order.getDistance());
+            preparedStatement.setObject(5, Transport.getCodeByTransport(order.getTransport()));
+            preparedStatement.setBoolean(6, order.getRate());
             preparedStatement.executeUpdate();
             return order;
         } catch (SQLException e) {
@@ -169,6 +171,8 @@ public class UserDaoImpl implements BaseDao<User> {
         }
     }
 
+
+    //TODO delete this method
     public Order writeDownCost(Order order, double totalCost) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -176,6 +180,7 @@ public class UserDaoImpl implements BaseDao<User> {
             connection = pool.takeConnection();
             preparedStatement = connection.prepareStatement(SqlRequest.SQL_WRITE_DOWN_COST);
             preparedStatement.setDouble(1, totalCost);
+            preparedStatement.setInt(1, order.getOrder_id());
             preparedStatement.executeUpdate();
             return order;
         } catch (SQLException e) {
@@ -186,16 +191,21 @@ public class UserDaoImpl implements BaseDao<User> {
         }
     }
 
-    public Order selectCurrentDelivery(int userId) throws DaoException {
+    public List<Order> selectCurrentDelivery(int userId) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet;
+        List<Order> orders = new ArrayList<>();
         try {
             connection = pool.takeConnection();
             preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_CUSTOMER_DELIVERY);
             preparedStatement.setInt(1, userId);
             resultSet = preparedStatement.executeQuery();
-            return resultSet.next() ? createCustomerDeliveryFromQueryResult(resultSet) : null;
+            while (resultSet.next()) {
+                Order order = createCustomerDeliveryFromQueryResult(resultSet);
+                orders.add(order);
+            }
+            return orders;
         } catch (SQLException e) {
             throw new DaoException();
         }finally {
@@ -213,7 +223,7 @@ public class UserDaoImpl implements BaseDao<User> {
                     resultSet.getString(2),
                     new User(login),
                     OrderStatus.getOrderStatusByString(resultSet.getString(4)),
-                    resultSet.getBigDecimal(5));
+                    resultSet.getDouble(5));
         } catch (SQLException e) {
             throw new DaoException(e);
         }

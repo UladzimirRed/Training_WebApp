@@ -1,20 +1,18 @@
 package by.epam.training.entity;
 
-import java.math.BigDecimal;
-
 public class Order {
     private int order_id;
     private String subject;
     private User user;
     private User courier;
     private OrderStatus status;
-    private BigDecimal totalPrice;
+    private double totalPrice;
     private Transport transport;
-    private String rate;
+    private boolean rate;
     private int distance;
 
 
-    public Order(String subject, User user, Transport transport, String rate, int distance) {
+    public Order(String subject, User user, Transport transport, boolean rate, int distance) {
         this.subject = subject;
         this.user = user;
         this.transport = transport;
@@ -22,14 +20,14 @@ public class Order {
         this.distance = distance;
     }
 
-    public Order(String subject, Transport transport, String rate, int distance) {
+    public Order(String subject, Transport transport, boolean rate, int distance) {
         this.subject = subject;
         this.transport = transport;
         this.rate = rate;
         this.distance = distance;
     }
 
-    public Order(int order_id, String subject, User courier, OrderStatus status, BigDecimal totalPrice) {
+    public Order(int order_id, String subject, User courier, OrderStatus status, double totalPrice) {
         this.order_id = order_id;
         this.subject = subject;
         this.courier = courier;
@@ -37,7 +35,7 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public Order(Transport transport, String rate, int distance) {
+    public Order(Transport transport, boolean rate, int distance) {
         this.transport = transport;
         this.rate = rate;
         this.distance = distance;
@@ -83,11 +81,11 @@ public class Order {
         this.status = status;
     }
 
-    public BigDecimal getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -99,11 +97,11 @@ public class Order {
         this.transport = transport;
     }
 
-    public String getRate() {
+    public boolean getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(boolean rate) {
         this.rate = rate;
     }
 
@@ -123,26 +121,29 @@ public class Order {
         Order order = (Order) o;
 
         if (order_id != order.order_id) return false;
+        if (Double.compare(order.totalPrice, totalPrice) != 0) return false;
+        if (rate != order.rate) return false;
         if (distance != order.distance) return false;
         if (subject != null ? !subject.equals(order.subject) : order.subject != null) return false;
         if (user != null ? !user.equals(order.user) : order.user != null) return false;
         if (courier != null ? !courier.equals(order.courier) : order.courier != null) return false;
         if (status != order.status) return false;
-        if (totalPrice != null ? !totalPrice.equals(order.totalPrice) : order.totalPrice != null) return false;
-        if (transport != order.transport) return false;
-        return rate != null ? rate.equals(order.rate) : order.rate == null;
+        return transport == order.transport;
     }
 
     @Override
     public int hashCode() {
-        int result = order_id;
+        int result;
+        long temp;
+        result = order_id;
         result = 31 * result + (subject != null ? subject.hashCode() : 0);
         result = 31 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (courier != null ? courier.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
-        result = 31 * result + (totalPrice != null ? totalPrice.hashCode() : 0);
+        temp = Double.doubleToLongBits(totalPrice);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (transport != null ? transport.hashCode() : 0);
-        result = 31 * result + (rate != null ? rate.hashCode() : 0);
+        result = 31 * result + (rate ? 1 : 0);
         result = 31 * result + distance;
         return result;
     }

@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 public class RefreshDeliveryCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
@@ -24,8 +25,8 @@ public class RefreshDeliveryCommand implements ActionCommand {
         int userId = user.getId();
         try {
             UserServiceImpl service = new UserServiceImpl();
-            Order resultOrder = service.showCustomerDelivery(userId);
-            session.setAttribute(JspAttribute.ORDER, resultOrder);
+            List<Order> result = service.showCustomerDelivery(userId);
+            session.setAttribute(JspAttribute.ORDERS, result);
             return JspAddress.CUSTOMER_DELIVERY;
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);

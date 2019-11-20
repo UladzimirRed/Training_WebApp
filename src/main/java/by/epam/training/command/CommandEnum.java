@@ -2,7 +2,7 @@ package by.epam.training.command;
 
 import by.epam.training.command.impl.*;
 import by.epam.training.command.impl.customer.ChangePasswordCommand;
-import by.epam.training.command.impl.customer.CountCostCommand;
+import by.epam.training.command.impl.customer.ConfirmDeliveryCommand;
 import by.epam.training.command.impl.customer.NewOrderCommand;
 import by.epam.training.command.impl.customer.RefreshDeliveryCommand;
 
@@ -18,7 +18,7 @@ public enum CommandEnum {
     HOME(new HomeCommand()),
     CHANGE_PASSWORD(new ChangePasswordCommand()),
     NEW_ORDER_COMMAND(new NewOrderCommand()),
-    COUNT_COST(new CountCostCommand()),
+    CONFIRM_DELIVERY_COMMAND(new ConfirmDeliveryCommand()),
     REFRESH_DELIVERY_COMMAND(new RefreshDeliveryCommand());
 
     private static final Map<String, CommandEnum> commands = new HashMap<>();

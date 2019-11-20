@@ -39,7 +39,8 @@
         <form action="change-password">
             <input type="submit" value="${changePass}" class="join-us-button"/>
         </form>
-        <form action="customer-delivery">
+        <form action="controller" name="newOrder" method="POST">
+            <input type="hidden" name="command" value="refresh_delivery_command">
             <input type="submit" value="${myDelivery}" class="join-us-button">
         </form>
         <form action="customer-balance">

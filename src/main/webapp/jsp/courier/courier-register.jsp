@@ -73,9 +73,9 @@
                    placeholder="${confirmYourPassword}"/>
             <span class="form-label">${transport}</span>
             <select class=form-dropdown name="transport">
-                <option class="form-option">${truck}</option>
-                <option class="form-option">${car}</option>
-                <option class="form-option">${withoutTransport}</option>
+                <option class="form-option" value="Truck">${truck}</option>
+                <option class="form-option" value="Car">${car}</option>
+                <option class="form-option" value="None">${withoutTransport}</option>
             </select>
             <input type="submit" value="${signUp}" class="login-form-button"/>
             <div class="login-form-message">

@@ -27,9 +27,9 @@ public class SqlRequest {
     public static final String SQL_CHANGE_USER_PASSWORD =
             "UPDATE user SET password = SHA1(?) WHERE login = ?";
     public static final String SQL_MAKE_NEW_ORDER =
-            "INSERT INTO shipping_order(subject, customer_id, distance, transport_id, express_rate) VALUES (?, ?, ?, ?, ?)";
+            "INSERT INTO shipping_order(subject, customer_id, total_price, distance, transport_id, express_rate) VALUES (?, ?, ?, ?, ?, ?)";
     public static final String SQL_WRITE_DOWN_COST =
-            "INSERT INTO `order` (total_price) VALUE (?)";
+            "UPDATE shipping_order SET total_price = ? WHERE order_id = ?";
     public static final String SQL_FIND_CUSTOMER_DELIVERY =
             "SELECT order_id, subject, login, status, total_price " +
                     "FROM shipping_order " +

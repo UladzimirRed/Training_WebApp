@@ -6,6 +6,7 @@ import by.epam.training.exception.ServiceException;
 import by.epam.training.exception.UserExistsException;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public interface UserService {
     User logIn(String login, String password) throws ServiceException;
@@ -13,5 +14,5 @@ public interface UserService {
     User changePassword(String login, String oldPassword, String newPassword) throws ServiceException;
     Order checkout(Order order) throws ServiceException;
     Order countTotalCost(Order order) throws ServiceException;
-    Order showCustomerDelivery(int userId) throws ServiceException;
+    List<Order> showCustomerDelivery(int userId) throws ServiceException;
 }

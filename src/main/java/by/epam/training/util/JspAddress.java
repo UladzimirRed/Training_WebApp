@@ -9,6 +9,7 @@ public class JspAddress {
     public static final String REGISTER_PAGE = "/register-as";
     public static final String CHANGE_PASSWORD = "/change-password";
     public static final String CUSTOMER_DELIVERY = "/customer-delivery";
+    public static final String CONFIRM_ORDER = "/confirm-order";
     public static final String NEW_ORDER = "/new-order";
 
 }

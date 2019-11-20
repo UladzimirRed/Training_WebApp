@@ -30,132 +30,28 @@
                 <th>${courierName}</th>
                 <th>${price}</th>
                 <th>${status}</th>
+                <th></th>
             </tr>
         </table>
     </div>
     <div class="table-container-body">
         <table class="body-table">
-
-                <tr>
-                    <td>${sessionScope.order.order_id}</td>
-                    <td>${sessionScope.order.subject}</td>
-                    <td>${sessionScope.order.user.login}</td>
-                    <td>${sessionScope.order.totalPrice}</td>
-                    <td>${sessionScope.order.status}</td>
-                </tr>
-
-
+        <c:forEach var="order" items="${sessionScope.orders}" varStatus="status">
             <tr>
-
+                <td>${order.order_id}</td>
+                <td>${order.subject}</td>
+                <td>${order.courier.login}</td>
+                <td>${order.totalPrice}</td>
+                <td>${order.status}</td>
+                <td>
+                    <form action="app">
+                        <input type="hidden" name="command" value="tattoo-page">
+                        <input type="hidden" name="tattooId" value="${order.order_id}">
+                        <input type="submit" value="${open}">
+                    </form>
+                </td>
             </tr>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user3</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>user2</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
-<%--            <tr>--%>
-<%--                <td>userLast</td>--%>
-<%--                <td>courier2</td>--%>
-<%--                <td>10$</td>--%>
-<%--                <td>in progress</td>--%>
-<%--            </tr>--%>
+        </c:forEach>
         </table>
     </div>
     <form action="controller" name="newOrder" method="POST">
