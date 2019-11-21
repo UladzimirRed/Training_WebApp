@@ -32,7 +32,7 @@ public class Controller extends HttpServlet {
             dispatcher.forward(request, response);
         } else {
             page = JspAddress.INDEX_PAGE;
-            request.getSession().setAttribute("nullPage", "nullpage");   //TODO constants
+            request.getSession().setAttribute("nullPage", "nullPage");   //TODO constants
             response.sendRedirect(request.getContextPath() + page);
         }
     }

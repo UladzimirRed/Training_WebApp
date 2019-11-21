@@ -22,7 +22,6 @@ public class RegisterCommand implements ActionCommand {
 
     @Override
     //todo make return as in login
-    //todo: as we have new pages customer register and courier register, provide page for each and return the needed one
     public String execute(HttpServletRequest request) {
         String login = request.getParameter(JspAttribute.LOGIN);
         String password = request.getParameter(JspAttribute.PASSWORD);
@@ -39,10 +38,13 @@ public class RegisterCommand implements ActionCommand {
 
             UserServiceImpl service = new UserServiceImpl();
             User resultUser = service.register(user);
-
             session.setAttribute(JspAttribute.USER, resultUser);
-            return JspAddress.MAIN_PAGE;
 
+            if (resultUser.getRole().equals(JspAttribute.CUSTOMER)) {
+                return JspAddress.CUSTOMER_MAIN;
+            } else {
+                return JspAddress.COURIER_MAIN;
+            }
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
             return JspAddress.ERROR_PAGE;

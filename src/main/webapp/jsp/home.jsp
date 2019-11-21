@@ -32,8 +32,13 @@
                     <input class="join-us-button" type="submit" value="${joinAsCustomer}">
                 </form>
             </c:when>
+            <c:when test="${sessionScope.user.role == 'CUSTOMER'}">
+                <form action="customer-main">
+                    <input class="join-us-button" type="submit" value="${personalRoom}">
+                </form>
+            </c:when>
             <c:otherwise>
-                <form action="main">
+                <form action="courier-main">
                     <input class="join-us-button" type="submit" value="${personalRoom}">
                 </form>
             </c:otherwise>

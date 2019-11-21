@@ -11,6 +11,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.courierName" var="courierName"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
+    <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>My delivery</title>
@@ -26,11 +27,10 @@
         <table class="head-table">
             <tr>
                 <th>${orderId}</th>
-                <th>ПРЕДМЕТ</th>
+                <th>${subject}</th>
                 <th>${courierName}</th>
                 <th>${price}</th>
                 <th>${status}</th>
-                <th></th>
             </tr>
         </table>
     </div>
@@ -43,13 +43,6 @@
                 <td>${order.courier.login}</td>
                 <td>${order.totalPrice}</td>
                 <td>${order.status}</td>
-                <td>
-                    <form action="app">
-                        <input type="hidden" name="command" value="tattoo-page">
-                        <input type="hidden" name="tattooId" value="${order.order_id}">
-                        <input type="submit" value="${open}">
-                    </form>
-                </td>
             </tr>
         </c:forEach>
         </table>

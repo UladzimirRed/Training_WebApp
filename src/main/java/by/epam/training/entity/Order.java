@@ -41,6 +41,17 @@ public class Order {
         this.distance = distance;
     }
 
+    public Order(int order_id, String subject, User user, double totalPrice, int distance, boolean rate, Transport transport, OrderStatus status) {
+        this.order_id = order_id;
+        this.subject = subject;
+        this.user = user;
+        this.status = status;
+        this.totalPrice = totalPrice;
+        this.transport = transport;
+        this.rate = rate;
+        this.distance = distance;
+    }
+
     public int getOrder_id() {
         return order_id;
     }

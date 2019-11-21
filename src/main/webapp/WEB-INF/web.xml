@@ -149,6 +149,33 @@
         <url-pattern>/courier-register</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Courier-main</servlet-name>
+        <jsp-file>/jsp/courier/courier-main.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Courier-main</servlet-name>
+        <url-pattern>/courier-main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Available-order</servlet-name>
+        <jsp-file>/jsp/courier/available-order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Available-order</servlet-name>
+        <url-pattern>/available-order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Processing-order</servlet-name>
+        <jsp-file>/jsp/courier/processing-order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Processing-order</servlet-name>
+        <url-pattern>/processing-order</url-pattern>
+    </servlet-mapping>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>

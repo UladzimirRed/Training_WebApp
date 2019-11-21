@@ -4,6 +4,7 @@ public class JspAttribute {
     public static final String USER = "user";
     public static final String ORDER = "order";
     public static final String ORDERS = "orders";
+    public static final String ORDER_ID = "orderId";
     public static final String LOCAL = "local";
     public static final String WRONG_DATA = "wrongData";
     public static final String MESSAGE = "message";
@@ -14,7 +15,8 @@ public class JspAttribute {
     public static final String LOGIN = "login";
     public static final String PASSWORD = "password";
     public static final String ROLE = "role";
-    public static final String USER_ID = "userId";
+    public static final String CUSTOMER = "CUSTOMER";
+    public static final String COURIER = "COURIER";
     public static final String CONFIRM_PASSWORD = "confirmPassword";
     public static final String PASSWORD_DOES_NOT_MATCH = "passwordDoesNotMatch";
     public static final String DATA_EXISTS = "dataExists";

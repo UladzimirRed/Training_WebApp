@@ -10,7 +10,7 @@
     <title>Footer</title>
 </head>
 <body>
-<div class="footer">                         <%--TODO STYLE TO WRONG FOOTER--%>
+<div class="footer">
     <span class="footer-text">
         ${allRightsReserved}
     </span>

@@ -10,7 +10,10 @@ public class JspAddress {
     public static final String CHANGE_PASSWORD = "/change-password";
     public static final String CUSTOMER_DELIVERY = "/customer-delivery";
     public static final String CONFIRM_ORDER = "/confirm-order";
-    public static final String NEW_ORDER = "/new-order";
+    public static final String CUSTOMER_MAIN = "/customer-main";
+    public static final String COURIER_MAIN = "/courier-main";
+    public static final String AVAILABLE_ORDER = "/available-order";
+    public static final String PROCESSING_ORDER = "/processing-order";
 
 }
 

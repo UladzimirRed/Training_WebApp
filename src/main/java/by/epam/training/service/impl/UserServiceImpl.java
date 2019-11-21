@@ -105,4 +105,31 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @Override
+    public List<Order> showAvailableDelivery(User courier) throws ServiceException {
+        try {
+            return userDao.selectAvailableDelivery(courier);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void updateOrderStatus(int orderId, User courier) throws ServiceException {
+        try {
+            userDao.changeOrderStatus(orderId, courier);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<Order> showProcessingDelivery(User courier) throws ServiceException {
+        try {
+            return userDao.selectProcessingDelivery(courier);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 }

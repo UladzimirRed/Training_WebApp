@@ -20,7 +20,7 @@ public class LoginCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String page;
+        String page = null;
         String login = request.getParameter(JspAttribute.PARAM_NAME_LOGIN);
         String password = request.getParameter(JspAttribute.PARAM_NAME_PASSWORD);
         try {
@@ -28,7 +28,16 @@ public class LoginCommand implements ActionCommand {
             if (user != null) {
                 request.setAttribute(JspAttribute.USER, login);
                 session.setAttribute(JspAttribute.USER, user);
-                page = JspAddress.MAIN_PAGE;
+                switch (user.getRole()){
+                    case CUSTOMER:
+                        page = JspAddress.CUSTOMER_MAIN;
+                        break;
+                    case COURIER:
+                        page = JspAddress.COURIER_MAIN;
+                        break;
+                    default:
+                        page = JspAddress.MAIN_PAGE;
+                }
             } else {
                 request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_DATA);
                 page = JspAddress.LOGIN_PAGE;
