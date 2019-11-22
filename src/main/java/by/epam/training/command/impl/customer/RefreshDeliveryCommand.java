@@ -4,6 +4,7 @@ import by.epam.training.command.ActionCommand;
 import by.epam.training.entity.Order;
 import by.epam.training.entity.User;
 import by.epam.training.exception.ServiceException;
+import by.epam.training.service.impl.CustomerServiceImpl;
 import by.epam.training.service.impl.UserServiceImpl;
 import by.epam.training.util.JspAddress;
 import by.epam.training.util.JspAttribute;
@@ -24,7 +25,7 @@ public class RefreshDeliveryCommand implements ActionCommand {
         User user = (User) session.getAttribute(JspAttribute.USER);
         int userId = user.getId();
         try {
-            UserServiceImpl service = new UserServiceImpl();
+            CustomerServiceImpl service = new CustomerServiceImpl();
             List<Order> result = service.showCustomerDelivery(userId);
             session.setAttribute(JspAttribute.ORDERS, result);
             return JspAddress.CUSTOMER_DELIVERY;

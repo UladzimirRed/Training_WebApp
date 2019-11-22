@@ -3,7 +3,7 @@ package by.epam.training.command;
 import by.epam.training.command.impl.*;
 import by.epam.training.command.impl.courier.ShowAvailableCommand;
 import by.epam.training.command.impl.courier.TakeOrderCommand;
-import by.epam.training.command.impl.customer.ChangePasswordCommand;
+import by.epam.training.command.impl.ChangePasswordCommand;
 import by.epam.training.command.impl.customer.ConfirmDeliveryCommand;
 import by.epam.training.command.impl.customer.NewOrderCommand;
 import by.epam.training.command.impl.customer.RefreshDeliveryCommand;

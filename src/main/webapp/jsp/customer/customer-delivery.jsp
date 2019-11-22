@@ -41,7 +41,7 @@
             <table class="body-table">
                 <c:forEach var="order" items="${sessionScope.orders}" varStatus="status">
                     <tr>
-                        <td>${order.order_id}</td>
+                        <td>${order.orderId}</td>
                         <td>${order.subject}</td>
                         <td>${order.courier.login}</td>
                         <td>${order.totalPrice}</td>

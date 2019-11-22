@@ -5,6 +5,7 @@ import by.epam.training.entity.Order;
 import by.epam.training.entity.Transport;
 import by.epam.training.entity.User;
 import by.epam.training.exception.ServiceException;
+import by.epam.training.service.impl.CustomerServiceImpl;
 import by.epam.training.service.impl.UserServiceImpl;
 import by.epam.training.util.JspAddress;
 import by.epam.training.util.JspAttribute;
@@ -28,7 +29,7 @@ public class ConfirmDeliveryCommand implements ActionCommand {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(JspAttribute.USER);
         Order order = new Order(subject, user, transport, rate, distance);
-        UserServiceImpl service = new UserServiceImpl();
+        CustomerServiceImpl service = new CustomerServiceImpl();
         Order resultOrder = service.countTotalCost(order);
         session.setAttribute(JspAttribute.ORDER, resultOrder);
         return JspAddress.CONFIRM_ORDER;

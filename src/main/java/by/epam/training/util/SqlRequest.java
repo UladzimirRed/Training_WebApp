@@ -2,7 +2,7 @@ package by.epam.training.util;
 
 public class SqlRequest {
     //todo change all profile to user
-    public static final String FIND_PROFILE_BY_LOGIN_AND_PASSWORD =
+    public static final String FIND_USER_BY_LOGIN_AND_PASSWORD =
             "SELECT user_id, login, password, role_name, transport_name, rating " +
                     "FROM user " +
                     "JOIN role " +
@@ -30,16 +30,19 @@ public class SqlRequest {
             "INSERT INTO shipping_order(subject, customer_id, total_price, distance, transport_id, express_rate) VALUES (?, ?, ?, ?, ?, ?)";
     public static final String SQL_WRITE_DOWN_COST =
             "UPDATE shipping_order SET total_price = ? WHERE order_id = ?";
-    public static final String SQL_FIND_CUSTOMER_DELIVERY =
-            "SELECT order_id, subject, login, status, total_price " +
+    public static final String SQL_FIND_CUSTOMER_ORDER =
+            "SELECT order_id, subject, login, total_price, distance, express_rate, transport_name, status " +
                     "FROM shipping_order " +
                     "JOIN order_status " +
                     "ON shipping_order.order_status_id = order_status.id_status " +
                     "LEFT JOIN user " +
                     "ON shipping_order.courier_id = user.user_id " +
+                    "LEFT JOIN transport " +
+                    "ON shipping_order.transport_id = transport.transport_id " +
                     "WHERE customer_id = ?";
-    public static final String SQL_FIND_AVAILABLE_DELIVERY =
-            "SELECT order_id, subject, login, total_price, distance, express_rate, transport_name, status FROM shipping_order " +
+    public static final String SQL_FIND_AVAILABLE_ORDER =
+            "SELECT order_id, subject, login, total_price, distance, express_rate, transport_name, status " +
+                    "FROM shipping_order " +
                     "JOIN order_status " +
                     "ON shipping_order.order_status_id = order_status.id_status " +
                     "LEFT JOIN user " +
@@ -53,8 +56,9 @@ public class SqlRequest {
                     "JOIN order_status " +
                     "ON shipping_order.order_status_id = order_status.id_status " +
                     "SET shipping_order.order_status_id = '2', courier_id = ? WHERE order_id = ?";
-    public static final String SQL_FIND_PROCESSING_DELIVERY =
-            "SELECT order_id, subject, login, total_price, distance, express_rate, transport_name, status FROM shipping_order " +
+    public static final String SQL_FIND_PROCESSING_ORDER =
+            "SELECT order_id, subject, login, total_price, distance, express_rate, transport_name, status " +
+                    "FROM shipping_order " +
                     "JOIN order_status " +
                     "ON shipping_order.order_status_id = order_status.id_status " +
                     "LEFT JOIN user " +

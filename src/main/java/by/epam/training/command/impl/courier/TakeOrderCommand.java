@@ -4,6 +4,7 @@ import by.epam.training.command.ActionCommand;
 import by.epam.training.entity.Order;
 import by.epam.training.entity.User;
 import by.epam.training.exception.ServiceException;
+import by.epam.training.service.impl.CourierServiceImpl;
 import by.epam.training.service.impl.UserServiceImpl;
 import by.epam.training.util.JspAddress;
 import by.epam.training.util.JspAttribute;
@@ -24,7 +25,7 @@ public class TakeOrderCommand implements ActionCommand {
         int orderId = Integer.parseInt(request.getParameter(JspAttribute.ORDER_ID));
         User courier = (User) session.getAttribute(JspAttribute.USER);
         try {
-            UserServiceImpl service = new UserServiceImpl();
+            CourierServiceImpl service = new CourierServiceImpl();
             service.updateOrderStatus(orderId, courier);
             List<Order> result = service.showProcessingDelivery(courier);
             session.setAttribute(JspAttribute.ORDERS, result);

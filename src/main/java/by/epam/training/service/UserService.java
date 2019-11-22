@@ -1,22 +1,16 @@
 package by.epam.training.service;
 
-import by.epam.training.entity.Order;
 import by.epam.training.entity.User;
 import by.epam.training.exception.ServiceException;
 import by.epam.training.exception.UserExistsException;
 
-import javax.management.OperationsException;
 import java.sql.SQLException;
-import java.util.List;
+
 
 public interface UserService {
     User logIn(String login, String password) throws ServiceException;
+
     User register(User user) throws ServiceException, SQLException, UserExistsException;
+
     User changePassword(String login, String oldPassword, String newPassword) throws ServiceException;
-    Order checkout(Order order) throws ServiceException;
-    Order countTotalCost(Order order) throws ServiceException;
-    List<Order> showCustomerDelivery(int userId) throws ServiceException;
-    List<Order> showAvailableDelivery(User courier) throws ServiceException;
-    void updateOrderStatus(int orderId, User courier) throws ServiceException;
-    List<Order> showProcessingDelivery(User courier) throws ServiceException;
 }
