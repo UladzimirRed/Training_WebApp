@@ -25,12 +25,15 @@
         <br/>
         <c:choose>
             <c:when test="${empty sessionScope.user.role}">
-                <form action="courier-register">
-                    <input class="join-us-button" type="submit" value="${joinAsCourier}">
-                </form>
-                <form action="customer-register">
-                    <input class="join-us-button" type="submit" value="${joinAsCustomer}">
-                </form>
+                <div class="horizontal-button-container">
+                    <form action="courier-register">
+                        <input class="join-us-button" type="submit" value="${joinAsCourier}">
+                    </form>
+                    <form action="customer-register">
+                        <input class="join-us-button" type="submit" value="${joinAsCustomer}">
+                    </form>
+                </div>
+
             </c:when>
             <c:when test="${sessionScope.user.role == 'CUSTOMER'}">
                 <form action="customer-main">

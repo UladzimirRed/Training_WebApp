@@ -159,6 +159,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Courier-area</servlet-name>
+        <jsp-file>/jsp/courier/courier-area.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Courier-area</servlet-name>
+        <url-pattern>/courier-area</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>Available-order</servlet-name>
         <jsp-file>/jsp/courier/available-order.jsp</jsp-file>
     </servlet>

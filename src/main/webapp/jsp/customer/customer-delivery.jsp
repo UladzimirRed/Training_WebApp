@@ -12,6 +12,8 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
+    <fmt:message bundle="${locale}" key="locale.customer.button.refresh" var="refresh"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>My delivery</title>
@@ -20,37 +22,45 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
-    <div class="table-container-head">
-        <h2>${myDelivery}</h2>
-        <br>
-        <table class="head-table">
-            <tr>
-                <th>${orderId}</th>
-                <th>${subject}</th>
-                <th>${courierName}</th>
-                <th>${price}</th>
-                <th>${status}</th>
-            </tr>
-        </table>
+<main>
+    <div class="main">
+        <div class="table-container-head">
+            <h2>${myDelivery}</h2>
+            <br>
+            <table class="head-table">
+                <tr>
+                    <th>${orderId}</th>
+                    <th>${subject}</th>
+                    <th>${courierName}</th>
+                    <th>${price}</th>
+                    <th>${status}</th>
+                </tr>
+            </table>
+        </div>
+        <div class="table-container-body">
+            <table class="body-table">
+                <c:forEach var="order" items="${sessionScope.orders}" varStatus="status">
+                    <tr>
+                        <td>${order.order_id}</td>
+                        <td>${order.subject}</td>
+                        <td>${order.courier.login}</td>
+                        <td>${order.totalPrice}</td>
+                        <td>${order.status}</td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
+        <div class="horizontal-button-container">
+            <form action="controller" name="newOrder" method="POST">
+                <input type="hidden" name="command" value="refresh_delivery_command">
+                <input type="submit" value="${refresh}" class="join-us-button">
+            </form>
+            <form action="customer-main">
+                <input class="join-us-button" type="submit" value="${personalRoom}">
+            </form>
+        </div>
+
     </div>
-    <div class="table-container-body">
-        <table class="body-table">
-        <c:forEach var="order" items="${sessionScope.orders}" varStatus="status">
-            <tr>
-                <td>${order.order_id}</td>
-                <td>${order.subject}</td>
-                <td>${order.courier.login}</td>
-                <td>${order.totalPrice}</td>
-                <td>${order.status}</td>
-            </tr>
-        </c:forEach>
-        </table>
-    </div>
-    <form action="controller" name="newOrder" method="POST">
-        <input type="hidden" name="command" value="refresh_delivery_command">
-    <input type="submit" value="refresh" class="login-form-button">
-    </form>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

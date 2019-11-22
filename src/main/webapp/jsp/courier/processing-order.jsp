@@ -6,7 +6,7 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.courier.text.availableOrders" var="availableOrders"/>
+    <fmt:message bundle="${locale}" key="locale.courier.text.activeOrders" var="activeOrders"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.orderId" var="orderId"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.courierName" var="courierName"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.customerName" var="customerName"/>
@@ -15,6 +15,8 @@
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
     <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
+    <fmt:message bundle="${locale}" key="locale.customer.button.refresh" var="refresh"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Processing orders</title>
@@ -25,7 +27,7 @@
 </header>
 <main class="main">
     <div class="table-container-head">
-        <h2>${availableOrders}</h2>
+        <h2>${activeOrders}</h2>
         <br>
         <table class="head-table">
             <tr>
@@ -60,6 +62,9 @@
             </c:forEach>
         </table>
     </div>
+        <form action="courier-main">
+            <input class="join-us-button" type="submit" value="${personalRoom}">
+        </form>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

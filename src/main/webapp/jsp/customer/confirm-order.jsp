@@ -14,6 +14,7 @@
     <fmt:message bundle="${locale}" key="locale.user.text.truck" var="truck"/>
     <fmt:message bundle="${locale}" key="locale.user.text.car" var="car"/>
     <fmt:message bundle="${locale}" key="locale.user.text.withoutTransport" var="withoutTransport"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.confirmOrder" var="confirmOrder"/>
     <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
     <fmt:message bundle="${locale}" key="locale.user.label.totalCost" var="totalCost"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.orderTransportation" var="orderTransportation"/>
@@ -31,11 +32,10 @@
     <div>
         <form action="controller" name="newOrder" method="POST">
             <input type="hidden" name="command" value="new_order_command"/>
-            <div>
+            <input type="hidden" name="command" value="refresh_delivery_command"/>
                 <br>
-                <h2>${newOrder}</h2>
-            </div>
-            <div class="logIn-form-box-2">
+                <h2>${confirmOrder}</h2>
+            <div class="logIn-form-box-3">
                 <span class="form-label">${subject}: </span>
                 <input class="login-form-text"
                        name="total"
@@ -87,12 +87,15 @@
                            name="total"
                            value="${sessionScope.order.totalPrice} BYN"
                            readonly>
-                <input type="submit" value="${orderTransportation}" class="login-form-button">
+                <div class="horizontal-button-container">
+                    <form>
+                        <input type="button" value="${makeChanges}" onclick="history.back()">
+                    </form>
+                    <input type="submit" value="${orderTransportation}" class="join-us-button">
+                </div>
             </div>
         </form>
-        <form action="new-order">
-            <input type="submit" value="${makeChanges}" class="common-button">
-        </form>
+
     </div>
 </main>
 

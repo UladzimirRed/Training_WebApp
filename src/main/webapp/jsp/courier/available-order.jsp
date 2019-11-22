@@ -14,7 +14,9 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
+    <fmt:message bundle="${locale}" key="locale.customer.label.take" var="take"/>
     <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.back" var="back"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Available orders</title>
@@ -35,7 +37,7 @@
                 <th>${distance}</th>
                 <th>${price}</th>
                 <th>${rate}</th>
-                <th>TAKE</th>
+                <th>${take}</th>
             </tr>
         </table>
     </div>
@@ -60,6 +62,9 @@
             </c:forEach>
         </table>
     </div>
+    <form class="center-button-container">
+        <input type="button" value="${back}" class="join-us-button" onclick="history.back()">
+    </form>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>
