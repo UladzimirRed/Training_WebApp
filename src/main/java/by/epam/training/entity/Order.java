@@ -1,7 +1,7 @@
 package by.epam.training.entity;
 
 public class Order {
-    private int order_id;
+    private int orderId;
     private String subject;
     private User user;
     private User courier;
@@ -27,8 +27,8 @@ public class Order {
         this.distance = distance;
     }
 
-    public Order(int order_id, String subject, User courier, OrderStatus status, double totalPrice) {
-        this.order_id = order_id;
+    public Order(int orderId, String subject, User courier, OrderStatus status, double totalPrice) {
+        this.orderId = orderId;
         this.subject = subject;
         this.courier = courier;
         this.status = status;
@@ -41,8 +41,8 @@ public class Order {
         this.distance = distance;
     }
 
-    public Order(int order_id, String subject, User user, double totalPrice, int distance, boolean rate, Transport transport, OrderStatus status) {
-        this.order_id = order_id;
+    public Order(int orderId, String subject, User user, double totalPrice, int distance, boolean rate, Transport transport, OrderStatus status) {
+        this.orderId = orderId;
         this.subject = subject;
         this.user = user;
         this.status = status;
@@ -52,12 +52,12 @@ public class Order {
         this.distance = distance;
     }
 
-    public int getOrder_id() {
-        return order_id;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getSubject() {
@@ -131,7 +131,7 @@ public class Order {
 
         Order order = (Order) o;
 
-        if (order_id != order.order_id) return false;
+        if (orderId != order.orderId) return false;
         if (Double.compare(order.totalPrice, totalPrice) != 0) return false;
         if (rate != order.rate) return false;
         if (distance != order.distance) return false;
@@ -146,7 +146,7 @@ public class Order {
     public int hashCode() {
         int result;
         long temp;
-        result = order_id;
+        result = orderId;
         result = 31 * result + (subject != null ? subject.hashCode() : 0);
         result = 31 * result + (user != null ? user.hashCode() : 0);
         result = 31 * result + (courier != null ? courier.hashCode() : 0);

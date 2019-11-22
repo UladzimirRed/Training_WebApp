@@ -188,7 +188,7 @@ public class UserDaoImpl implements BaseDao<User> {
             return orders;
         } catch (SQLException e) {
             throw new DaoException();
-        }finally {
+        } finally {
             close(preparedStatement);
             pool.releaseConnection(connection);
         }
@@ -204,48 +204,39 @@ public class UserDaoImpl implements BaseDao<User> {
             preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_AVAILABLE_DELIVERY);
             preparedStatement.setInt(1, Transport.getCodeByTransport(courier.getTransport()));
             resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Order order = createAvailableDeliveryFromQueryResult(resultSet);
                 orders.add(order);
             }
             return orders;
         } catch (SQLException e) {
             throw new DaoException();
-        }finally {
+        } finally {
             close(preparedStatement);
             pool.releaseConnection(connection);
         }
     }
 
-    private Order createCustomerDeliveryFromQueryResult(ResultSet resultSet) throws DaoException {
+    private Order createCustomerDeliveryFromQueryResult(ResultSet resultSet) throws SQLException {
         User user = new User();
-        try {
-            user.setLogin(resultSet.getString(3));
-            String courierLogin = user.getLogin();
-            return new Order(resultSet.getInt(1),
-                    resultSet.getString(2),
-                    new User(courierLogin),
-                    OrderStatus.getOrderStatusByString(resultSet.getString(4)),
-                    resultSet.getDouble(5));
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        }
+        user.setLogin(resultSet.getString(3));
+        String courierLogin = user.getLogin();
+        return new Order(resultSet.getInt(1),
+                resultSet.getString(2),
+                new User(courierLogin),
+                OrderStatus.getOrderStatusByString(resultSet.getString(4)),
+                resultSet.getDouble(5));
     }
 
-    private Order createAvailableDeliveryFromQueryResult(ResultSet resultSet){
+    private Order createAvailableDeliveryFromQueryResult(ResultSet resultSet) throws SQLException {
         User user = new User();
         Order order = null;
-        try {
             user.setLogin(resultSet.getString(3));
             String customerLogin = user.getLogin();
             order = new Order(resultSet.getInt(1), resultSet.getString(2), new User(customerLogin),
                     resultSet.getDouble(4), resultSet.getInt(5), resultSet.getBoolean(6),
                     Transport.getTransportByString(resultSet.getString(7)),
                     OrderStatus.getOrderStatusByString(resultSet.getString(8)));
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
         return order;
     }
 
@@ -276,14 +267,14 @@ public class UserDaoImpl implements BaseDao<User> {
             preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_PROCESSING_DELIVERY);
             preparedStatement.setInt(1, courier.getId());
             resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Order order = createAvailableDeliveryFromQueryResult(resultSet);
                 orders.add(order);
             }
             return orders;
         } catch (SQLException e) {
             throw new DaoException();
-        }finally {
+        } finally {
             close(preparedStatement);
             pool.releaseConnection(connection);
         }
@@ -297,7 +288,7 @@ public class UserDaoImpl implements BaseDao<User> {
             connection = pool.takeConnection();
             preparedStatement = connection.prepareStatement(SqlRequest.SQL_WRITE_DOWN_COST);
             preparedStatement.setDouble(1, totalCost);
-            preparedStatement.setInt(1, order.getOrder_id());
+            preparedStatement.setInt(1, order.getOrderId());
             preparedStatement.executeUpdate();
             return order;
         } catch (SQLException e) {

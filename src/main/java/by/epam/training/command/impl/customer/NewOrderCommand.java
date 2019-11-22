@@ -20,11 +20,6 @@ public class NewOrderCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-//        String subject = request.getParameter(JspAttribute.SUBJECT);
-//        Transport transport = Transport.getTransportByString(request.getParameter(JspAttribute.TRANSPORT));
-//        boolean rate = Boolean.parseBoolean(request.getParameter(JspAttribute.RATE));
-//        String distanceString = request.getParameter(JspAttribute.DISTANCE);
-//        int distance = Integer.parseInt(distanceString);
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(JspAttribute.USER);
         Order order = (Order) session.getAttribute(JspAttribute.ORDER);
