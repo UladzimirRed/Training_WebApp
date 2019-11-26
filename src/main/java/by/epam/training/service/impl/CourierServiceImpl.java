@@ -22,9 +22,9 @@ public class CourierServiceImpl implements CourierService {
     }
 
     @Override
-    public void updateOrderStatus(int orderId, User courier) throws ServiceException {
+    public void updateOrderStatusToProcessing(int orderId, User courier) throws ServiceException {
         try {
-            courierDao.changeOrderStatus(orderId, courier);
+            courierDao.changeOrderStatusToProcessing(orderId, courier);
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
@@ -38,4 +38,23 @@ public class CourierServiceImpl implements CourierService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public void updateOrderStatusToComplete(int orderId, User courier) throws ServiceException {
+        try {
+            courierDao.changeOrderStatusToComplete(orderId, courier);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<Order> showCompleteDelivery(User courier) throws ServiceException {
+        try {
+            return courierDao.selectCompleteDelivery(courier);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
 }

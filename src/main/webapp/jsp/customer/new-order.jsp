@@ -11,6 +11,7 @@
     <fmt:message bundle="${locale}" key="locale.user.text.car" var="car"/>
     <fmt:message bundle="${locale}" key="locale.user.text.withoutTransport" var="withoutTransport"/>
     <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.customer.text.newOrder" var="newOrder"/>
     <fmt:message bundle="${locale}" key="locale.customer.text.express" var="express"/>
     <fmt:message bundle="${locale}" key="locale.customer.text.regular" var="regular"/>
@@ -18,6 +19,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.label.transportForCargo" var="transportForCargo"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.next" var="next"/>
+
 
     <link rel="stylesheet" href="./css/style.css">
     <title>New Order</title>
@@ -29,8 +31,8 @@
 <main class="main">
     <div>
         <form action="controller" name="newOrder" method="POST">
-            <input type="hidden" name="command" value="confirm_delivery_command"/>
-            <input type="hidden" name="command" value="refresh_delivery_command">
+            <input type="hidden" name="command" value="confirm_order_command"/>
+            <input type="hidden" name="command" value="refresh_order_command">
             <div>
                 <br>
                 <h2>${newOrder}</h2>
@@ -62,6 +64,9 @@
                        required>
                 <input type="submit" value="${next}" class="login-form-button">
             </div>
+        </form>
+        <form action="customer-main" class="logIn-form-box-2">
+            <input  type="submit" value="${personalRoom}" class="login-form-button">
         </form>
     </div>
 </main>

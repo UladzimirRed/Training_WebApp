@@ -8,6 +8,8 @@ import java.util.List;
 
 public interface CourierService{
     List<Order> showAvailableDelivery(User courier) throws ServiceException;
-    void updateOrderStatus(int orderId, User courier) throws ServiceException;
+    void updateOrderStatusToProcessing(int orderId, User courier) throws ServiceException;
     List<Order> showProcessingDelivery(User courier) throws ServiceException;
+    void updateOrderStatusToComplete(int orderId, User courier) throws ServiceException;
+    List<Order> showCompleteDelivery(User courier) throws ServiceException;
 }

@@ -31,11 +31,19 @@
             <input type="submit" value="${personalArea}" class="common-button">
         </form>
         <form action="controller">
-            <input type="hidden" name="command" value="show_available_command">
+            <input type="hidden" name="command" value="show_available_order_command">
             <input type="submit" value="${takeOrder}" class="common-button">
         </form>
+        <form action="controller">
+            <input type="hidden" name="command" value="show_processing_order_command">
+            <input type="submit" value="COMPLETE ORDER" class="common-button">
+        </form>
+        <form action="controller">
+            <input type="hidden" name="command" value="show_completed_order_command">
+            <input type="submit" value="COMPLETED ORDER" class="common-button">
+        </form>
 <%--        <form action="controller" name="myDeliveryForm" method="POST">--%>
-<%--            <input type="hidden" name="command" value="refresh_delivery_command">--%>
+<%--            <input type="hidden" name="command" value="refresh_order_command">--%>
 <%--            <input type="submit" value="${myDelivery}" class="common-button">--%>
 <%--        </form>--%>
 <%--        <form action="rate">--%>

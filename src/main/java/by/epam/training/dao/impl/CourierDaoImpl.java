@@ -47,12 +47,12 @@ public class CourierDaoImpl implements BaseDao<User> {
         }
     }
 
-    public void changeOrderStatus(int orderId, User courier) throws DaoException {
+    public void changeOrderStatusToProcessing(int orderId, User courier) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
         try {
             connection = pool.takeConnection();
-            preparedStatement = connection.prepareStatement(SqlRequest.SQL_UPDATE_ORDER_STATUS);
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_UPDATE_ORDER_STATUS_TO_PROCESSING);
             preparedStatement.setInt(1, courier.getId());
             preparedStatement.setInt(2, orderId);
             preparedStatement.executeUpdate();
@@ -87,6 +87,23 @@ public class CourierDaoImpl implements BaseDao<User> {
         }
     }
 
+    public void changeOrderStatusToComplete(int orderId, User courier) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_UPDATE_ORDER_STATUS_TO_COMPLETE);
+            preparedStatement.setInt(1, courier.getId());
+            preparedStatement.setInt(2, orderId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
     private Order createCourierDeliveryFromQueryResult(ResultSet resultSet) throws SQLException {
         User user = new User();
         Order order;
@@ -97,5 +114,28 @@ public class CourierDaoImpl implements BaseDao<User> {
                 Transport.getTransportByString(resultSet.getString(7)),
                 OrderStatus.getOrderStatusByString(resultSet.getString(8)));
         return order;
+    }
+
+    public List<Order> selectCompleteDelivery(User courier) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet;
+        List<Order> orders = new ArrayList<>();
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_COMPLETE_ORDER);
+            preparedStatement.setInt(1, courier.getId());
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Order order = createCourierDeliveryFromQueryResult(resultSet);
+                orders.add(order);
+            }
+            return orders;
+        } catch (SQLException e) {
+            throw new DaoException();
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
     }
 }

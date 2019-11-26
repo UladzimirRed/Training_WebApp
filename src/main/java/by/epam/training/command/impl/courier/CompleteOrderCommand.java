@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class TakeOrderCommand implements ActionCommand {
+public class CompleteOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 
     @Override
@@ -25,10 +25,10 @@ public class TakeOrderCommand implements ActionCommand {
         User courier = (User) session.getAttribute(JspAttribute.USER);
         try {
             CourierServiceImpl service = new CourierServiceImpl();
-            service.updateOrderStatusToProcessing(orderId, courier);
-            List<Order> result = service.showProcessingDelivery(courier);
+            service.updateOrderStatusToComplete(orderId, courier);
+            List<Order> result = service.showCompleteDelivery(courier);
             session.setAttribute(JspAttribute.ORDERS, result);
-            return JspAddress.PROCESSING_ORDER;
+            return JspAddress.COMPLETE_ORDER;
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
             return JspAddress.ERROR_PAGE;

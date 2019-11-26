@@ -43,7 +43,7 @@
                     <tr>
                         <td>${order.orderId}</td>
                         <td>${order.subject}</td>
-                        <td>${order.courier.login}</td>
+                        <td>${order.user.login}</td>
                         <td>${order.totalPrice}</td>
                         <td>${order.status}</td>
                     </tr>
@@ -52,7 +52,7 @@
         </div>
         <div class="horizontal-button-container">
             <form action="controller" name="newOrder" method="POST">
-                <input type="hidden" name="command" value="refresh_delivery_command">
+                <input type="hidden" name="command" value="refresh_order_command">
                 <input type="submit" value="${refresh}" class="join-us-button">
             </form>
             <form action="customer-main">

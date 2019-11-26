@@ -45,7 +45,7 @@
         <table class="body-table">
             <c:forEach var="order" items="${sessionScope.orders}" varStatus="status">
                 <tr>
-                    <td>${order.order_id}</td>
+                    <td>${order.orderId}</td>
                     <td>${order.subject}</td>
                     <td>${order.user.login}</td>
                     <td>${order.distance}</td>
@@ -53,8 +53,8 @@
                     <td>${order.rate}</td>
                     <td>
                         <form action="controller">
-                            <input type="hidden" name="command" value="take_order_command">
-                            <input type="hidden" name="tattooId" value="${order}">
+                            <input type="hidden" name="command" value="complete_order_command">
+                            <input type="hidden" name="orderId" value="${order.orderId}">
                             <input type="submit" value="V" class="lang-button">
                         </form>
                     </td>
@@ -62,7 +62,7 @@
             </c:forEach>
         </table>
     </div>
-        <form action="courier-main">
+        <form action="courier-main" class="center-button-container">
             <input class="join-us-button" type="submit" value="${personalRoom}">
         </form>
 </main>

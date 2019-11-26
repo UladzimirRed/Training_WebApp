@@ -33,7 +33,7 @@
             <input type="submit" value="${newOrder}" class="common-button">
         </form>
         <form action="controller" name="myDeliveryForm" method="POST">
-            <input type="hidden" name="command" value="refresh_delivery_command">
+            <input type="hidden" name="command" value="refresh_order_command">
             <input type="submit" value="${myDelivery}" class="common-button">
         </form>
         <form action="rate">

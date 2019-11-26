@@ -14,6 +14,6 @@ public class JspAddress {
     public static final String COURIER_MAIN = "/courier-main";
     public static final String AVAILABLE_ORDER = "/available-order";
     public static final String PROCESSING_ORDER = "/processing-order";
-
+    public static final String COMPLETE_ORDER = "/completed-order";
 }
 

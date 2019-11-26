@@ -32,7 +32,7 @@
     <div>
         <form action="controller" name="newOrder" method="POST">
             <input type="hidden" name="command" value="new_order_command"/>
-            <input type="hidden" name="command" value="refresh_delivery_command"/>
+            <input type="hidden" name="command" value="refresh_order_command"/>
                 <br>
                 <h2>${confirmOrder}</h2>
             <div class="logIn-form-box-3">
@@ -88,8 +88,8 @@
                            value="${sessionScope.order.totalPrice} BYN"
                            readonly>
                 <div class="horizontal-button-container">
-                    <form class="join-us-button">
-                        <input type="button" value="${makeChanges}" onclick="history.back()">
+                    <form>
+                        <input type="button" value="${makeChanges}" onclick="history.back()" class="join-us-button">
                     </form>
                     <input type="submit" value="${orderTransportation}" class="join-us-button">
                 </div>

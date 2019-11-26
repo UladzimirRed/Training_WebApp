@@ -185,6 +185,15 @@
         <url-pattern>/processing-order</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Completed-order</servlet-name>
+        <jsp-file>/jsp/courier/completed-order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Completed-order</servlet-name>
+        <url-pattern>/completed-order</url-pattern>
+    </servlet-mapping>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>

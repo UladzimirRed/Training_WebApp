@@ -69,11 +69,9 @@ public class CustomerDaoImpl implements BaseDao<User> {
     }
 
     private Order createCustomerDeliveryFromQueryResult(ResultSet resultSet) throws SQLException {
-        User user = new User();
-        Order order = null;
-        user.setLogin(resultSet.getString(3));
-        String userLogin = user.getLogin();
-        order = new Order(resultSet.getInt(1), resultSet.getString(2), new User(userLogin),
+        Order order;
+        String customerLogin = resultSet.getString(3);
+        order = new Order(resultSet.getInt(1), resultSet.getString(2), new User(customerLogin),
                 resultSet.getDouble(4), resultSet.getInt(5), resultSet.getBoolean(6),
                 Transport.getTransportByString(resultSet.getString(7)),
                 OrderStatus.getOrderStatusByString(resultSet.getString(8)));

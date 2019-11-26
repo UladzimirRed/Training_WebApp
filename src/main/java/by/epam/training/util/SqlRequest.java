@@ -51,7 +51,7 @@ public class SqlRequest {
                     "ON shipping_order.transport_id = transport.transport_id " +
                     "WHERE shipping_order.transport_id = ? " +
                     "AND order_status_id = 1";
-    public static final String SQL_UPDATE_ORDER_STATUS =
+    public static final String SQL_UPDATE_ORDER_STATUS_TO_PROCESSING =
             "UPDATE shipping_order " +
                     "JOIN order_status " +
                     "ON shipping_order.order_status_id = order_status.id_status " +
@@ -67,4 +67,20 @@ public class SqlRequest {
                     "ON shipping_order.transport_id = transport.transport_id " +
                     "WHERE shipping_order.courier_id = ? " +
                     "AND order_status_id = 2";
+    public static final String SQL_UPDATE_ORDER_STATUS_TO_COMPLETE =
+            "UPDATE shipping_order " +
+                    "JOIN order_status " +
+                    "ON shipping_order.order_status_id = order_status.id_status " +
+                    "SET shipping_order.order_status_id = '3', courier_id = ? WHERE order_id = ?";
+    public static final String SQL_FIND_COMPLETE_ORDER =
+            "SELECT order_id, subject, login, total_price, distance, express_rate, transport_name, status " +
+                    "FROM shipping_order " +
+                    "JOIN order_status " +
+                    "ON shipping_order.order_status_id = order_status.id_status " +
+                    "LEFT JOIN user " +
+                    "ON shipping_order.customer_id = user.user_id " +
+                    "LEFT JOIN transport " +
+                    "ON shipping_order.transport_id = transport.transport_id " +
+                    "WHERE shipping_order.courier_id = ? " +
+                    "AND order_status_id = 3";
 }

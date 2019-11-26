@@ -15,20 +15,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-public class TakeOrderCommand implements ActionCommand {
+public class ShowAvailableOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        int orderId = Integer.parseInt(request.getParameter(JspAttribute.ORDER_ID));
         User courier = (User) session.getAttribute(JspAttribute.USER);
         try {
             CourierServiceImpl service = new CourierServiceImpl();
-            service.updateOrderStatusToProcessing(orderId, courier);
-            List<Order> result = service.showProcessingDelivery(courier);
+            List<Order> result = service.showAvailableDelivery(courier);
             session.setAttribute(JspAttribute.ORDERS, result);
-            return JspAddress.PROCESSING_ORDER;
+            return JspAddress.AVAILABLE_ORDER;
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
             return JspAddress.ERROR_PAGE;

@@ -16,7 +16,7 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-public class ConfirmDeliveryCommand implements ActionCommand {
+public class ConfirmOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 
     @Override
