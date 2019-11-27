@@ -16,7 +16,6 @@ public class JspAttribute {
     public static final String PASSWORD = "password";
     public static final String ROLE = "role";
     public static final String CUSTOMER = "CUSTOMER";
-    public static final String COURIER = "COURIER";
     public static final String CONFIRM_PASSWORD = "confirmPassword";
     public static final String PASSWORD_DOES_NOT_MATCH = "passwordDoesNotMatch";
     public static final String DATA_EXISTS = "dataExists";
@@ -30,7 +29,7 @@ public class JspAttribute {
     public static final String SUBJECT = "subject";
     public static final String RATE = "rate";
     public static final String DISTANCE = "distance";
-    public static final String USER_FROM_TABLE = "userFromTable";
+    public static final String USER_RATING = "userRating";
 
 
 

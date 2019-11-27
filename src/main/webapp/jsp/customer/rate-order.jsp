@@ -6,18 +6,20 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.customer.text.myDelivery" var="myDelivery"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.rateDelivery" var="rateDelivery"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.orderId" var="orderId"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.courierName" var="courierName"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.distance" var="distance"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.rate" var="rate"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.transport" var="transport"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.refresh" var="refresh"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.rateCompletedOrders" var="rateCompletedOrders"/>
 
     <link rel="stylesheet" href="./css/style.css">
-    <title>My delivery</title>
+    <title>Rate delivery</title>
 </head>
 <body>
 <header>
@@ -26,7 +28,7 @@
 <main>
     <div class="main">
         <div class="table-container-head">
-            <h2>${myDelivery}</h2>
+            <h2>${rateDelivery}</h2>
             <br>
             <table class="head-table">
                 <tr>
@@ -34,37 +36,46 @@
                     <th>${subject}</th>
                     <th>${courierName}</th>
                     <th>${price}</th>
+                    <th>${distance}</th>
+                    <th>${rate}</th>
+                    <th>${transport}</th>
                     <th>${status}</th>
                 </tr>
             </table>
         </div>
-        <div class="table-container-body">
+        <form action="controller" name="refreshOrder" method="POST">
+        <div class="table-current-container-body" >
             <table class="body-table">
-                <c:forEach var="order" items="${sessionScope.orders}" varStatus="status">
-                    <tr>
-                        <td>${order.orderId}</td>
-                        <td>${order.subject}</td>
-                        <td>${order.user.login}</td>
-                        <td>${order.totalPrice}</td>
-                        <td>${order.status}</td>
-                    </tr>
-                </c:forEach>
+                <tr>
+                    <td>${sessionScope.order.orderId}</td>
+                    <td>${sessionScope.order.subject}</td>
+                    <td>${sessionScope.order.user.login}</td>
+                    <td>${sessionScope.order.totalPrice} BYN</td>
+                    <td>${sessionScope.order.distance} km</td>
+                    <td>${sessionScope.order.rate}</td>
+                    <td>${sessionScope.order.transport}</td>
+                    <td>${sessionScope.order.status}</td>
+                </tr>
             </table>
         </div>
+        <span class="form-label">RATING:</span>
+        <select class=form-dropdown name="rate">
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+        </select>
+            <input type="hidden" name="command" value="confirm_rate_command">
+            <input type="submit" value="${rateDelivery}" class="join-us-button">
+        </form>
+        <br>
+        <br>
         <div class="horizontal-button-container">
-            <form action="controller" name="refreshOrder" method="POST">
-                <input type="hidden" name="command" value="show_active_order_command">
-                <input type="submit" value="${refresh}" class="join-us-button">
-            </form>
             <form action="customer-main">
                 <input class="join-us-button" type="submit" value="${personalRoom}">
             </form>
-            <form action="controller" name="doneOrder" method="POST">
-                <input type="hidden" name="command" value="show_done_order_command">
-                <input type="submit" value="${rateCompletedOrders}" class="join-us-button">
-            </form>
         </div>
-
     </div>
 </main>
 <footer>

@@ -24,8 +24,9 @@ public class ShowCompletedOrderCommand implements ActionCommand {
         User courier = (User) session.getAttribute(JspAttribute.USER);
         try {
             CourierServiceImpl service = new CourierServiceImpl();
-            List<Order> result = service.showCompleteDelivery(courier);
-            session.setAttribute(JspAttribute.ORDERS, result);
+            List<Order> orders = service.showCompleteDelivery(courier);
+            List<Order> sortedOrders = service.sortListOfOrdersByOrderId(orders);
+            session.setAttribute(JspAttribute.ORDERS, sortedOrders);
             return JspAddress.COMPLETE_ORDER;
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);

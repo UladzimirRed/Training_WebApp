@@ -24,8 +24,9 @@ public class ShowAvailableOrderCommand implements ActionCommand {
         User courier = (User) session.getAttribute(JspAttribute.USER);
         try {
             CourierServiceImpl service = new CourierServiceImpl();
-            List<Order> result = service.showAvailableDelivery(courier);
-            session.setAttribute(JspAttribute.ORDERS, result);
+            List<Order> orders = service.showAvailableDelivery(courier);
+            List<Order> sortedOrders = service.sortListOfOrdersByOrderId(orders);
+            session.setAttribute(JspAttribute.ORDERS, sortedOrders);
             return JspAddress.AVAILABLE_ORDER;
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);

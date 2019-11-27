@@ -32,7 +32,6 @@
     <div>
         <form action="controller" name="newOrder" method="POST">
             <input type="hidden" name="command" value="new_order_command"/>
-            <input type="hidden" name="command" value="refresh_order_command"/>
                 <br>
                 <h2>${confirmOrder}</h2>
             <div class="logIn-form-box-3">
@@ -45,19 +44,19 @@
                     <c:choose>
                         <c:when test="${sessionScope.order.transport == 'TRUCK'}">
                             <input class="login-form-text"
-                                   name="total"
+                                   name="transport"
                                    value="${truck}"
                                    readonly>
                         </c:when>
                         <c:when test="${sessionScope.order.transport == 'CAR'}">
                             <input class="login-form-text"
-                                   name="total"
+                                   name="transport"
                                    value="${car}"
                                    readonly>
                         </c:when>
                         <c:otherwise>
                             <input class="login-form-text"
-                                   name="total"
+                                   name="transport"
                                    value="${withoutTransport}"
                                    readonly>
                         </c:otherwise>

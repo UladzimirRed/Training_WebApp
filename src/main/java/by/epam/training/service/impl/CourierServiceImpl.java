@@ -6,6 +6,7 @@ import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
 import by.epam.training.exception.ServiceException;
 import by.epam.training.service.CourierService;
+import by.epam.training.util.ComparatorByOrderId;
 
 import java.util.List;
 
@@ -55,6 +56,12 @@ public class CourierServiceImpl implements CourierService {
         } catch (DaoException e) {
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public List<Order> sortListOfOrdersByOrderId(List<Order> orders) {
+        orders.sort(new ComparatorByOrderId());
+        return orders;
     }
 
 }

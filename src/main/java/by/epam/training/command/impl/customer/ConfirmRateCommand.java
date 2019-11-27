@@ -2,7 +2,6 @@ package by.epam.training.command.impl.customer;
 
 import by.epam.training.command.ActionCommand;
 import by.epam.training.entity.Order;
-import by.epam.training.entity.User;
 import by.epam.training.exception.ServiceException;
 import by.epam.training.service.impl.CustomerServiceImpl;
 import by.epam.training.util.JspAddress;
@@ -13,24 +12,25 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
-public class NewOrderCommand implements ActionCommand {
+public class ConfirmRateCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 
     @Override
     public String execute(HttpServletRequest request) {
+        Integer rate = Integer.parseInt(request.getParameter(JspAttribute.RATE));
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute(JspAttribute.USER);
         Order order = (Order) session.getAttribute(JspAttribute.ORDER);
+        int orderId = order.getOrderId();
+        String courierLogin = order.getUser().getLogin();
         try {
             CustomerServiceImpl service = new CustomerServiceImpl();
-            service.checkout(order);
-            List<Order> orders = service.showActiveDelivery(user.getId());
-            List<Order> sortedOrders = service.sortListOfOrdersByOrderId(orders);
-            session.setAttribute(JspAttribute.ORDERS, sortedOrders);
-            session.setAttribute(JspAttribute.USER, user);
-            return JspAddress.CUSTOMER_DELIVERY;
+            double currentRating = service.showCurrentCourierRating(courierLogin);
+            double updatedRating = service.updateRating(courierLogin, currentRating, rate);
+            service.updateOrderStatusToRated(orderId);
+            session.setAttribute(JspAttribute.LOGIN, courierLogin);
+            session.setAttribute(JspAttribute.USER_RATING, updatedRating);
+            return JspAddress.THANK_YOU_PAGE;
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
             return JspAddress.ERROR_PAGE;

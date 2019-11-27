@@ -31,7 +31,7 @@ public class CourierDaoImpl implements BaseDao<User> {
         List<Order> orders = new ArrayList<>();
         try {
             connection = pool.takeConnection();
-            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_AVAILABLE_ORDER);
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_AVAILABLE_COURIER_ORDER);
             preparedStatement.setInt(1, Transport.getCodeByTransport(courier.getTransport()));
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -71,7 +71,7 @@ public class CourierDaoImpl implements BaseDao<User> {
         List<Order> orders = new ArrayList<>();
         try {
             connection = pool.takeConnection();
-            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_PROCESSING_ORDER);
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_PROCESSING_COURIER_ORDER);
             preparedStatement.setInt(1, courier.getId());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -123,7 +123,7 @@ public class CourierDaoImpl implements BaseDao<User> {
         List<Order> orders = new ArrayList<>();
         try {
             connection = pool.takeConnection();
-            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_COMPLETE_ORDER);
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_COMPLETE_COURIER_ORDER);
             preparedStatement.setInt(1, courier.getId());
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {

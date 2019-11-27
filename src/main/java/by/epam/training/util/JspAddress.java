@@ -9,11 +9,14 @@ public class JspAddress {
     public static final String REGISTER_PAGE = "/register-as";
     public static final String CHANGE_PASSWORD = "/change-password";
     public static final String CUSTOMER_DELIVERY = "/customer-delivery";
+    public static final String CUSTOMER_DONE = "/customer-done";
+    public static final String RATE_ORDER = "/rate-order";
     public static final String CONFIRM_ORDER = "/confirm-order";
     public static final String CUSTOMER_MAIN = "/customer-main";
     public static final String COURIER_MAIN = "/courier-main";
     public static final String AVAILABLE_ORDER = "/available-order";
     public static final String PROCESSING_ORDER = "/processing-order";
     public static final String COMPLETE_ORDER = "/completed-order";
+    public static final String THANK_YOU_PAGE = "/thank-you";
 }
 

@@ -149,25 +149,4 @@ public class UserDaoImpl implements BaseDao<User> {
             pool.releaseConnection(connection);
         }
     }
-
-
-
-    //TODO delete this method
-    public Order writeDownCost(Order order, double totalCost) throws DaoException {
-        ProxyConnection connection = null;
-        PreparedStatement preparedStatement = null;
-        try {
-            connection = pool.takeConnection();
-            preparedStatement = connection.prepareStatement(SqlRequest.SQL_WRITE_DOWN_COST);
-            preparedStatement.setDouble(1, totalCost);
-            preparedStatement.setInt(1, order.getOrderId());
-            preparedStatement.executeUpdate();
-            return order;
-        } catch (SQLException e) {
-            throw new DaoException(e);
-        } finally {
-            close(preparedStatement);
-            pool.releaseConnection(connection);
-        }
-    }
 }

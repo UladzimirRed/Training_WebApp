@@ -12,12 +12,12 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
+    <fmt:message bundle="${locale}" key="locale.customer.label.toRate" var="toRate"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.refresh" var="refresh"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.rateCompletedOrders" var="rateCompletedOrders"/>
 
     <link rel="stylesheet" href="./css/style.css">
-    <title>My delivery</title>
+    <title>Completed delivery</title>
 </head>
 <body>
 <header>
@@ -26,7 +26,7 @@
 <main>
     <div class="main">
         <div class="table-container-head">
-            <h2>${myDelivery}</h2>
+            <h2>DONE DELIVERY</h2>
             <br>
             <table class="head-table">
                 <tr>
@@ -35,6 +35,7 @@
                     <th>${courierName}</th>
                     <th>${price}</th>
                     <th>${status}</th>
+                    <th>${toRate}</th>
                 </tr>
             </table>
         </div>
@@ -47,6 +48,13 @@
                         <td>${order.user.login}</td>
                         <td>${order.totalPrice}</td>
                         <td>${order.status}</td>
+                        <td>
+                            <form action="controller">
+                                <input type="hidden" name="command" value="rate_order_command">
+                                <input type="hidden" name="orderId" value="${order.orderId}">
+                                <input type="submit" value="V" class="lang-button">
+                            </form>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>
@@ -58,10 +66,6 @@
             </form>
             <form action="customer-main">
                 <input class="join-us-button" type="submit" value="${personalRoom}">
-            </form>
-            <form action="controller" name="doneOrder" method="POST">
-                <input type="hidden" name="command" value="show_done_order_command">
-                <input type="submit" value="${rateCompletedOrders}" class="join-us-button">
             </form>
         </div>
 

@@ -5,6 +5,7 @@ import by.epam.training.entity.Order;
 import by.epam.training.exception.DaoException;
 import by.epam.training.exception.ServiceException;
 import by.epam.training.service.CustomerService;
+import by.epam.training.util.ComparatorByOrderId;
 
 import java.util.List;
 
@@ -48,11 +49,67 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Order> showCustomerDelivery(int userId) throws ServiceException {
+    public List<Order> showActiveDelivery(int userId) throws ServiceException {
         try {
-            return customerDao.selectCurrentDelivery(userId);
+            return customerDao.selectActiveDelivery(userId);
         } catch (DaoException e){
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public List<Order> showCompleteDelivery(int userId) throws ServiceException {
+        try {
+            return customerDao.selectCompleteDelivery(userId);
+        } catch (DaoException e){
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public Order showCurrentDelivery(int orderId) throws ServiceException {
+        try {
+            return customerDao.selectCurrentDelivery(orderId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public double showCurrentCourierRating(String courierLogin) throws ServiceException {
+        try {
+            return customerDao.selectCourierRating(courierLogin);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+
+    @Override
+    public double updateRating(String courierLogin, double currentRating, double rate) throws ServiceException {
+        double updatedRating = (currentRating + rate) / 2;
+        try {
+            customerDao.wrightCourierRating(courierLogin, updatedRating);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+        return updatedRating;
+    }
+
+    @Override
+    public void updateOrderStatusToRated(int orderId) throws ServiceException {
+        try {
+            customerDao.changeOrderStatusToRated(orderId);
+        } catch (DaoException e) {
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<Order> sortListOfOrdersByOrderId(List<Order> orders) {
+        orders.sort(new ComparatorByOrderId());
+        return orders;
+    }
+
+
 }

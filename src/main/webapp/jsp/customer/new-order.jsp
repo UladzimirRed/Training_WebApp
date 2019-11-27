@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
@@ -31,8 +31,6 @@
 <main class="main">
     <div>
         <form action="controller" name="newOrder" method="POST">
-            <input type="hidden" name="command" value="confirm_order_command"/>
-            <input type="hidden" name="command" value="refresh_order_command">
             <div>
                 <br>
                 <h2>${newOrder}</h2>
@@ -62,11 +60,12 @@
                        min="1"
                        max="1000"
                        required>
+                <input type="hidden" name="command" value="confirm_order_command"/>
                 <input type="submit" value="${next}" class="login-form-button">
             </div>
         </form>
         <form action="customer-main" class="logIn-form-box-2">
-            <input  type="submit" value="${personalRoom}" class="login-form-button">
+            <input type="submit" value="${personalRoom}" class="login-form-button">
         </form>
     </div>
 </main>

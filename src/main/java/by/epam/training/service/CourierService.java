@@ -12,4 +12,5 @@ public interface CourierService{
     List<Order> showProcessingDelivery(User courier) throws ServiceException;
     void updateOrderStatusToComplete(int orderId, User courier) throws ServiceException;
     List<Order> showCompleteDelivery(User courier) throws ServiceException;
+    List<Order> sortListOfOrdersByOrderId(List<Order> orders);
 }

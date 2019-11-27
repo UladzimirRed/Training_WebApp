@@ -6,7 +6,8 @@ import java.util.Map;
 public enum  OrderStatus {
     NEW(1),
     PROCESSING(2),
-    DONE(3);
+    DONE(3),
+    RATED(4);
 
     private int code;
 
@@ -28,8 +29,8 @@ public enum  OrderStatus {
         return code;
     }
 
-    public static Integer getCodeByOrderStatus(OrderStatus roleEnum) {
-        return ORDER_STATUS_INTEGER_MAP.get(roleEnum);
+    public static Integer getCodeByOrderStatus(OrderStatus status) {
+        return ORDER_STATUS_INTEGER_MAP.get(status);
     }
 
     public static OrderStatus getOrderStatusByString(String name) {

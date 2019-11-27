@@ -45,14 +45,14 @@ public class CustomerDaoImpl implements BaseDao<User> {
         }
     }
 
-    public List<Order> selectCurrentDelivery(int userId) throws DaoException {
+    public List<Order> selectActiveDelivery(int userId) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet;
         List<Order> orders = new ArrayList<>();
         try {
             connection = pool.takeConnection();
-            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_CUSTOMER_ORDER);
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_ACTIVE_CUSTOMER_ORDER);
             preparedStatement.setInt(1, userId);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -68,10 +68,111 @@ public class CustomerDaoImpl implements BaseDao<User> {
         }
     }
 
+    public List<Order> selectCompleteDelivery(int userId) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet;
+        List<Order> orders = new ArrayList<>();
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_COMPLETE_CUSTOMER_ORDER);
+            preparedStatement.setInt(1, userId);
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Order order = createCustomerDeliveryFromQueryResult(resultSet);
+                orders.add(order);
+            }
+            return orders;
+        } catch (SQLException e) {
+            throw new DaoException();
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+
+    public Order selectCurrentDelivery(int orderId) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet;
+        Order order = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_CURRENT_CUSTOMER_ORDER);
+            preparedStatement.setInt(1, orderId);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                order = createCustomerDeliveryFromQueryResult(resultSet);
+            }
+            return order;
+        } catch (SQLException e) {
+            throw new DaoException();
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+    public double selectCourierRating(String courierLogin) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet;
+        double courierCurrentRating = 0;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_GET_USER_RATING);
+            preparedStatement.setString(1, courierLogin);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                courierCurrentRating = resultSet.getInt(1);
+            }
+            return courierCurrentRating;
+        } catch (SQLException e) {
+            throw new DaoException();
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+    public void wrightCourierRating (String courierLogin, double updatedRating) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_WRITE_COURIER_RATING);
+            preparedStatement.setDouble(1, updatedRating);
+            preparedStatement.setString(2, courierLogin);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+    public void changeOrderStatusToRated(int orderId) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_UPDATE_ORDER_STATUS_TO_RATED);
+            preparedStatement.setInt(1, orderId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
     private Order createCustomerDeliveryFromQueryResult(ResultSet resultSet) throws SQLException {
         Order order;
-        String customerLogin = resultSet.getString(3);
-        order = new Order(resultSet.getInt(1), resultSet.getString(2), new User(customerLogin),
+        String login = resultSet.getString(3);
+        order = new Order(resultSet.getInt(1), resultSet.getString(2), new User(login),
                 resultSet.getDouble(4), resultSet.getInt(5), resultSet.getBoolean(6),
                 Transport.getTransportByString(resultSet.getString(7)),
                 OrderStatus.getOrderStatusByString(resultSet.getString(8)));

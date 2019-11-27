@@ -114,6 +114,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>Customer-done</servlet-name>
+        <jsp-file>/jsp/customer/customer-done.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Customer-done</servlet-name>
+        <url-pattern>/customer-done</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>New-order</servlet-name>
         <jsp-file>/jsp/customer/new-order.jsp</jsp-file>
     </servlet>
@@ -129,6 +138,24 @@
     <servlet-mapping>
         <servlet-name>Confirm-order</servlet-name>
         <url-pattern>/confirm-order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Rate-order</servlet-name>
+        <jsp-file>/jsp/customer/rate-order.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Rate-order</servlet-name>
+        <url-pattern>/rate-order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Thank-you</servlet-name>
+        <jsp-file>/jsp/customer/thank-you.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Thank-you</servlet-name>
+        <url-pattern>/thank-you</url-pattern>
     </servlet-mapping>
 
     <servlet>
