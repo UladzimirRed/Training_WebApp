@@ -6,15 +6,13 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.message.helloMessage" var="hello"/>
     <fmt:message bundle="${locale}" key="locale.message.welcome" var="welcome"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.personalArea" var="personalArea"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.newOrder" var="newOrder"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.rates" var="rates"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.myDelivery" var="myDelivery"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.showUserList" var="showUserList"/>
 
     <link rel="stylesheet" href="./css/style.css">
-    <title>Welcome</title>
+    <title>Hi daddy!</title>
 </head>
 <body>
 <header>
@@ -26,18 +24,12 @@
         <p>${welcome}, ${sessionScope.user.login}</p>
     </div>
     <div class="navigation-bar">
-        <form action="customer-area">
+        <form action="admin-area">
             <input type="submit" value="${personalArea}" class="common-button">
         </form>
-        <form action="new-order">
-            <input type="submit" value="${newOrder}" class="common-button">
-        </form>
-        <form action="controller" name="myDeliveryForm" method="POST">
-            <input type="hidden" name="command" value="show_active_order_command">
-            <input type="submit" value="${myDelivery}" class="common-button">
-        </form>
-        <form action="rate">
-            <input type="submit" value="${rates}" class="common-button">
+        <form action="controller">
+            <input type="hidden" name="command" value="show_user_list_command">
+            <input type="submit" value="${showUserList}" class="common-button">
         </form>
     </div>
 </main>

@@ -18,7 +18,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <div class="welcome-box">
         <span class="welcome-text">${welcomeText}</span>
         <br/>
@@ -40,8 +40,13 @@
                     <input class="join-us-button" type="submit" value="${personalRoom}">
                 </form>
             </c:when>
-            <c:otherwise>
+            <c:when test="${sessionScope.user.role == 'COURIER'}">
                 <form action="courier-main">
+                    <input class="join-us-button" type="submit" value="${personalRoom}">
+                </form>
+            </c:when>
+            <c:otherwise>
+                <form action="admin-main">
                     <input class="join-us-button" type="submit" value="${personalRoom}">
                 </form>
             </c:otherwise>

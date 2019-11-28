@@ -28,7 +28,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <div class="logIn-form-box">
         <form name="LoginForm" method="POST" action="controller" class="login-form">
             <input type="hidden" name="command" value="login"/>

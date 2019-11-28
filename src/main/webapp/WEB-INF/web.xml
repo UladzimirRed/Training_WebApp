@@ -213,12 +213,39 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Completed-order</servlet-name>
-        <jsp-file>/jsp/courier/completed-order.jsp</jsp-file>
-    </servlet>
+    <servlet-name>Completed-order</servlet-name>
+    <jsp-file>/jsp/courier/completed-order.jsp</jsp-file>
+</servlet>
     <servlet-mapping>
         <servlet-name>Completed-order</servlet-name>
         <url-pattern>/completed-order</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Admin-main</servlet-name>
+        <jsp-file>/jsp/admin/admin-main.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin-main</servlet-name>
+        <url-pattern>/admin-main</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Admin-area</servlet-name>
+        <jsp-file>/jsp/admin/admin-area.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin-area</servlet-name>
+        <url-pattern>/admin-area</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>User-list</servlet-name>
+        <jsp-file>/jsp/admin/user-list.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>User-list</servlet-name>
+        <url-pattern>/user-list</url-pattern>
     </servlet-mapping>
 
     <jsp-config>

@@ -9,7 +9,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     Request from ${pageContext.errorData.requestURI} is failed
     <br/>
     Servlet name or type: ${pageContext.errorData.servletName}

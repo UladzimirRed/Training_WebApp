@@ -22,7 +22,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <div>
         <br/>
         <h2>${yourPersonalArea}</h2>

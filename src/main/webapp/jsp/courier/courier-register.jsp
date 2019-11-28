@@ -37,7 +37,7 @@
         <jsp:forward page="../main.jsp"/>
     </c:when>
 </c:choose>
-<main class="main">
+<main class="main-form">
     <div>
         <br/>
         <h2>${register}</h2>

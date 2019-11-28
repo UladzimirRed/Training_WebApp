@@ -14,7 +14,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class UserDaoImpl implements BaseDao<User> {
     private static final Logger logger = LogManager.getLogger(UserDaoImpl.class);
     private final ConnectionPool pool;

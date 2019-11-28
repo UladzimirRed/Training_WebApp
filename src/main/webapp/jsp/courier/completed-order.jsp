@@ -16,6 +16,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.take" var="take"/>
     <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.user.button.back" var="back"/>
     <fmt:message bundle="${locale}" key="locale.user.text.yes" var="yes"/>
     <fmt:message bundle="${locale}" key="locale.user.text.no" var="no"/>
@@ -27,7 +28,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <div class="table-container-head">
         <h2>${completedOrders}</h2>
         <br>
@@ -60,8 +61,8 @@
             </c:forEach>
         </table>
     </div>
-    <form class="center-button-container">
-        <input type="button" value="${back}" class="join-us-button" onclick="history.back()">
+    <form action="courier-main" class="center-button-container">
+        <input class="join-us-button" type="submit" value="${personalRoom}">
     </form>
 </main>
 <footer>

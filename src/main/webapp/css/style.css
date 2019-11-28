@@ -10,8 +10,7 @@ h2 {
     text-align: center;
     color: #ffebcd;
     font-size: 30px;
-    margin: 0;
-    margin-top: 10px;
+    margin: 10px 0 0;
 }
 
 table {
@@ -57,6 +56,11 @@ p {
     display: flex;
     justify-content: space-between;
     box-sizing: border-box;
+}
+
+.header-text {
+    color: #23283a;
+    font-weight: 900;
 }
 
 .logo {
@@ -129,7 +133,7 @@ p {
     color: #fff;
 }
 
-.main {
+.main-form {
     width: 100%;
     height: 75vh;
     min-height: 75vh;

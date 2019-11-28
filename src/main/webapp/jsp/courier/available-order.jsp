@@ -27,7 +27,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <div class="table-container-head">
         <h2>${availableOrders}</h2>
         <br>

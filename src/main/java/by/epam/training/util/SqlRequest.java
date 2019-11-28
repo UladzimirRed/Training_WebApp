@@ -112,4 +112,12 @@ public class SqlRequest {
                     "JOIN order_status " +
                     "ON shipping_order.order_status_id = order_status.id_status " +
                     "SET shipping_order.order_status_id = '4' WHERE order_id = ?";
+    public static final String SQL_FIND_USER_LIST =
+            "SELECT user_id, login, role_name, transport_name, rating " +
+                    "FROM user " +
+                    "JOIN role " +
+                    "ON user.role_id = role.role_id " +
+                    "LEFT JOIN transport " +
+                    "ON user.transport_id = transport.transport_id " +
+                    "WHERE role_name != 'ADMIN'";
 }

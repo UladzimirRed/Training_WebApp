@@ -7,15 +7,14 @@
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
+    <fmt:message bundle="${locale}" key="locale.user.label.rating" var="rating"/>
     <fmt:message bundle="${locale}" key="locale.user.button.back" var="back"/>
     <fmt:message bundle="${locale}" key="locale.customer.text.yourPersonalArea" var="yourPersonalArea"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.accountId" var="accountId"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.updateData" var="updateData"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.myBalance" var="myBalance"/>
-
-
-
+    
     <link rel="stylesheet" href="./css/style.css">
     <title>Personal area</title>
 </head>
@@ -23,7 +22,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <div>
         <br/>
         <h2>${yourPersonalArea}</h2>
@@ -35,6 +34,9 @@
             </div>
             <div class="input-wrapper">
                 <p class="user-area-label">${accountId}: ${sessionScope.user.id}</p>
+            </div>
+            <div class="input-wrapper">
+                <p class="user-area-label">${rating}: ${sessionScope.user.rating}</p>
             </div>
         </div>
         <form action="change-password">

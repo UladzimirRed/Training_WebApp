@@ -24,7 +24,7 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main>
-    <div class="main">
+    <div class="main-form">
         <div class="table-container-head">
             <h2>DONE DELIVERY</h2>
             <br>

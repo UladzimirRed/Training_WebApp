@@ -18,5 +18,8 @@ public class JspAddress {
     public static final String PROCESSING_ORDER = "/processing-order";
     public static final String COMPLETE_ORDER = "/completed-order";
     public static final String THANK_YOU_PAGE = "/thank-you";
+    public static final String ADMIN_MAIN = "/admin-main";
+    public static final String ADMIN_AREA = "/admin-area";
+    public static final String USER_LIST = "/user-list";
 }
 

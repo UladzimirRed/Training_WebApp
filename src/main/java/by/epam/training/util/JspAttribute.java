@@ -2,6 +2,7 @@ package by.epam.training.util;
 
 public class JspAttribute {
     public static final String USER = "user";
+    public static final String USERS = "users";
     public static final String ORDER = "order";
     public static final String ORDERS = "orders";
     public static final String ORDER_ID = "orderId";

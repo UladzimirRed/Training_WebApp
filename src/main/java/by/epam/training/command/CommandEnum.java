@@ -1,6 +1,7 @@
 package by.epam.training.command;
 
 import by.epam.training.command.impl.*;
+import by.epam.training.command.impl.admin.ShowUserListCommand;
 import by.epam.training.command.impl.courier.*;
 import by.epam.training.command.impl.ChangePasswordCommand;
 import by.epam.training.command.impl.customer.*;
@@ -26,7 +27,8 @@ public enum CommandEnum {
     TAKE_ORDER_COMMAND(new TakeOrderCommand()),
     COMPLETE_ORDER_COMMAND(new CompleteOrderCommand()),
     SHOW_PROCESSING_ORDER_COMMAND(new ShowProcessingOrderCommand()),
-    SHOW_COMPLETED_ORDER_COMMAND(new ShowCompletedOrderCommand());
+    SHOW_COMPLETED_ORDER_COMMAND(new ShowCompletedOrderCommand()),
+    SHOW_USER_LIST_COMMAND(new ShowUserListCommand());
 
     private static final Map<String, CommandEnum> commands = new HashMap<>();
 

@@ -15,7 +15,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <br>
     <h2>Спасибо, ваш голос учтён!</h2>
     <h2>Рейтинг курьера ${sessionScope.login}: ${sessionScope.userRating}</h2>

@@ -6,10 +6,11 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.message.helloMessage" var="hello"/>
     <fmt:message bundle="${locale}" key="locale.message.welcome" var="welcome"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.personalArea" var="personalArea"/>
     <fmt:message bundle="${locale}" key="locale.courier.button.takeOrder" var="takeOrder"/>
+    <fmt:message bundle="${locale}" key="locale.courier.button.completeOrder" var="completeOrder"/>
+    <fmt:message bundle="${locale}" key="locale.courier.button.completedOrder" var="completedOrder"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.newOrder" var="newOrder"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.rates" var="rates"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.myDelivery" var="myDelivery"/>
@@ -21,7 +22,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <div>
         <br>
         <p>${welcome}, ${sessionScope.user.login}</p>
@@ -36,19 +37,12 @@
         </form>
         <form action="controller">
             <input type="hidden" name="command" value="show_processing_order_command">
-            <input type="submit" value="COMPLETE ORDER" class="common-button">
+            <input type="submit" value="${completeOrder}" class="common-button">
         </form>
         <form action="controller">
             <input type="hidden" name="command" value="show_completed_order_command">
-            <input type="submit" value="COMPLETED ORDER" class="common-button">
+            <input type="submit" value="${completedOrder}" class="common-button">
         </form>
-<%--        <form action="controller" name="myDeliveryForm" method="POST">--%>
-<%--            <input type="hidden" name="command" value="refresh_order_command">--%>
-<%--            <input type="submit" value="${myDelivery}" class="common-button">--%>
-<%--        </form>--%>
-<%--        <form action="rate">--%>
-<%--            <input type="submit" value="${rates}" class="common-button">--%>
-<%--        </form>--%>
     </div>
 </main>
 <footer>

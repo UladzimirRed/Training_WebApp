@@ -19,7 +19,7 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <div>
         <br>
         <p>${welcome}, ${sessionScope.user.login}</p>

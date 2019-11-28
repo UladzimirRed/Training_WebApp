@@ -28,7 +28,7 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 
-<main class="main">
+<main class="main-form">
     <div>
         <form action="controller" name="newOrder" method="POST">
             <input type="hidden" name="command" value="new_order_command"/>

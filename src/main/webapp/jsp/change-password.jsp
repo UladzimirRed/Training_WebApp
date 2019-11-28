@@ -21,12 +21,11 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main class="main">
+<main class="main-form">
     <div>
         <form action="controller" name="changePasswordForm" method="POST">
             <input type="hidden" name="command" value="change_password"/>
             <div>
-                <br>
                 <h2>${ifYouWantChangePass}</h2>
             </div>
             <div class="logIn-form-box-2">

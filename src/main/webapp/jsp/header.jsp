@@ -12,7 +12,6 @@
     <fmt:message bundle="${locale}" key="locale.user.button.logout" var="logout"/>
 
 
-
     <link rel="stylesheet" href="./css/style.css">
     <title>Header</title>
 </head>
@@ -35,13 +34,16 @@
         </form>
     </div>
     <div class="sign-box">
+
         <c:choose>
             <c:when test="${empty sessionScope.user}">
+                <br>
                 <form action="login">
                     <input class="signIn-button" type="submit" value="${signIn}">
                 </form>
             </c:when>
             <c:otherwise>
+                <span class="header-text">${sessionScope.user.login} в сети</span>
                 <form action="controller" method="post">
                     <input type="hidden" name="command" value="logout">
                     <input class="signIn-button" type="submit" value="${logout}">

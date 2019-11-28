@@ -36,7 +36,7 @@ public class LoginCommand implements ActionCommand {
                         page = JspAddress.COURIER_MAIN;
                         break;
                     default:
-                        page = JspAddress.MAIN_PAGE;
+                        page = JspAddress.ADMIN_MAIN;
                 }
             } else {
                 request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_DATA);
