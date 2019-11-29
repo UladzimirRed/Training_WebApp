@@ -91,7 +91,6 @@ public class CustomerDaoImpl implements BaseDao<User> {
         }
     }
 
-
     public Order selectCurrentDelivery(int orderId) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;

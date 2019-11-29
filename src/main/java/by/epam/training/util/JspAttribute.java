@@ -32,8 +32,6 @@ public class JspAttribute {
     public static final String DISTANCE = "distance";
     public static final String USER_RATING = "userRating";
 
-
-
     private JspAttribute() {
     }
 }

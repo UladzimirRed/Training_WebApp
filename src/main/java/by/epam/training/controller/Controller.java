@@ -1,7 +1,7 @@
 package by.epam.training.controller;
 
 import by.epam.training.command.ActionCommand;
-import by.epam.training.command.factory.ActionFactory;
+import by.epam.training.command.ActionFactory;
 import by.epam.training.util.JspAddress;
 
 import javax.servlet.RequestDispatcher;
@@ -23,7 +23,7 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String page = null;
+        String page;
         ActionFactory client = new ActionFactory();
         ActionCommand command = client.defineCommand(request);
         page = command.execute(request);
