@@ -4,7 +4,7 @@ public class User extends Entity{
     private int id;
     private String login;
     private String password;
-    private Role role;
+    private RoleType role;
     private Transport transport;
     private double rating;
 
@@ -15,27 +15,27 @@ public class User extends Entity{
         this.login = login;
     }
 
-    public User(int id, String login, String password, Role role) {
+    public User(int id, String login, String password, RoleType role) {
         this.id = id;
         this.login = login;
         this.password = password;
         this.role = role;
     }
 
-    public User(String login, String password, Role role) {
+    public User(String login, String password, RoleType role) {
         this.login = login;
         this.password = password;
         this.role = role;
     }
 
-    public User(String login, String password, Role role, Transport transport) {
+    public User(String login, String password, RoleType role, Transport transport) {
         this.login = login;
         this.password = password;
         this.role = role;
         this.transport = transport;
     }
 
-    public User(int id, String login, String password, Role role, Transport transport, double rating) {
+    public User(int id, String login, String password, RoleType role, Transport transport, double rating) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -49,7 +49,7 @@ public class User extends Entity{
         this.password = password;
     }
 
-    public User(int id, String login, Role role, Transport transport, double rating) {
+    public User(int id, String login, RoleType role, Transport transport, double rating) {
         this.id = id;
         this.login = login;
         this.role = role;
@@ -81,11 +81,11 @@ public class User extends Entity{
         this.password = password;
     }
 
-    public Role getRole() {
+    public RoleType getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(RoleType role) {
         this.role = role;
     }
 

@@ -1,5 +1,7 @@
 package by.epam.training.util;
 
+import by.epam.training.command.JspAttribute;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 

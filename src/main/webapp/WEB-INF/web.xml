@@ -248,6 +248,15 @@
         <url-pattern>/user-list</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Edit-user</servlet-name>
+        <jsp-file>/jsp/admin/edit-user.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Edit-user</servlet-name>
+        <url-pattern>/edit-user</url-pattern>
+    </servlet-mapping>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>

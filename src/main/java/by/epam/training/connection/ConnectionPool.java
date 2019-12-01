@@ -1,7 +1,6 @@
 package by.epam.training.connection;
 
 import by.epam.training.exception.ConnectionPoolException;
-import by.epam.training.util.DataBaseInfo;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -20,15 +19,16 @@ public class ConnectionPool {
     private static ConnectionPool instance;
     private BlockingQueue<ProxyConnection> freeConnections;
     private Queue<ProxyConnection> givenAwayConnections;
-    private final static int DEFAULT_POOL_SIZE = 16;
+    private final static int DEFAULT_POOL_CAPACITY = 16;
     private static AtomicBoolean isCreated = new AtomicBoolean(false);
     private static ReentrantLock lock = new ReentrantLock();
     private static String url;
     private static String user;
     private static String password;
+    
 
     private ConnectionPool() {
-        register();
+        registerDriver();
         initDatabase();
         initPool();
     }
@@ -48,12 +48,12 @@ public class ConnectionPool {
         return instance;
     }
 
-    private void register() {
+    private void registerDriver() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            logger.fatal("Couldn't register driver" + e);
-//            throw new RuntimeException("Couldn't register driver", e);
+            logger.log(Level.FATAL, e);
+            // FIXME: 01.12.2019 throw new ??exception
         }
     }
 
@@ -64,9 +64,9 @@ public class ConnectionPool {
     }
 
     private void initPool() {
-        freeConnections = new LinkedBlockingQueue<>(DEFAULT_POOL_SIZE);
+        freeConnections = new LinkedBlockingQueue<>(DEFAULT_POOL_CAPACITY);
         givenAwayConnections = new ArrayDeque<>();
-        for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
+        for (int i = 0; i < DEFAULT_POOL_CAPACITY; i++) {
             try {
                 createConnection();
             } catch (ConnectionPoolException e) {
@@ -77,7 +77,7 @@ public class ConnectionPool {
             logger.log(Level.FATAL, "Couldn't init connection pool");
             throw new RuntimeException("Couldn't init connection pool");
         }
-        if (freeConnections.size() == DEFAULT_POOL_SIZE) {
+        if (freeConnections.size() == DEFAULT_POOL_CAPACITY) {
             logger.log(Level.INFO, "Successfully initialized connection pool");
         }
 
@@ -98,6 +98,7 @@ public class ConnectionPool {
             connection = freeConnections.take();
             givenAwayConnections.offer(connection);
         } catch (InterruptedException e) {
+            // FIXME: 01.12.2019 add logger
             e.printStackTrace();
         }
         return connection;
@@ -109,10 +110,11 @@ public class ConnectionPool {
     }
 
     public void destroyPool() throws ConnectionPoolException {
-        for (int i = 0; i < DEFAULT_POOL_SIZE; i++) {
+        for (int i = 0; i < DEFAULT_POOL_CAPACITY; i++) {
             try {
                 freeConnections.take().reallyClose();
             } catch (InterruptedException e) {
+                // FIXME: 01.12.2019 add logger
                 e.printStackTrace();
             }
             deregisterDrivers();

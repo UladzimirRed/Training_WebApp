@@ -1,7 +1,6 @@
 package by.epam.training.service.impl;
 
 import by.epam.training.connection.ConnectionPool;
-import by.epam.training.connection.ProxyConnection;
 import by.epam.training.dao.impl.UserDaoImpl;
 import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
@@ -34,12 +33,16 @@ public class UserServiceImpl implements UserService {
             if (userDao.userExists(user.getLogin())) {
                 throw new UserExistsException("User with this login already exists");
             }
-            userDao.register(user);
-            return userDao.findUserByLogin(user.getLogin());
+            if (user.getTransport() == null){
+                userDao.registerCustomer(user);
+                return userDao.findCustomerByLogin(user.getLogin());
+            } else {
+                userDao.registerCourier(user);
+                return userDao.findCourierByLogin(user.getLogin());
+            }
+
         } catch (DaoException e) {
             throw new ServiceException(e);
-        } finally {
-
         }
     }
 

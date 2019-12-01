@@ -8,6 +8,7 @@
 
     <fmt:message bundle="${locale}" key="locale.lang.text.english" var="en"/>
     <fmt:message bundle="${locale}" key="locale.lang.text.russian" var="ru"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.online" var="online"/>
     <fmt:message bundle="${locale}" key="locale.user.button.signIn" var="signIn"/>
     <fmt:message bundle="${locale}" key="locale.user.button.logout" var="logout"/>
 
@@ -43,7 +44,7 @@
                 </form>
             </c:when>
             <c:otherwise>
-                <span class="header-text">${sessionScope.user.login} в сети</span>
+                <span class="header-text">${sessionScope.user.login} ${online}</span>
                 <form action="controller" method="post">
                     <input type="hidden" name="command" value="logout">
                     <input class="signIn-button" type="submit" value="${logout}">

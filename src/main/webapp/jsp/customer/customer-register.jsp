@@ -32,7 +32,7 @@
 </header>
 <c:choose>
     <c:when test="${not empty sessionScope.user}">
-        <jsp:forward page="../main.jsp"/>
+        <jsp:forward page="customer-main.jsp"/>
     </c:when>
 </c:choose>
 <main class="main-form">

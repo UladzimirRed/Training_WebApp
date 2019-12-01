@@ -2,12 +2,10 @@ package by.epam.training.dao.impl;
 
 import by.epam.training.connection.ConnectionPool;
 import by.epam.training.connection.ProxyConnection;
-import by.epam.training.dao.BaseDao;
-import by.epam.training.entity.Role;
-import by.epam.training.entity.Transport;
-import by.epam.training.entity.User;
+import by.epam.training.dao.AdminDao;
+import by.epam.training.entity.*;
 import by.epam.training.exception.DaoException;
-import by.epam.training.util.SqlRequest;
+import by.epam.training.dao.SqlRequest;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,13 +13,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminDaoImpl implements BaseDao<User> {
+public class AdminDaoImpl implements AdminDao {
     private final ConnectionPool pool;
 
     public AdminDaoImpl() {
         pool = ConnectionPool.getInstance();
     }
 
+    @Override
     public List<User> selectUserList() throws DaoException {
         PreparedStatement preparedStatement = null;
         ProxyConnection connection = null;
@@ -44,9 +43,59 @@ public class AdminDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
+    public User selectCurrentUser(int userId) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet;
+        User user = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_FIND_CURRENT_USER);
+            preparedStatement.setInt(1, userId);
+            resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                user = createUserFromQueryResult(resultSet);
+            }
+            return user;
+        } catch (SQLException e) {
+            throw new DaoException();
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+    @Override
+    public void changeUserInfo(int userId, String login, RoleType role, Transport transport, double rating) {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+//            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+
+
     private User createUserListFromResultSet(ResultSet resultSet) throws SQLException {
         User user = new User(resultSet.getInt(1), resultSet.getString(2),
-                Role.getRoleByString(resultSet.getString(3)),
+                RoleType.getRoleByString(resultSet.getString(3)),
+                Transport.getTransportByString(resultSet.getString(4)),
+                resultSet.getDouble(5));
+        return user;
+    }
+
+    private User createUserFromQueryResult(ResultSet resultSet) throws SQLException {
+        User user;
+        user = new User(resultSet.getInt(1), resultSet.getString(2),
+                RoleType.getRoleByString(resultSet.getString(3)),
                 Transport.getTransportByString(resultSet.getString(4)),
                 resultSet.getDouble(5));
         return user;

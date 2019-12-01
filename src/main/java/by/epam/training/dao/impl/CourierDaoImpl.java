@@ -2,13 +2,13 @@ package by.epam.training.dao.impl;
 
 import by.epam.training.connection.ConnectionPool;
 import by.epam.training.connection.ProxyConnection;
-import by.epam.training.dao.BaseDao;
+import by.epam.training.dao.CourierDao;
 import by.epam.training.entity.Order;
 import by.epam.training.entity.OrderStatus;
 import by.epam.training.entity.Transport;
 import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
-import by.epam.training.util.SqlRequest;
+import by.epam.training.dao.SqlRequest;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CourierDaoImpl implements BaseDao<User> {
+public class CourierDaoImpl implements CourierDao {
 
     private final ConnectionPool pool;
 
@@ -24,6 +24,7 @@ public class CourierDaoImpl implements BaseDao<User> {
         pool = ConnectionPool.getInstance();
     }
 
+    @Override
     public List<Order> selectAvailableDelivery(User courier) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -47,6 +48,7 @@ public class CourierDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
     public void changeOrderStatusToProcessing(int orderId, User courier) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -64,6 +66,7 @@ public class CourierDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
     public List<Order> selectProcessingDelivery(User courier) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -87,6 +90,7 @@ public class CourierDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
     public void changeOrderStatusToComplete(int orderId, User courier) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -104,18 +108,7 @@ public class CourierDaoImpl implements BaseDao<User> {
         }
     }
 
-    private Order createCourierDeliveryFromQueryResult(ResultSet resultSet) throws SQLException {
-        User user = new User();
-        Order order;
-        user.setLogin(resultSet.getString(3));
-        String userLogin = user.getLogin();
-        order = new Order(resultSet.getInt(1), resultSet.getString(2), new User(userLogin),
-                resultSet.getDouble(4), resultSet.getInt(5), resultSet.getBoolean(6),
-                Transport.getTransportByString(resultSet.getString(7)),
-                OrderStatus.getOrderStatusByString(resultSet.getString(8)));
-        return order;
-    }
-
+    @Override
     public List<Order> selectCompleteDelivery(User courier) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -137,5 +130,17 @@ public class CourierDaoImpl implements BaseDao<User> {
             close(preparedStatement);
             pool.releaseConnection(connection);
         }
+    }
+
+    private Order createCourierDeliveryFromQueryResult(ResultSet resultSet) throws SQLException {
+        User user = new User();
+        Order order;
+        user.setLogin(resultSet.getString(3));
+        String userLogin = user.getLogin();
+        order = new Order(resultSet.getInt(1), resultSet.getString(2), new User(userLogin),
+                resultSet.getDouble(4), resultSet.getInt(5), resultSet.getBoolean(6),
+                Transport.getTransportByString(resultSet.getString(7)),
+                OrderStatus.getOrderStatusByString(resultSet.getString(8)));
+        return order;
     }
 }

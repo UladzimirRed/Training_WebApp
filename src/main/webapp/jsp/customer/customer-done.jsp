@@ -13,6 +13,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.toRate" var="toRate"/>
+    <fmt:message bundle="${locale}" key="locale.courier.text.completedOrders" var="completedOrders"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.refresh" var="refresh"/>
 
@@ -26,7 +27,7 @@
 <main>
     <div class="main-form">
         <div class="table-container-head">
-            <h2>DONE DELIVERY</h2>
+            <h2>${completedOrders}</h2>
             <br>
             <table class="head-table">
                 <tr>
@@ -61,7 +62,7 @@
         </div>
         <div class="horizontal-button-container">
             <form action="controller" name="refreshOrder" method="POST">
-                <input type="hidden" name="command" value="show_active_order_command">
+                <input type="hidden" name="command" value="show_done_order_command">
                 <input type="submit" value="${refresh}" class="join-us-button">
             </form>
             <form action="customer-main">

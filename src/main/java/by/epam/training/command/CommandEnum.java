@@ -1,10 +1,11 @@
 package by.epam.training.command;
 
-import by.epam.training.command.impl.*;
-import by.epam.training.command.impl.admin.ShowUserListCommand;
-import by.epam.training.command.impl.courier.*;
-import by.epam.training.command.impl.ChangePasswordCommand;
-import by.epam.training.command.impl.customer.*;
+import by.epam.training.command.admin.ConfirmChangeCommand;
+import by.epam.training.command.admin.EditUserCommand;
+import by.epam.training.command.admin.ShowUserListCommand;
+import by.epam.training.command.courier.*;
+import by.epam.training.command.user.*;
+import by.epam.training.command.customer.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +29,9 @@ public enum CommandEnum {
     COMPLETE_ORDER_COMMAND(new CompleteOrderCommand()),
     SHOW_PROCESSING_ORDER_COMMAND(new ShowProcessingOrderCommand()),
     SHOW_COMPLETED_ORDER_COMMAND(new ShowCompletedOrderCommand()),
-    SHOW_USER_LIST_COMMAND(new ShowUserListCommand());
+    SHOW_USER_LIST_COMMAND(new ShowUserListCommand()),
+    EDIT_USER_COMMAND(new EditUserCommand()),
+    CONFIRM_CHANGE_COMMAND(new ConfirmChangeCommand());
 
     private static final Map<String, CommandEnum> commands = new HashMap<>();
 

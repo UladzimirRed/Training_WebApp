@@ -2,13 +2,13 @@ package by.epam.training.dao.impl;
 
 import by.epam.training.connection.ConnectionPool;
 import by.epam.training.connection.ProxyConnection;
-import by.epam.training.dao.BaseDao;
+import by.epam.training.dao.CustomerDao;
 import by.epam.training.entity.Order;
 import by.epam.training.entity.OrderStatus;
 import by.epam.training.entity.Transport;
 import by.epam.training.entity.User;
 import by.epam.training.exception.DaoException;
-import by.epam.training.util.SqlRequest;
+import by.epam.training.dao.SqlRequest;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomerDaoImpl implements BaseDao<User> {
+public class CustomerDaoImpl implements CustomerDao {
 
     private final ConnectionPool pool;
 
@@ -24,6 +24,7 @@ public class CustomerDaoImpl implements BaseDao<User> {
         pool = ConnectionPool.getInstance();
     }
 
+    @Override
     public void makeOrder(Order order) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -45,6 +46,7 @@ public class CustomerDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
     public List<Order> selectActiveDelivery(int userId) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -68,6 +70,7 @@ public class CustomerDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
     public List<Order> selectCompleteDelivery(int userId) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -91,6 +94,7 @@ public class CustomerDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
     public Order selectCurrentDelivery(int orderId) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -113,6 +117,7 @@ public class CustomerDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
     public double selectCourierRating(String courierLogin) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -135,6 +140,7 @@ public class CustomerDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
     public void wrightCourierRating (String courierLogin, double updatedRating) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
@@ -152,6 +158,7 @@ public class CustomerDaoImpl implements BaseDao<User> {
         }
     }
 
+    @Override
     public void changeOrderStatusToRated(int orderId) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
