@@ -6,31 +6,31 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.message.welcome" var="welcome"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.personalArea" var="personalArea"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.user.button.showUserList" var="showUserList"/>
+    <fmt:message bundle="${locale}" key="locale.admin.text.changesAccepted" var="changesAccepted"/>
 
     <link rel="stylesheet" href="./css/style.css">
-    <title>Hi daddy!</title>
+    <title>Rating</title>
 </head>
 <body>
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
-    <div>
-        <br>
-        <p>${welcome}, ${sessionScope.user.login}</p>
-    </div>
-    <div class="navigation-bar">
-        <form action="admin-area">
-            <input type="submit" value="${personalArea}" class="common-button">
+    <br>
+    <h2>${changesAccepted}</h2>
+    <br>
+    <div class="horizontal-button-container">
+        <form action="admin-main">
+            <input type="submit" value="${personalRoom}" class="common-button">
         </form>
         <form action="controller">
             <input type="hidden" name="command" value="show_user_list_command">
             <input type="submit" value="${showUserList}" class="common-button">
         </form>
     </div>
+
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

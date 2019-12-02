@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
     public User changePassword(String login, String oldPassword, String newPassword) throws ServiceException {
         User user = new User(login, oldPassword);
         try {
-            return userDao.changeUserPassword(user, newPassword);
+            return userDao.updateUserPassword(user, newPassword);
         } catch (DaoException e){
             throw new ServiceException(e);
         }

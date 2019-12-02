@@ -67,22 +67,96 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public void changeUserInfo(int userId, String login, RoleType role, Transport transport, double rating) {
+    public void updateUserLogin(int userId, String currentLogin) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
         try {
             connection = pool.takeConnection();
-
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_CHANGE_USER_LOGIN);
+            preparedStatement.setString(1, currentLogin);
+            preparedStatement.setInt(2, userId);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
-//            throw new DaoException(e);
+            throw new DaoException(e);
         } finally {
             close(preparedStatement);
             pool.releaseConnection(connection);
         }
     }
 
+    @Override
+    public void updateUserRole(int userId, int roleId) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_CHANGE_USER_ROLE);
+            preparedStatement.setInt(1, roleId);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
 
+    @Override
+    public void updateUserTransport(int userId, int transportId) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_CHANGE_USER_TRANSPORT);
+            preparedStatement.setInt(1, transportId);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+    @Override
+    public void updateUserRating(int userId, double rating) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_CHANGE_USER_RATING);
+            preparedStatement.setDouble(1, rating);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
+
+    @Override
+    public void resetUserInfo(int userId) throws DaoException {
+        ProxyConnection connection = null;
+        PreparedStatement preparedStatement = null;
+        try {
+            connection = pool.takeConnection();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_RESET_USER_TRANSPORT);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+            preparedStatement = connection.prepareStatement(SqlRequest.SQL_RESET_USER_RATING);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        } finally {
+            close(preparedStatement);
+            pool.releaseConnection(connection);
+        }
+    }
 
     private User createUserListFromResultSet(ResultSet resultSet) throws SQLException {
         User user = new User(resultSet.getInt(1), resultSet.getString(2),

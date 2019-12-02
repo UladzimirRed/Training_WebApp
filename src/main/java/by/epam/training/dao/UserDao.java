@@ -10,6 +10,6 @@ public interface UserDao extends BaseDao<User> {
     boolean userExists(String login) throws DaoException;
     User findCourierByLogin(String login) throws DaoException;
     User findCustomerByLogin(String login) throws DaoException;
-    User changeUserPassword(User user, String newPassword) throws DaoException;
+    User updateUserPassword(User user, String newPassword) throws DaoException;
     boolean userMatches(String login, String password) throws DaoException;
 }

@@ -141,7 +141,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User changeUserPassword(User user, String newPassword) throws DaoException {
+    public User updateUserPassword(User user, String newPassword) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
         try {

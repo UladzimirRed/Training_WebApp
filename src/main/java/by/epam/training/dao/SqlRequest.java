@@ -135,4 +135,17 @@ public class SqlRequest {
                     "LEFT JOIN transport " +
                     "ON user.transport_id = transport.transport_id " +
                     "WHERE user_id = ?";
+    public static final String SQL_CHANGE_USER_LOGIN =
+            "UPDATE user SET login = ? WHERE user_id = ?";
+    public static final String SQL_CHANGE_USER_ROLE =
+            "UPDATE user SET role_id = ? WHERE user_id = ?";
+    public static final String SQL_CHANGE_USER_TRANSPORT =
+            "UPDATE user SET transport_id = ? WHERE user_id = ?";
+    public static final String SQL_CHANGE_USER_RATING =
+            "UPDATE user SET rating = ? WHERE user_id = ?";
+    public static final String SQL_RESET_USER_TRANSPORT =
+            "UPDATE user SET transport_id = NULL WHERE user_id = ?";
+    public static final String SQL_RESET_USER_RATING =
+            "UPDATE user SET rating = 0.00 WHERE user_id = ?";
+
 }

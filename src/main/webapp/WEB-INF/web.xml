@@ -257,6 +257,15 @@
         <url-pattern>/edit-user</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>Change-success</servlet-name>
+        <jsp-file>/jsp/admin/change-success.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Change-success</servlet-name>
+        <url-pattern>/change-success</url-pattern>
+    </servlet-mapping>
+
     <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
