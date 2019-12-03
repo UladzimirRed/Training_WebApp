@@ -34,6 +34,7 @@
             <div>
                 <br>
                 <h2>${newOrder}</h2>
+                <br>
             </div>
             <div class="logIn-form-box-2">
                 <span class="form-label">${subjectOfTransportation}</span>
@@ -51,7 +52,7 @@
                     <input type="checkbox" name="rate" value="true">${rate}
                 </label>
                 <br>
-                <span class="form-label">${distance}</span>
+                <span class="form-label">${distance} *</span>
                 <input class="login-form-text"
                        type="number"
                        name="distance"

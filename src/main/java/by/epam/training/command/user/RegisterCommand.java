@@ -23,6 +23,7 @@ public class RegisterCommand implements ActionCommand {
     @Override
     //todo make return as in login
     public String execute(HttpServletRequest request) {
+        String page;
         String login = request.getParameter(JspAttribute.LOGIN);
         String password = request.getParameter(JspAttribute.PASSWORD);
         String confirmPassword = request.getParameter(JspAttribute.CONFIRM_PASSWORD);
@@ -30,32 +31,42 @@ public class RegisterCommand implements ActionCommand {
         RoleType role = RoleType.getRoleByString(request.getParameter(JspAttribute.ROLE));
         HttpSession session = request.getSession();
         try {
-            if (!password.equals(confirmPassword)) {
-                request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.PASSWORD_DOES_NOT_MATCH);
-                return JspAddress.REGISTER_PAGE;
-            }
-            User user;
-            if (transport == null){
-                user = new User(login, password, role);
-            } else {
-                user = new User(login, password, role, transport);
-            }
-            UserServiceImpl service = new UserServiceImpl();
-            User resultUser = service.register(user);
-            session.setAttribute(JspAttribute.USER, resultUser);
+            if (password.equals(confirmPassword)) {
+                User user;
+                if (transport == null){
+                    user = new User(login, password, role);
+                } else {
+                    user = new User(login, password, role, transport);
+                }
+                UserServiceImpl service = new UserServiceImpl();
+                User resultUser = service.register(user);
+                session.setAttribute(JspAttribute.USER, resultUser);
 
-            if (resultUser.getRole().equals(JspAttribute.CUSTOMER)) {
-                return JspAddress.CUSTOMER_MAIN;
+                if (resultUser.getRole().equals(JspAttribute.CUSTOMER)) {
+                    page = JspAddress.CUSTOMER_MAIN;
+                } else {
+                    page = JspAddress.COURIER_MAIN;
+                }
             } else {
-                return JspAddress.COURIER_MAIN;
+                request.setAttribute(JspAttribute.PASSWORD_DOES_NOT_MATCH, JspAttribute.PASSWORD_DOES_NOT_MATCH);
+                if (transport == null){
+                    page = JspAddress.REGISTER_CUSTOMER;
+                } else {
+                    page = JspAddress.REGISTER_COURIER;
+                }
             }
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
-            return JspAddress.ERROR_PAGE;
+            page = JspAddress.ERROR_PAGE;
         } catch (UserExistsException e) {
-            logger.log(Level.ERROR, e);
-            request.setAttribute(JspAttribute.DATA_EXISTS, JspAttribute.USER_EXISTS);
-            return JspAddress.REGISTER_PAGE;
+            logger.log(Level.INFO, e);
+            request.setAttribute(JspAttribute.USER_EXIST, JspAttribute.USER_EXIST);
+            if (transport == null){
+                page = JspAddress.REGISTER_CUSTOMER;
+            } else {
+                page = JspAddress.REGISTER_COURIER;
+            }
         }
+        return page;
     }
 }

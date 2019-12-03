@@ -20,7 +20,7 @@ public class LoginCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) {
         HttpSession session = request.getSession();
-        String page = null;
+        String page;
         String login = request.getParameter(JspAttribute.PARAM_NAME_LOGIN);
         String password = request.getParameter(JspAttribute.PARAM_NAME_PASSWORD);
         try {
@@ -39,7 +39,11 @@ public class LoginCommand implements ActionCommand {
                         page = JspAddress.ADMIN_MAIN;
                 }
             } else {
-                request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_DATA);
+                if(login.equals("") || password.equals("")){
+                    request.setAttribute(JspAttribute.EMPTY_FIELDS, JspAttribute.EMPTY_FIELDS);
+                } else {
+                    request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_DATA);
+                }
                 page = JspAddress.LOGIN_PAGE;
             }
         } catch (ServiceException e) {

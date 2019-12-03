@@ -11,8 +11,15 @@
     <fmt:message bundle="${locale}" key="locale.customer.label.newPass" var="newPass"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.newPassAgain" var="newPassAgain"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
-    <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
+    <fmt:message bundle="${locale}" key="locale.message.wrongOldPassword" var="wrongOldPassword"/>
     <fmt:message bundle="${locale}" key="locale.message.changedPassword" var="changedPassword"/>
+    <fmt:message bundle="${locale}" key="locale.message.passwordsMustNotMatch" var="passwordsMustNotMatch"/>
+    <fmt:message bundle="${locale}" key="locale.message.passwordDoesNotMatch" var="passwordDoesNotMatch"/>
+    <fmt:message bundle="${locale}" key="locale.user.placeholder.enterYourPassword" var="enterYourPassword"/>
+    <fmt:message bundle="${locale}" key="locale.user.placeholder.confirmYourPassword" var="confirmYourPassword"/>
+    <fmt:message bundle="${locale}" key="locale.user.title.loginRegex" var="loginRegex"/>
+    <fmt:message bundle="${locale}" key="locale.user.title.passwordRegex" var="passwordRegex"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Change password</title>
@@ -22,50 +29,91 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
-    <div>
+    <div class="change-password-form-box">
         <form action="controller" name="changePasswordForm" method="POST">
             <input type="hidden" name="command" value="change_password"/>
             <div>
+                <br>
                 <h2>${ifYouWantChangePass}</h2>
+                <br>
+                <br>
             </div>
-            <div class="logIn-form-box-2">
-                <p class="user-area-label">${oldPass}</p>
+            <div class="change-password-form-box">
+                <span class="user-area-label">${oldPass} *</span>
                 <input class="login-form-password"
                        type="password"
                        name="oldPassword"
                        maxlength="32"
-                       pattern="[^<>]{4,}"
-                       value=""/>
-                <p class="user-area-label">${newPass}</p>
+                       pattern="^[\w_]{4,32}$"
+                       title="${passwordRegex}"
+                       value=""
+                       placeholder="${enterYourPassword}"
+                       required/>
+                <span class="user-area-label">${newPass} *</span>
                 <input class="login-form-password"
                        type="password"
                        name="newPassword"
                        maxlength="32"
-                       pattern="[^<>]{4,}"
-                       value=""/>
-                <p class="user-area-label">${newPassAgain}</p>
+                       pattern="^[\w_]{4,32}$"
+                       title="${passwordRegex}"
+                       value=""
+                       placeholder="${enterYourPassword}"
+                       required/>
+                <span class="user-area-label">${newPassAgain} *</span>
                 <input class="login-form-password"
                        type="password"
                        name="confirmPassword"
                        maxlength="32"
-                       pattern="[^<>]{4,}"
+                       pattern="^[\w_]{4,32}$"
+                       title="${passwordRegex}"
                        value=""
-                       onkeyup="checkPass()"/>
+                       onkeyup="checkPass()"
+                       placeholder="${confirmYourPassword}"
+                       required/>
                 <input type="submit" value="${changePass}" class="login-form-button">
-                <div>
-                    <c:choose>
-                        <c:when test="${not empty requestScope.wrongData}">
-                            ${wrongCredentials}
-                        </c:when>
-                    </c:choose>
-                    <c:choose>
-                        <c:when test="${not empty requestScope.message}">
-                            ${changedPassword}
-                        </c:when>
-                    </c:choose>
-                </div>
             </div>
         </form>
+        <div class="change-password-form-box">
+            <c:choose>
+                <c:when test="${sessionScope.user.role == 'CUSTOMER'}">
+                    <form action="customer-main">
+                        <input type="submit" value="${personalRoom}" class="common-button">
+                    </form>
+                </c:when>
+                <c:when test="${sessionScope.user.role == 'COURIER'}">
+                    <form action="courier-main">
+                        <input type="submit" value="${personalRoom}" class="common-button">
+                    </form>
+                </c:when>
+                <c:otherwise>
+                    <form action="admin-main">
+                        <input type="submit" value="${personalRoom}" class="common-button">
+                    </form>
+                </c:otherwise>
+            </c:choose>
+        </div>
+        <div class="login-form-message">
+            <c:choose>
+                <c:when test="${not empty requestScope.wrongData}">
+                    ${wrongOldPassword}
+                </c:when>
+            </c:choose>
+            <c:choose>
+                <c:when test="${not empty requestScope.message}">
+                    ${changedPassword}
+                </c:when>
+            </c:choose>
+            <c:choose>
+                <c:when test="${not empty requestScope.passwordDoesNotMatch}">
+                    ${passwordDoesNotMatch}
+                </c:when>
+            </c:choose>
+            <c:choose>
+                <c:when test="${not empty requestScope.passwordsEquals}">
+                    ${passwordsMustNotMatch}
+                </c:when>
+            </c:choose>
+        </div>
     </div>
 </main>
 <footer>

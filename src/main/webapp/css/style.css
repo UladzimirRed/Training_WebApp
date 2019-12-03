@@ -39,7 +39,9 @@ td {
     transition: .3s linear;
 }
 
-tr:hover td {color: #ffd21f}
+tr:hover td {
+    color: #ffd21f
+}
 
 p {
     text-align: left;
@@ -145,7 +147,7 @@ p {
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 75vh;
+    height: 60vh;
     background-color: #23283a;
 }
 
@@ -246,8 +248,10 @@ p {
     font-size: 20px;
 }
 
-.change-pass-button {
-    align-self: flex-end;
+.change-password-form-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .table-container-body {

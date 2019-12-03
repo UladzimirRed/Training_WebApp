@@ -7,12 +7,11 @@
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.customer.text.yourPersonalArea" var="yourPersonalArea"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.accountId" var="accountId"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.updateData" var="updateData"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.myBalance" var="myBalance"/>
-
 
 
     <link rel="stylesheet" href="./css/style.css">
@@ -37,10 +36,10 @@
             </div>
         </div>
         <form action="change-password">
-            <input type="submit" value="${changePass}" class="join-us-button"/>
+            <input type="submit" value="${changePass}" class="common-button"/>
         </form>
-        <form action="customer-balance">
-            <input type="submit" value="${myBalance}" class="join-us-button">
+        <form action="customer-main">
+            <input type="submit" value="${personalRoom}" class="common-button">
         </form>
     </div>
 </main>

@@ -16,7 +16,7 @@
 </head>
 <body>
 <header>
-    <jsp:include page="/jsp/header.jsp"/>
+    <jsp:include page="/jsp/header-home.jsp"/>
 </header>
 <main class="main-form">
     <div class="welcome-box">
@@ -26,14 +26,13 @@
         <c:choose>
             <c:when test="${empty sessionScope.user.role}">
                 <div class="horizontal-button-container">
-                    <form action="courier-register">
-                        <input class="join-us-button" type="submit" value="${joinAsCourier}">
-                    </form>
                     <form action="customer-register">
                         <input class="join-us-button" type="submit" value="${joinAsCustomer}">
                     </form>
+                    <form action="courier-register">
+                        <input class="join-us-button" type="submit" value="${joinAsCourier}">
+                    </form>
                 </div>
-
             </c:when>
             <c:when test="${sessionScope.user.role == 'CUSTOMER'}">
                 <form action="customer-main">

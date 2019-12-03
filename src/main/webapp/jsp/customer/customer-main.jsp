@@ -32,7 +32,7 @@
         <form action="new-order">
             <input type="submit" value="${newOrder}" class="common-button">
         </form>
-        <form action="controller" name="myDeliveryForm" method="POST">
+        <form action="controller" name="myDeliveryForm" method="GET">
             <input type="hidden" name="command" value="show_active_order_command">
             <input type="submit" value="${myDelivery}" class="common-button">
         </form>

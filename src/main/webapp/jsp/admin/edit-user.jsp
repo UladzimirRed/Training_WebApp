@@ -23,6 +23,8 @@
     <fmt:message bundle="${locale}" key="locale.user.text.car" var="car"/>
     <fmt:message bundle="${locale}" key="locale.user.text.withoutTransport" var="withoutTransport"/>
     <fmt:message bundle="${locale}" key="locale.user.button.back" var="back"/>
+    <fmt:message bundle="${locale}" key="locale.user.title.loginRegex" var="loginRegex"/>
+    <fmt:message bundle="${locale}" key="locale.message.userExist" var="userExist"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Edit user</title>
@@ -42,7 +44,13 @@
                 <span class="form-label">${login}: </span>
                 <input class="login-form-text"
                        name="currentLogin"
-                       value="${sessionScope.currentUser.login}">
+                       value="${sessionScope.currentUser.login}"
+                       maxlength="16"
+                       pattern="^[\w_]{4,16}$"
+                       title="${loginRegex}"
+                       value=""
+                       placeholder="${myUserNameIs}"
+                       required/>
                 <input type="submit" value="${changeLogin}" class="join-us-button">
             </form>
             <form action="controller" name="changeRole" method="POST">
@@ -119,6 +127,13 @@
                 <form>
                     <input type="button" value="${back}" class="join-us-button" onclick="history.back()">
                 </form>
+            </div>
+            <div class="login-form-message">
+                <c:choose>
+                    <c:when test="${not empty requestScope.userExist}">
+                        ${userExist}
+                    </c:when>
+                </c:choose>
             </div>
         </div>
     </div>

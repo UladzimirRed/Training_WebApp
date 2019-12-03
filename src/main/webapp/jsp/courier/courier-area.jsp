@@ -8,12 +8,12 @@
 
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
     <fmt:message bundle="${locale}" key="locale.user.label.rating" var="rating"/>
-    <fmt:message bundle="${locale}" key="locale.user.button.back" var="back"/>
+    <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.customer.text.yourPersonalArea" var="yourPersonalArea"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.accountId" var="accountId"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.updateData" var="updateData"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.myBalance" var="myBalance"/>
+
     
     <link rel="stylesheet" href="./css/style.css">
     <title>Personal area</title>
@@ -42,8 +42,8 @@
         <form action="change-password">
             <input type="submit" value="${changePass}" class="join-us-button"/>
         </form>
-        <form>
-            <input type="button" value="${back}" class="join-us-button" onclick="history.back()">
+        <form action="courier-main">
+            <input type="submit" value="${personalRoom}" class="common-button">
         </form>
     </div>
 </main>

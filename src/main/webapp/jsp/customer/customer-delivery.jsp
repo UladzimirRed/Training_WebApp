@@ -52,14 +52,14 @@
             </table>
         </div>
         <div class="horizontal-button-container">
-            <form action="controller" name="refreshOrder" method="POST">
+            <form action="controller" name="refreshOrder" method="GET">
                 <input type="hidden" name="command" value="show_active_order_command">
                 <input type="submit" value="${refresh}" class="join-us-button">
             </form>
             <form action="customer-main">
                 <input class="join-us-button" type="submit" value="${personalRoom}">
             </form>
-            <form action="controller" name="doneOrder" method="POST">
+            <form action="controller" name="doneOrder" method="GET">
                 <input type="hidden" name="command" value="show_done_order_command">
                 <input type="submit" value="${rateCompletedOrders}" class="join-us-button">
             </form>

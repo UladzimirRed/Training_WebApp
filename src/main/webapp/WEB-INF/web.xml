@@ -96,15 +96,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>Customer-balance</servlet-name>
-        <jsp-file>/jsp/customer/customer-balance.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Customer-balance</servlet-name>
-        <url-pattern>/customer-balance</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>Customer-delivery</servlet-name>
         <jsp-file>/jsp/customer/customer-delivery.jsp</jsp-file>
     </servlet>

@@ -6,6 +6,7 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
+    <%--    fixme do something with locale--%>
     <fmt:message bundle="${locale}" key="locale.user.text.listOfUsers" var="listOfUsers"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.orderId" var="orderId"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.courierName" var="courierName"/>

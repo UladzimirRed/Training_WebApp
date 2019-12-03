@@ -28,8 +28,8 @@ public class ChangeLoginCommand implements ActionCommand {
             return JspAddress.ERROR_PAGE;
         } catch (UserExistsException e) {
             logger.log(Level.ERROR, e);
-            request.setAttribute(JspAttribute.DATA_EXISTS, JspAttribute.USER_EXISTS);
-            return JspAddress.REGISTER_PAGE;
+            request.setAttribute(JspAttribute.USER_EXIST, JspAttribute.USER_EXIST);
+            return JspAddress.EDIT_USER;
         }
     }
 }

@@ -6,6 +6,8 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
+    <fmt:message bundle="${locale}" key="locale.lang.text.english" var="en"/>
+    <fmt:message bundle="${locale}" key="locale.lang.text.russian" var="ru"/>
     <fmt:message bundle="${locale}" key="locale.user.text.online" var="online"/>
     <fmt:message bundle="${locale}" key="locale.user.button.signIn" var="signIn"/>
     <fmt:message bundle="${locale}" key="locale.user.button.logout" var="logout"/>
@@ -22,6 +24,16 @@
             <input type="image" src="./assets/logo.png" alt="#" width="350" height="93.75">
         </div>
     </form>
+    <div class="lang-button-box">
+        <form action="controller">
+            <input type="hidden" name="command" value="locale"/>
+            <input class="lang-button" type="submit" name="lang" value=${en}>
+        </form>
+        <form action="controller">
+            <input type="hidden" name="command" value="locale"/>
+            <input class="lang-button" type="submit" name="lang" value=${ru}>
+        </form>
+    </div>
     <div class="sign-box">
 
         <c:choose>

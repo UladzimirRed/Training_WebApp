@@ -19,7 +19,6 @@ public class ChangePasswordCommand implements ActionCommand {
 
     @Override
     public String execute(HttpServletRequest request) {
-
         if (AccessChecker.checkForNullSession(request)) {
             return JspAddress.LOGIN_PAGE;
         }
@@ -31,21 +30,25 @@ public class ChangePasswordCommand implements ActionCommand {
         String newPassword = request.getParameter(JspAttribute.NEW_PASSWORD);
         String confirmPassword = request.getParameter(JspAttribute.CONFIRM_PASSWORD);
         try {
-            if (!newPassword.equals(confirmPassword)) {
-                request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.PASSWORD_DOES_NOT_MATCH);
-            }
-            UserServiceImpl service = new UserServiceImpl();
-            User user = service.changePassword(login, oldPassword, newPassword);
-            if (user != null) {
-                session.setAttribute(JspAttribute.USER, user);
-                request.setAttribute(JspAttribute.MESSAGE, JspAttribute.CHANGED_PASSWORD);
+            if(!oldPassword.equals(newPassword)){
+                if (newPassword.equals(confirmPassword)) {
+                    UserServiceImpl service = new UserServiceImpl();
+                    User user = service.changePassword(login, oldPassword, newPassword);
+                    if (user != null) {
+                        session.setAttribute(JspAttribute.USER, user);
+                        request.setAttribute(JspAttribute.MESSAGE, JspAttribute.CHANGED_PASSWORD);
+                    } else {
+                        request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_PASSWORD);
+                    }
+                } else {
+                    request.setAttribute(JspAttribute.PASSWORD_DOES_NOT_MATCH, JspAttribute.PASSWORD_DOES_NOT_MATCH);
+                }
             } else {
-                request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_PASSWORD);
+                request.setAttribute(JspAttribute.PASSWORDS_EQUALS, JspAttribute.PASSWORDS_EQUALS);
             }
             page = JspAddress.CHANGE_PASSWORD;
         } catch (ServiceException e) {
             logger.log(Level.ERROR, e);
-            request.setAttribute(JspAttribute.MESSAGE, JspAttribute.CHANGED_PASSWORD);
             page = JspAddress.CHANGE_PASSWORD;
         }
         session.setAttribute(JspAttribute.PAGE, page);

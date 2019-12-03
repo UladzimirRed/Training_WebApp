@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
@@ -32,8 +32,9 @@
     <div>
         <form action="controller" name="newOrder" method="POST">
             <input type="hidden" name="command" value="new_order_command"/>
-                <br>
-                <h2>${confirmOrder}</h2>
+            <br>
+            <h2>${confirmOrder}</h2>
+            <br>
             <div class="logIn-form-box-3">
                 <span class="form-label">${subject}: </span>
                 <input class="login-form-text"
@@ -41,51 +42,52 @@
                        value="${sessionScope.order.subject}"
                        readonly>
                 <span class="form-label">${transport}: </span>
-                    <c:choose>
-                        <c:when test="${sessionScope.order.transport == 'TRUCK'}">
-                            <input class="login-form-text"
-                                   name="transport"
-                                   value="${truck}"
-                                   readonly>
-                        </c:when>
-                        <c:when test="${sessionScope.order.transport == 'CAR'}">
-                            <input class="login-form-text"
-                                   name="transport"
-                                   value="${car}"
-                                   readonly>
-                        </c:when>
-                        <c:otherwise>
-                            <input class="login-form-text"
-                                   name="transport"
-                                   value="${withoutTransport}"
-                                   readonly>
-                        </c:otherwise>
-                    </c:choose>
-                    <span class="form-label">${rate}: </span>
-                    <c:choose>
-                        <c:when test="${sessionScope.order.rate == 'true'}">
-                            <input class="login-form-text"
-                                   name="total"
-                                   value="${yes}"
-                                   readonly>
-                        </c:when>
-                        <c:otherwise>
-                            <input class="login-form-text"
-                                   name="total"
-                                   value="${no}"
-                                   readonly>
-                        </c:otherwise>
-                    </c:choose>
+                <c:choose>
+                    <c:when test="${sessionScope.order.transport == 'TRUCK'}">
+                        <input class="login-form-text"
+                               name="transport"
+                               value="${truck}"
+                               readonly>
+                    </c:when>
+                    <c:when test="${sessionScope.order.transport == 'CAR'}">
+                        <input class="login-form-text"
+                               name="transport"
+                               value="${car}"
+                               readonly>
+                    </c:when>
+                    <c:otherwise>
+                        <input class="login-form-text"
+                               name="transport"
+                               value="${withoutTransport}"
+                               readonly>
+                    </c:otherwise>
+                </c:choose>
+                <span class="form-label">${rate}: </span>
+                <c:choose>
+                    <c:when test="${sessionScope.order.rate == 'true'}">
+                        <input class="login-form-text"
+                               name="total"
+                               value="${yes}"
+                               readonly>
+                    </c:when>
+                    <c:otherwise>
+                        <input class="login-form-text"
+                               name="total"
+                               value="${no}"
+                               readonly>
+                    </c:otherwise>
+                </c:choose>
                 <span class="form-label">${distance}: </span>
-                    <input class="login-form-text"
-                           name="total"
-                           value="${sessionScope.order.distance}km"
-                           readonly>
+                <input class="login-form-text"
+                       name="total"
+                       value="${sessionScope.order.distance}km"
+                       readonly>
                 <span class="form-label">${totalCost}: </span>
-                    <input class="login-form-text"
-                           name="total"
-                           value="${sessionScope.order.totalPrice} BYN"
-                           readonly>
+                <input class="login-form-text"
+                       name="total"
+                       value="${sessionScope.order.totalPrice} BYN"
+                       readonly>
+                <br>
                 <div class="horizontal-button-container">
                     <form>
                         <input type="button" value="${makeChanges}" onclick="history.back()" class="join-us-button">

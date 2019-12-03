@@ -8,6 +8,8 @@
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
     <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
+    <fmt:message bundle="${locale}" key="locale.message.passwordDoesNotMatch" var="passwordDoesNotMatch"/>
+    <fmt:message bundle="${locale}" key="locale.message.userExist" var="userExist"/>
     <fmt:message bundle="${locale}" key="locale.user.text.register" var="register"/>
     <fmt:message bundle="${locale}" key="locale.user.text.truck" var="truck"/>
     <fmt:message bundle="${locale}" key="locale.user.text.car" var="car"/>
@@ -22,6 +24,8 @@
     <fmt:message bundle="${locale}" key="locale.user.placeholder.myUserNameIs" var="myUserNameIs"/>
     <fmt:message bundle="${locale}" key="locale.user.placeholder.enterYourPassword" var="enterYourPassword"/>
     <fmt:message bundle="${locale}" key="locale.user.placeholder.confirmYourPassword" var="confirmYourPassword"/>
+    <fmt:message bundle="${locale}" key="locale.user.title.loginRegex" var="loginRegex"/>
+    <fmt:message bundle="${locale}" key="locale.user.title.passwordRegex" var="passwordRegex"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <script src="../../js/main.js"></script>
@@ -38,40 +42,44 @@
     </c:when>
 </c:choose>
 <main class="main-form">
-    <div>
-        <br/>
-        <h2>${register}</h2>
-    </div>
+    <br/>
+    <h2>${register}</h2>
     <div class="logIn-form-box-2">
         <form name="RegisterForm" method="POST" action="controller" class="login-form">
             <input type="hidden" name="command" value="register"/>
             <input type="hidden" name="role" value="courier"/>
-            <span class="form-label">${login}:</span>
+            <span class="form-label">${login} *</span>
             <input class="login-form-text"
                    type="text"
                    name="login"
-                   maxlength="32"
-                   pattern="[A-Za-z0-9._]{4,}"
+                   maxlength="16"
+                   pattern="^[\w_]{4,16}$"
+                   title="${loginRegex}"
                    value=""
-                   placeholder="${myUserNameIs}"/>
-            <span class="form-label">${password}:</span>
+                   placeholder="${myUserNameIs}"
+                   required/>
+            <span class="form-label">${password} *</span>
             <input class="login-form-password"
                    type="password"
                    name="password"
                    maxlength="32"
-                   pattern="[^<>]{4,}"
+                   pattern="^[\w_]{4,32}$"
+                   title="${passwordRegex}"
                    value=""
-                   placeholder="${enterYourPassword}"/>
-            <span class="form-label">${confirmPassword}</span>
+                   placeholder="${enterYourPassword}"
+                   required/>
+            <span class="form-label">${confirmPassword} *</span>
             <input class="login-form-password"
                    type="password"
                    name="confirmPassword"
                    maxlength="32"
-                   pattern="[^<>]{4,}"
+                   pattern="^[\w_]{4,32}$"
+                   title="${passwordRegex}"
                    value=""
                    onkeyup="checkPass()"
-                   placeholder="${confirmYourPassword}"/>
-            <span class="form-label">${transport}</span>
+                   placeholder="${confirmYourPassword}"
+                   required/>
+            <span class="form-label">${transport} *</span>
             <select class=form-dropdown name="transport">
                 <option class="form-option" value="Truck">${truck}</option>
                 <option class="form-option" value="Car">${car}</option>
@@ -82,6 +90,16 @@
                 <c:choose>
                     <c:when test="${not empty requestScope.wrongData}">
                         ${wrongCredentials}
+                    </c:when>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${not empty requestScope.passwordDoesNotMatch}">
+                        ${passwordDoesNotMatch}
+                    </c:when>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${not empty requestScope.userExist}">
+                        ${userExist}
                     </c:when>
                 </c:choose>
             </div>

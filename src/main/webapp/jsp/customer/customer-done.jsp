@@ -50,7 +50,7 @@
                         <td>${order.totalPrice}</td>
                         <td>${order.status}</td>
                         <td>
-                            <form action="controller">
+                            <form action="controller" method="GET">
                                 <input type="hidden" name="command" value="rate_order_command">
                                 <input type="hidden" name="orderId" value="${order.orderId}">
                                 <input type="submit" value="V" class="lang-button">
@@ -61,7 +61,7 @@
             </table>
         </div>
         <div class="horizontal-button-container">
-            <form action="controller" name="refreshOrder" method="POST">
+            <form action="controller" name="refreshOrder" method="GET">
                 <input type="hidden" name="command" value="show_done_order_command">
                 <input type="submit" value="${refresh}" class="join-us-button">
             </form>

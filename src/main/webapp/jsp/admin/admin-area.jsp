@@ -13,7 +13,6 @@
     <fmt:message bundle="${locale}" key="locale.customer.label.accountId" var="accountId"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.updateData" var="updateData"/>
-    <fmt:message bundle="${locale}" key="locale.customer.button.myBalance" var="myBalance"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Personal area</title>

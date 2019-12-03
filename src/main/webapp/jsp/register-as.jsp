@@ -23,7 +23,7 @@
         <br/>
         <h2>${howWantRegister}</h2>
     </div>
-    <div>
+    <div class="logIn-form-box horizontal-button-container">
         <form action="customer-register">
             <input class="join-us-button" type="submit" value="${asCustomer}">
         </form>
