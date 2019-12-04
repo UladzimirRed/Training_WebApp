@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Error Page</title>
+    <title>500 Error</title>
 </head>
 <body>
 <header>
@@ -11,10 +11,7 @@
 </header>
 <main class="main-form">
     <br>
-    <h2>ERROR 404 PAGE NOT FOUND</h2>
-    <form action="home">
-        <input type="submit" value="HOME" class="common-button">
-    </form>
+    <h2>ERROR 500 INTERNAL SERVER ERROR</h2>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

@@ -3,7 +3,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <title>Error Page</title>
+    <fmt:setLocale value="${sessionScope.local}"/>
+    <fmt:setBundle basename="locale.locale" var="locale"/>
+
+
+    <fmt:message bundle="${locale}" key="locale.user.button.home" var="home"/>
+
+    <title>404 Error</title>
 </head>
 <body>
 <header>
@@ -11,7 +17,12 @@
 </header>
 <main class="main-form">
     <br>
-    <h2>ERROR 500 INTERNAL SERVER ERROR</h2>
+    <h2>ERROR 404 PAGE NOT FOUND</h2>
+    <br>
+    <br>
+    <form action="home" class="center-button-container">
+        <input type="submit" value="HOME" class="common-button">
+    </form>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

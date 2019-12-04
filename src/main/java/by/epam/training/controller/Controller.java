@@ -4,6 +4,9 @@ import by.epam.training.command.ActionCommand;
 import by.epam.training.command.ActionFactory;
 import by.epam.training.command.JspAddress;
 import by.epam.training.command.JspAttribute;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +18,8 @@ import java.io.IOException;
 
 @WebServlet(name = "MainController", urlPatterns = {"/controller"})
 public class Controller extends HttpServlet {
+    private static Logger logger = LogManager.getLogger();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
@@ -24,8 +29,10 @@ public class Controller extends HttpServlet {
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        logger.log(Level.INFO, request.getRequestURI());
         String page;
         ActionCommand command = ActionFactory.defineCommand(request);
+        logger.log(Level.INFO, "Command: " + command + " work in controller");
         page = command.execute(request);
         if (!page.equals(JspAddress.ERROR_PAGE)) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);

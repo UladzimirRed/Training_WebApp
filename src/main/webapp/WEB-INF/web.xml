@@ -9,6 +9,12 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+    <jsp-cofig>
+        <taglib>
+            <taglib-uri>exchangeTags</taglib-uri>
+            <laglib-location>/WEB-INF/tld/custom.tld</laglib-location>
+        </taglib>
+    </jsp-cofig>
 
     <session-config>
         <session-timeout>30</session-timeout>
@@ -16,17 +22,12 @@
 
     <error-page>
         <error-code>500</error-code>
-        <location>/jsp/error/error.jsp</location>
-    </error-page>
-    <error-page>
-        <error-code>400</error-code>
-        <location>/jsp/error/error400.jsp</location>
+        <location>/jsp/error/error-500.jsp</location>
     </error-page>
     <error-page>
         <error-code>404</error-code>
-        <location>/jsp/error/error404.jsp</location>
+        <location>/jsp/error/error-404.jsp</location>
     </error-page>
-
 
     <servlet>
         <servlet-name>Main</servlet-name>

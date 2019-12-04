@@ -6,7 +6,6 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-
     <fmt:message bundle="${locale}" key="locale.user.text.truck" var="truck"/>
     <fmt:message bundle="${locale}" key="locale.user.text.car" var="car"/>
     <fmt:message bundle="${locale}" key="locale.user.text.withoutTransport" var="withoutTransport"/>
@@ -19,7 +18,6 @@
     <fmt:message bundle="${locale}" key="locale.customer.label.transportForCargo" var="transportForCargo"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.next" var="next"/>
-
 
     <link rel="stylesheet" href="./css/style.css">
     <title>New Order</title>

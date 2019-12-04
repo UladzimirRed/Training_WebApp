@@ -49,7 +49,7 @@ public class ConnectionPool {
 
     private void registerDriver() {
         try {
-            Class.forName("com.mysql.jdbc.Drive");
+            Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             logger.log(Level.FATAL, e);
             throw new RuntimeException("Driver is not register", e);
