@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 
 public class ActionFactory {
     public static ActionCommand defineCommand(HttpServletRequest request) {
-
         ActionCommand currentCommand = new EmptyCommand();
         String action = request.getParameter("command");
         if (action == null || action.isEmpty()) {

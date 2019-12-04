@@ -1,11 +1,12 @@
 package by.epam.training.command;
 
 public class JspAddress {
+    private JspAddress() {
+    }
+
     public static final String LOGIN_PAGE = "/login";
     public static final String ERROR_PAGE = "/error";
-    public static final String INDEX_PAGE = "/index";
     public static final String HOME_PAGE = "/home";
-    public static final String REGISTER_AS = "/register-as";
     public static final String REGISTER_COURIER = "/courier-register";
     public static final String REGISTER_CUSTOMER = "/customer-register";
     public static final String CHANGE_PASSWORD = "/change-password";
@@ -20,12 +21,9 @@ public class JspAddress {
     public static final String COMPLETE_ORDER = "/completed-order";
     public static final String THANK_YOU_PAGE = "/thank-you";
     public static final String ADMIN_MAIN = "/admin-main";
-    public static final String ADMIN_AREA = "/admin-area";
     public static final String USER_LIST = "/user-list";
     public static final String EDIT_USER = "/edit-user";
     public static final String CHANGE_SUCCESS = "/change-success";
 
-    private JspAddress(){
-    }
 }
 

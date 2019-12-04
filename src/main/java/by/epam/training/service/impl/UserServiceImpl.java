@@ -40,7 +40,6 @@ public class UserServiceImpl implements UserService {
                 userDao.registerCourier(user);
                 return userDao.findCourierByLogin(user.getLogin());
             }
-
         } catch (DaoException e) {
             throw new ServiceException(e);
         }

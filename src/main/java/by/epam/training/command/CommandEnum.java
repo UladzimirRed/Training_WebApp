@@ -44,7 +44,6 @@ public enum CommandEnum {
 
     private ActionCommand command;
 
-
     CommandEnum(ActionCommand command) {
         this.command = command;
     }

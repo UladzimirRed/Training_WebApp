@@ -1,6 +1,9 @@
 package by.epam.training.command;
 
 public class JspAttribute {
+    private JspAttribute() {
+    }
+
     public static final String USER = "user";
     public static final String USERS = "users";
     public static final String USER_ID = "userId";
@@ -23,6 +26,7 @@ public class JspAttribute {
     public static final String CONFIRM_PASSWORD = "confirmPassword";
     public static final String PASSWORD_DOES_NOT_MATCH = "passwordDoesNotMatch";
     public static final String USER_EXIST = "userExist";
+    public static final String WRONG_PATTERN = "wrongPattern";
     public static final String PAGE = "page";
     public static final String OLD_PASSWORD = "oldPassword";
     public static final String NEW_PASSWORD = "newPassword";
@@ -36,8 +40,5 @@ public class JspAttribute {
     public static final String CURRENT_USER = "currentUser";
     public static final String CURRENT_LOGIN = "currentLogin";
     public static final String RATING = "rating";
-
-    private JspAttribute() {
-    }
 }
 

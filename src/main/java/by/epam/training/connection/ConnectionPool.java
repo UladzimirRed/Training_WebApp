@@ -25,7 +25,6 @@ public class ConnectionPool {
     private static String url;
     private static String user;
     private static String password;
-    
 
     private ConnectionPool() {
         registerDriver();
@@ -50,10 +49,10 @@ public class ConnectionPool {
 
     private void registerDriver() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.jdbc.Drive");
         } catch (ClassNotFoundException e) {
             logger.log(Level.FATAL, e);
-            // FIXME: 01.12.2019 throw new ??exception
+            throw new RuntimeException("Driver is not register", e);
         }
     }
 
@@ -80,7 +79,6 @@ public class ConnectionPool {
         if (freeConnections.size() == DEFAULT_POOL_CAPACITY) {
             logger.log(Level.INFO, "Successfully initialized connection pool");
         }
-
     }
 
     private void createConnection() throws ConnectionPoolException {
@@ -88,34 +86,36 @@ public class ConnectionPool {
             ProxyConnection connection = new ProxyConnection(DriverManager.getConnection(url, user, password));
             freeConnections.add(connection);
         } catch (SQLException e) {
+            logger.log(Level.FATAL, e);
             throw new ConnectionPoolException("Couldn't create connection", e);
         }
     }
 
     public ProxyConnection takeConnection() {
-        ProxyConnection connection = null;
+        ProxyConnection connection;
         try {
             connection = freeConnections.take();
             givenAwayConnections.offer(connection);
         } catch (InterruptedException e) {
-            // FIXME: 01.12.2019 add logger
-            e.printStackTrace();
+            logger.log(Level.FATAL, e);
+            throw new RuntimeException("Couldn't take connection", e);
         }
         return connection;
     }
 
     public void releaseConnection(ProxyConnection connection) {
-        givenAwayConnections.remove(connection);  //TODO CHECK AUTOCOMMIT
+        givenAwayConnections.remove(connection);
         freeConnections.offer(connection);
     }
 
+    // FIXME: 04.12.2019
     public void destroyPool() throws ConnectionPoolException {
         for (int i = 0; i < DEFAULT_POOL_CAPACITY; i++) {
             try {
                 freeConnections.take().reallyClose();
             } catch (InterruptedException e) {
-                // FIXME: 01.12.2019 add logger
-                e.printStackTrace();
+                logger.log(Level.FATAL, e);
+                throw new ConnectionPoolException("Couldn't destroy pool", e);
             }
             deregisterDrivers();
         }
@@ -126,10 +126,9 @@ public class ConnectionPool {
             try {
                 DriverManager.deregisterDriver(driver);
             } catch (SQLException e) {
-                logger.error("Couldn't deregister driver", e);
+                logger.log(Level.FATAL, e);
+                throw new RuntimeException("Couldn't destroy pool", e);
             }
         });
-
-
     }
 }

@@ -31,15 +31,15 @@
         <form action="courier-area">
             <input type="submit" value="${personalArea}" class="common-button">
         </form>
-        <form action="controller">
+        <form action="controller" method="GET">
             <input type="hidden" name="command" value="show_available_order_command">
             <input type="submit" value="${takeOrder}" class="common-button">
         </form>
-        <form action="controller">
+        <form action="controller" method="GET">
             <input type="hidden" name="command" value="show_processing_order_command">
             <input type="submit" value="${completeOrder}" class="common-button">
         </form>
-        <form action="controller">
+        <form action="controller" method="GET">
             <input type="hidden" name="command" value="show_completed_order_command">
             <input type="submit" value="${completedOrder}" class="common-button">
         </form>

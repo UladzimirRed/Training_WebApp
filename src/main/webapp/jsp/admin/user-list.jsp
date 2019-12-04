@@ -54,7 +54,7 @@
                     <td>${user.transport}</td>
                     <td>${user.rating}</td>
                     <td>
-                        <form action="controller">
+                        <form action="controller" method="POST">
                             <input type="hidden" name="command" value="edit_user_command">
                             <input type="hidden" name="userId" value="${user.id}">
                             <input type="submit" value="V" class="lang-button">

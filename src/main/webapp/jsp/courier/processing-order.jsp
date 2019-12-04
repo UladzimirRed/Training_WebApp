@@ -52,7 +52,7 @@
                     <td>${order.totalPrice}</td>
                     <td>${order.rate}</td>
                     <td>
-                        <form action="controller">
+                        <form action="controller" method="GET">
                             <input type="hidden" name="command" value="complete_order_command">
                             <input type="hidden" name="orderId" value="${order.orderId}">
                             <input type="submit" value="V" class="lang-button">

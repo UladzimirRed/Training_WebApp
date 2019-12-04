@@ -41,7 +41,6 @@ public class AdminServiceImpl implements AdminService {
                 adminDao.updateUserLogin(userId, currentLogin);
             } else {
                 throw new UserExistsException("User with this login already exists");
-                // FIXME: 02.12.2019 Why i can throw exception if user just exist
                 // FIXME: 02.12.2019 CAN I USE TWO DIFFERENT DAO IN ADMIN SERVICE?
             }
         } catch (DaoException e) {

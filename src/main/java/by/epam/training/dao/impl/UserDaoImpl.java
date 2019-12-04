@@ -6,6 +6,7 @@ import by.epam.training.dao.UserDao;
 import by.epam.training.entity.*;
 import by.epam.training.exception.DaoException;
 import by.epam.training.dao.SqlRequest;
+import by.epam.training.exception.UserExistsException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,7 +20,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User registerCourier(User user) throws DaoException {
+    public void registerCourier(User user) throws DaoException {
         ProxyConnection connection = pool.takeConnection();
         PreparedStatement preparedStatement = null;
         try {
@@ -29,7 +30,6 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setInt(3, RoleType.getCodeByRole(user.getRole()));
             preparedStatement.setObject(4, Transport.getCodeByTransport(user.getTransport()));
             preparedStatement.executeUpdate();
-            return user;
         } catch (SQLException e) {
             throw new DaoException();
         } finally {
@@ -39,7 +39,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User registerCustomer(User user) throws DaoException {
+    public void registerCustomer(User user) throws DaoException {
         ProxyConnection connection = pool.takeConnection();
         PreparedStatement preparedStatement = null;
         try {
@@ -48,7 +48,6 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setInt(3, RoleType.getCodeByRole(user.getRole()));
             preparedStatement.executeUpdate();
-            return user;
         } catch (SQLException e) {
             throw new DaoException();
         } finally {
@@ -106,10 +105,10 @@ public class UserDaoImpl implements UserDao {
             preparedStatement = connection.prepareStatement(SqlRequest.FIND_COURIER_BY_LOGIN);
             preparedStatement.setString(1, login);
             resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
+            if (!resultSet.next()) {
                 return createUserFromQueryResult(resultSet);
             }
-            return null;  // TODO Something
+            return null;
         } catch (SQLException e) {
             throw new DaoException(e);
         } finally {
@@ -131,7 +130,7 @@ public class UserDaoImpl implements UserDao {
             if (resultSet.next()) {
                 return createCustomerFromQueryResult(resultSet);
             }
-            return null;  // TODO Something
+            return null;
         } catch (SQLException e) {
             throw new DaoException(e);
         } finally {

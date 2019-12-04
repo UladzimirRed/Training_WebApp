@@ -10,6 +10,7 @@
     <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
     <fmt:message bundle="${locale}" key="locale.message.passwordDoesNotMatch" var="passwordDoesNotMatch"/>
     <fmt:message bundle="${locale}" key="locale.message.userExist" var="userExist"/>
+    <fmt:message bundle="${locale}" key="locale.message.wrongPattern" var="wrongPattern"/>
     <fmt:message bundle="${locale}" key="locale.user.text.register" var="register"/>
     <fmt:message bundle="${locale}" key="locale.user.text.truck" var="truck"/>
     <fmt:message bundle="${locale}" key="locale.user.text.car" var="car"/>
@@ -100,6 +101,11 @@
                 <c:choose>
                     <c:when test="${not empty requestScope.userExist}">
                         ${userExist}
+                    </c:when>
+                </c:choose>
+                <c:choose>
+                    <c:when test="${not empty requestScope.wrongPattern}">
+                        ${wrongPattern}
                     </c:when>
                 </c:choose>
             </div>

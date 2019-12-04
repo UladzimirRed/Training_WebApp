@@ -25,7 +25,7 @@
         <form action="admin-main">
             <input type="submit" value="${personalRoom}" class="common-button">
         </form>
-        <form action="controller">
+        <form action="controller" method="GET">
             <input type="hidden" name="command" value="show_user_list_command">
             <input type="submit" value="${showUserList}" class="common-button">
         </form>

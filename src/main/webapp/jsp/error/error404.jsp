@@ -11,7 +11,10 @@
 </header>
 <main class="main-form">
     <br>
-    <h2>ERROR 500 INTERNAL SERVER ERROR</h2>
+    <h2>ERROR 404 PAGE NOT FOUND</h2>
+    <form action="home">
+        <input type="submit" value="HOME" class="common-button">
+    </form>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

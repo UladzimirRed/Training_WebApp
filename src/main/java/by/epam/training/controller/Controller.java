@@ -3,6 +3,7 @@ package by.epam.training.controller;
 import by.epam.training.command.ActionCommand;
 import by.epam.training.command.ActionFactory;
 import by.epam.training.command.JspAddress;
+import by.epam.training.command.JspAttribute;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,13 +27,12 @@ public class Controller extends HttpServlet {
         String page;
         ActionCommand command = ActionFactory.defineCommand(request);
         page = command.execute(request);
-        if (page != null) {
+        if (!page.equals(JspAddress.ERROR_PAGE)) {
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
             dispatcher.forward(request, response);
         } else {
-            page = JspAddress.INDEX_PAGE;
-            request.getSession().setAttribute("nullPage", "nullPage");   //TODO constants
-            response.sendRedirect(request.getContextPath() + page);
+            request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_DATA);
+            request.getRequestDispatcher(JspAddress.ERROR_PAGE).forward(request, response);
         }
     }
 }

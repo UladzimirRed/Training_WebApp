@@ -58,7 +58,7 @@
 <%--                        <td>${yes}</td></c:when>--%>
 <%--                        <c:otherwise><td>${no}</td></c:otherwise>--%>
                         <td>
-                            <form action="controller">
+                            <form action="controller" method="POST">
                                 <input type="hidden" name="command" value="take_order_command">
                                 <input type="hidden" name="orderId" value="${order.orderId}">
                                 <input type="submit" value="V" class="lang-button">
