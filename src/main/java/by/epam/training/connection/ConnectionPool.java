@@ -51,7 +51,7 @@ public class ConnectionPool {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
-            logger.log(Level.FATAL, e);
+            logger.log(Level.ERROR, e);
             throw new RuntimeException("Driver is not register", e);
         }
     }
@@ -73,7 +73,7 @@ public class ConnectionPool {
             }
         }
         if (freeConnections.isEmpty()) {
-            logger.log(Level.FATAL, "Couldn't init connection pool");
+            logger.log(Level.ERROR, "Couldn't init connection pool");
             throw new RuntimeException("Couldn't init connection pool");
         }
         if (freeConnections.size() == DEFAULT_POOL_CAPACITY) {
@@ -86,7 +86,7 @@ public class ConnectionPool {
             ProxyConnection connection = new ProxyConnection(DriverManager.getConnection(url, user, password));
             freeConnections.add(connection);
         } catch (SQLException e) {
-            logger.log(Level.FATAL, e);
+            logger.log(Level.ERROR, e);
             throw new ConnectionPoolException("Couldn't create connection", e);
         }
     }
@@ -97,7 +97,7 @@ public class ConnectionPool {
             connection = freeConnections.take();
             givenAwayConnections.offer(connection);
         } catch (InterruptedException e) {
-            logger.log(Level.FATAL, e);
+            logger.log(Level.ERROR, e);
             throw new RuntimeException("Couldn't take connection", e);
         }
         return connection;
@@ -107,15 +107,13 @@ public class ConnectionPool {
         givenAwayConnections.remove(connection);
         freeConnections.offer(connection);
     }
-
-    // FIXME: 04.12.2019
-    public void destroyPool() throws ConnectionPoolException {
+    
+    public void destroyPool() {
         for (int i = 0; i < DEFAULT_POOL_CAPACITY; i++) {
             try {
                 freeConnections.take().reallyClose();
-            } catch (InterruptedException e) {
-                logger.log(Level.FATAL, e);
-                throw new ConnectionPoolException("Couldn't destroy pool", e);
+            } catch (InterruptedException | ConnectionPoolException e) {
+                logger.log(Level.ERROR, "Couldn't destroy pool");
             }
             deregisterDrivers();
         }
@@ -126,8 +124,7 @@ public class ConnectionPool {
             try {
                 DriverManager.deregisterDriver(driver);
             } catch (SQLException e) {
-                logger.log(Level.FATAL, e);
-                throw new RuntimeException("Couldn't destroy pool", e);
+                logger.log(Level.ERROR, "Couldn't deregister driver");
             }
         });
     }

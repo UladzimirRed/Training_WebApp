@@ -4,6 +4,7 @@ import by.epam.training.command.ActionCommand;
 import by.epam.training.command.ActionFactory;
 import by.epam.training.command.JspAddress;
 import by.epam.training.command.JspAttribute;
+import by.epam.training.connection.ConnectionPool;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -41,5 +42,10 @@ public class Controller extends HttpServlet {
             request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_DATA);
             request.getRequestDispatcher(JspAddress.ERROR_PAGE).forward(request, response);
         }
+    }
+
+    @Override
+    public void destroy(){
+        ConnectionPool.getInstance().destroyPool();
     }
 }
