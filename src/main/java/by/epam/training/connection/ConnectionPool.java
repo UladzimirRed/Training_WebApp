@@ -56,6 +56,10 @@ public class ConnectionPool {
         }
     }
 
+    public int getFreeConnectionsSize() {
+        return freeConnections.size();
+    }
+
     private void initDatabase() {
         url = DataBaseInfo.URL;
         password = DataBaseInfo.PASSWORD;
@@ -107,7 +111,7 @@ public class ConnectionPool {
         givenAwayConnections.remove(connection);
         freeConnections.offer(connection);
     }
-    
+
     public void destroyPool() {
         for (int i = 0; i < DEFAULT_POOL_CAPACITY; i++) {
             try {
