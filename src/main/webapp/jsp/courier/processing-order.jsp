@@ -26,9 +26,9 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
+    <br>
+    <h2>${activeOrders}</h2>
     <div class="table-container-head">
-        <h2>${activeOrders}</h2>
-        <br>
         <table class="head-table">
             <tr>
                 <th>${orderId}</th>

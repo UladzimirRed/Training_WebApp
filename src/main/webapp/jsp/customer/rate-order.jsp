@@ -25,11 +25,11 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main>
-    <div class="main-form">
+<main class="main-form">
+    <br>
+    <h2>${rateDelivery}</h2>
+    <div>
         <div class="table-container-head">
-            <h2>${rateDelivery}</h2>
-            <br>
             <table class="head-table">
                 <tr>
                     <th>${orderId}</th>
@@ -43,8 +43,8 @@
                 </tr>
             </table>
         </div>
-        <form action="controller" name="refreshOrder" method="POST">
-        <div class="table-current-container-body" >
+
+        <div class="table-current-container-body">
             <table class="body-table">
                 <tr>
                     <td>${sessionScope.order.orderId}</td>
@@ -58,24 +58,23 @@
                 </tr>
             </table>
         </div>
-        <span class="form-label">RATING:</span>
-        <select class=form-dropdown name="rate">
+    </div>
+    <div class="logIn-form-box-3">
+        <form action="controller" name="refreshOrder" method="POST" class="login-form">
+            <span class="form-label">RATING:</span>
+            <select class=form-dropdown name="rate">
                 <option value="5">5</option>
                 <option value="4">4</option>
                 <option value="3">3</option>
                 <option value="2">2</option>
                 <option value="1">1</option>
-        </select>
+            </select>
             <input type="hidden" name="command" value="confirm_rate_command">
-            <input type="submit" value="${rateDelivery}" class="join-us-button">
+            <input type="submit" value="${rateDelivery}" class="login-form-button">
         </form>
-        <br>
-        <br>
-        <div class="horizontal-button-container">
-            <form action="customer-main">
-                <input class="join-us-button" type="submit" value="${personalRoom}">
-            </form>
-        </div>
+        <form action="customer-main" class="adv-button-box">
+            <input class="login-form-button" type="submit" value="${personalRoom}">
+        </form>
     </div>
 </main>
 <footer>

@@ -24,11 +24,10 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-<main>
-    <div class="main-form">
+<main class="main-form">
+    <br>
+    <h2>${completedOrders}</h2>
         <div class="table-container-head">
-            <h2>${completedOrders}</h2>
-            <br>
             <table class="head-table">
                 <tr>
                     <th>${orderId}</th>
@@ -70,7 +69,6 @@
             </form>
         </div>
 
-    </div>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

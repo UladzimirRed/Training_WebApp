@@ -29,13 +29,13 @@
 </header>
 
 <main class="main-form">
-    <div>
+    <br>
+    <h2>${confirmOrder}</h2>
+    <br>
+    <div class="logIn-form-box">
         <form action="controller" name="newOrder" method="POST">
             <input type="hidden" name="command" value="new_order_command"/>
-            <br>
-            <h2>${confirmOrder}</h2>
-            <br>
-            <div class="logIn-form-box-3">
+            <div class="logIn-form-box-2">
                 <span class="form-label">${subject}: </span>
                 <input class="login-form-text"
                        name="total"

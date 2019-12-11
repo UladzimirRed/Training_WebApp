@@ -34,7 +34,7 @@
 </header>
 <main class="main-form">
     <br/>
-    <h2>${enter}</h2>
+    <h2 style="margin-bottom: 35px">${enter}</h2>
     <div class="logIn-form-box">
         <form name="LoginForm" method="POST" action="controller" class="login-form">
             <input type="hidden" name="command" value="login"/>
@@ -73,7 +73,7 @@
                 </c:choose>
             </div>
         </form>
-        <form action="register-as" class="login-form">
+        <form action="register-as" class="adv-button-box">
             <input type="submit" value="${signUp}" class="login-form-button"/>
         </form>
     </div>

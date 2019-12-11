@@ -28,9 +28,9 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
+    <br>
+    <h2>${availableOrders}</h2>
     <div class="table-container-head">
-        <h2>${availableOrders}</h2>
-        <br>
         <table class="head-table">
             <tr>
                 <th>${orderId}</th>
@@ -46,25 +46,25 @@
     <div class="table-container-body">
         <table class="body-table">
             <c:forEach var="order" items="${sessionScope.orders}" varStatus="status">
-                    <tr>
-                        <td>${order.orderId}</td>
-                        <td>${order.subject}</td>
-                        <td>${order.user.login}</td>
-                        <td>${order.distance}</td>
-                        <td>${order.totalPrice}</td>
-<%--                        fixme add local to rate delivery--%>
-                        <td>${order.rate}</td>
-<%--                        <c:when test="${order.rate == 'true'}">--%>
-<%--                        <td>${yes}</td></c:when>--%>
-<%--                        <c:otherwise><td>${no}</td></c:otherwise>--%>
-                        <td>
-                            <form action="controller" method="POST">
-                                <input type="hidden" name="command" value="take_order_command">
-                                <input type="hidden" name="orderId" value="${order.orderId}">
-                                <input type="submit" value="V" class="lang-button">
-                            </form>
-                        </td>
-                    </tr>
+                <tr>
+                    <td>${order.orderId}</td>
+                    <td>${order.subject}</td>
+                    <td>${order.user.login}</td>
+                    <td>${order.distance}</td>
+                    <td>${order.totalPrice}</td>
+                        <%--                        fixme add local to rate delivery--%>
+<%--                    <td>${order.rate}</td>--%>
+                                                <c:if test="${order.rate == true}">
+                                                <td>${yes}</td></c:if>
+                                                <c:if test="${order.rate == false}"><td>${no}</td></c:if>
+                    <td>
+                        <form action="controller" method="POST">
+                            <input type="hidden" name="command" value="take_order_command">
+                            <input type="hidden" name="orderId" value="${order.orderId}">
+                            <input type="submit" value="V" class="lang-button">
+                        </form>
+                    </td>
+                </tr>
             </c:forEach>
         </table>
     </div>

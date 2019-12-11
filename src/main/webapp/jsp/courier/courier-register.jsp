@@ -45,7 +45,7 @@
 <main class="main-form">
     <br/>
     <h2>${register}</h2>
-    <div class="logIn-form-box-2">
+    <div class="logIn-form-box">
         <form name="RegisterForm" method="POST" action="controller" class="login-form">
             <input type="hidden" name="command" value="register"/>
             <input type="hidden" name="role" value="courier"/>

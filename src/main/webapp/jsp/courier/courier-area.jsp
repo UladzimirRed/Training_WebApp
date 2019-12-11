@@ -27,7 +27,7 @@
         <br/>
         <h2>${yourPersonalArea}</h2>
     </div>
-    <div class="logIn-form-box-2">
+    <div class="logIn-form-box">
         <div class="login-form user-area-form">
             <div class="input-wrapper">
                 <p class="user-area-label">${login}: ${sessionScope.user.login}</p>
@@ -40,7 +40,7 @@
             </div>
         </div>
         <form action="change-password">
-            <input type="submit" value="${changePass}" class="join-us-button"/>
+            <input type="submit" value="${changePass}" class="common-button"/>
         </form>
         <form action="courier-main">
             <input type="submit" value="${personalRoom}" class="common-button">

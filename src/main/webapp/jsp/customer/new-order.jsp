@@ -27,13 +27,11 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
-    <div>
+    <br>
+    <h2>${newOrder}</h2>
+    <br>
+    <div class="logIn-form-box">
         <form action="controller" name="newOrder" method="POST">
-            <div>
-                <br>
-                <h2>${newOrder}</h2>
-                <br>
-            </div>
             <div class="logIn-form-box-2">
                 <span class="form-label">${subjectOfTransportation}</span>
                 <input class="login-form-text"
@@ -63,7 +61,7 @@
                 <input type="submit" value="${next}" class="login-form-button">
             </div>
         </form>
-        <form action="customer-main" class="logIn-form-box-2">
+        <form action="customer-main" class="adv-button-box">
             <input type="submit" value="${personalRoom}" class="login-form-button">
         </form>
     </div>

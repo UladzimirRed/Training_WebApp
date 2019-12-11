@@ -40,6 +40,9 @@
             <input type="submit" value="${rates}" class="common-button">
         </form>
     </div>
+    <div class="image-box">
+        <img src="./assets/home-background.jpg" alt="#" width="700" height="415">
+    </div>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

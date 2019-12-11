@@ -31,6 +31,9 @@
             <input type="submit" value="${showUserList}" class="common-button">
         </form>
     </div>
+    <div class="image-box-admin">
+        <img src="./assets/home-background.jpg" alt="#" width="700" height="415">
+    </div>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

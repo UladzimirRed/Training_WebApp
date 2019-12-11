@@ -10,9 +10,9 @@ h2 {
     text-align: center;
     color: #ffebcd;
     font-size: 30px;
-    margin: 10px 0 0;
-}
+    margin: 0px 0 0;
 
+}
 table {
     width: 80%;
     border-collapse: collapse;
@@ -50,7 +50,6 @@ p {
     color: #ffebcd;
     font-size: 30px;
 }
-
 .header {
     width: 100%;
     height: 15vh;
@@ -72,9 +71,11 @@ p {
 
 .lang-button-box {
     display: flex;
-    width: 600px;
+    width: 720px;
+    margin-right: -90px;
     height: 50%;
-    padding: 50px 2px 0px;
+    padding: 38px 10px 0px;
+    justify-content: flex-end;
 }
 
 .lang-button {
@@ -144,6 +145,7 @@ p {
 
 .logIn-form-box {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -153,10 +155,11 @@ p {
 
 .logIn-form-box-2 {
     display: flex;
+    width: 60vw;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 40px;
+    margin-top: 0px;
 }
 
 .logIn-form-box-3 {
@@ -165,9 +168,16 @@ p {
     align-items: center;
     justify-content: center;
 }
+.adv-button-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 40%;
+}
 
 .login-form {
-    width: 30%;
+    width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -175,7 +185,7 @@ p {
 }
 
 .login-form-text, .login-form-password, .form-dropdown, .form-option {
-    margin: 10px 0;
+    margin: 5px 0;
     background-color: #ffffff;
     border: 1px solid #ffd21f;
     border-radius: 4px;
@@ -232,6 +242,22 @@ p {
     margin-left: 30px;
 }
 
+.image-box {
+    width: 700px;
+    height: 415px;
+    margin-left: 490px;
+    margin-top: -320px;
+    box-shadow: 0px 0px 25px midnightblue;
+}
+
+.image-box-admin {
+    width: 700px;
+    height: 415px;
+    margin-left: 490px;
+    margin-top: -200px;
+    box-shadow: 0px 0px 25px midnightblue;
+}
+
 .input-wrapper {
     width: 80%;
     display: flex;
@@ -279,14 +305,13 @@ p {
 }
 
 .table-container-head {
-    height: 16vh;
+    height: 8vh;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .body-table {
-    height: 100%;
     margin: 0 auto;
     width: 60%;
 }
@@ -298,8 +323,10 @@ p {
 .horizontal-button-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 700px;
+    justify-content: space-around;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 110px;
 }
 
 .center-button-container {
