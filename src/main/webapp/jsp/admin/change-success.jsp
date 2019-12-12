@@ -18,19 +18,20 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
-    <br>
-    <h2>${changesAccepted}</h2>
-    <br>
-    <div class="horizontal-button-container">
-        <form action="admin-main">
-            <input type="submit" value="${personalRoom}" class="common-button">
-        </form>
-        <form action="controller" method="GET">
-            <input type="hidden" name="command" value="show_user_list_command">
-            <input type="submit" value="${showUserList}" class="common-button">
-        </form>
+    <div class="logIn-form-box">
+        <h2>${changesAccepted}</h2>
+        <br>
+        <br>
+        <div class="horizontal-button-container">
+            <form action="admin-main">
+                <input type="submit" value="${personalRoom}" class="common-button">
+            </form>
+            <form action="controller" method="GET">
+                <input type="hidden" name="command" value="show_user_list_command">
+                <input type="submit" value="${showUserList}" class="common-button">
+            </form>
+        </div>
     </div>
-
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

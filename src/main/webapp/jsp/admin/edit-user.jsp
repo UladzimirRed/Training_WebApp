@@ -34,107 +34,107 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
-    <div>
+    <br>
+    <h2>${editUser}</h2>
+    <br>
+    <div class="logIn-form-box">
+        <form action="controller" name="changeLogin" method="POST">
+            <input type="hidden" name="command" value="change_login_command"/>
+            <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
+            <span class="form-label">${login}: </span>
+            <input class="login-form-text"
+                   name="currentLogin"
+                   value="${sessionScope.currentUser.login}"
+                   maxlength="16"
+                   pattern="^[\w_]{4,16}$"
+                   title="${loginRegex}"
+                   value=""
+                   placeholder="${myUserNameIs}"
+                   required/>
+            <input type="submit" value="${changeLogin}" class="join-us-button">
+        </form>
+        <form action="controller" name="changeRole" method="POST">
+            <input type="hidden" name="command" value="change_role_command"/>
+            <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
+            <span class="form-label">${role}: </span>
+            <c:choose>
+                <c:when test="${sessionScope.currentUser.role == 'COURIER'}">
+                    <select class=form-dropdown name="role">
+                        <option class="form-option" value="Courier" selected>${courier}</option>
+                        <option class="form-option" value="Customer">${customer}</option>
+                    </select>
+                </c:when>
+                <c:otherwise>
+                    <select class=form-dropdown name="role">
+                        <option class="form-option" value="Courier">${courier}</option>
+                        <option class="form-option" value="Customer" selected>${customer}</option>
+                    </select>
+                </c:otherwise>
+            </c:choose>
+            <input type="submit" value="${changeRole}" class="join-us-button">
+        </form>
+        <form action="controller" name="changeTransport" method="POST">
+            <input type="hidden" name="command" value="change_transport_command"/>
+            <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
+            <c:choose>
+                <c:when test="${sessionScope.currentUser.role == 'COURIER'}">
+                    <c:choose>
+                        <c:when test="${sessionScope.currentUser.transport == 'TRUCK'}">
+                            <span class="form-label">${transport}: </span>
+                            <select class=form-dropdown name="transport">
+                                <option class="form-option" value="Truck" selected>${truck}</option>
+                                <option class="form-option" value="Car">${car}</option>
+                                <option class="form-option" value="None">${withoutTransport}</option>
+                            </select>
+                        </c:when>
+                        <c:when test="${sessionScope.currentUser.transport == 'CAR'}">
+                            <span class="form-label">${transport}: </span>
+                            <select class=form-dropdown name="transport">
+                                <option class="form-option" value="Truck">${truck}</option>
+                                <option class="form-option" value="Car" selected>${car}</option>
+                                <option class="form-option" value="None">${withoutTransport}</option>
+                            </select>
+                        </c:when>
+                        <c:otherwise>
+                            <span class="form-label">${transport}: </span>
+                            <select class=form-dropdown name="transport">
+                                <option class="form-option" value="Truck">${truck}</option>
+                                <option class="form-option" value="Car">${car}</option>
+                                <option class="form-option" value="None" selected>${withoutTransport}</option>
+                            </select>
+                        </c:otherwise>
+                    </c:choose>
+                    <input type="submit" value="${changeTransport}" class="join-us-button">
+                </c:when>
+            </c:choose>
+        </form>
+        <form action="controller" name="changeRating" method="POST">
+            <input type="hidden" name="command" value="change_rating_command"/>
+            <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
+            <c:choose>
+                <c:when test="${sessionScope.currentUser.role == 'COURIER'}">
+                    <span class="form-label">${rating}: </span>
+                    <input class="login-form-text"
+                           name="rating"
+                           pattern="^[0-5]*[.][0-9]+$"
+                           title="0.0 - 5.0"
+                           value="${sessionScope.currentUser.rating}">
+                    <input type="submit" value="${changeRating}" class="join-us-button">
+                </c:when>
+            </c:choose>
+        </form>
         <br>
-        <h2>${editUser}</h2>
-        <div class="logIn-form-box-3">
-            <form action="controller" name="changeLogin" method="POST">
-                <input type="hidden" name="command" value="change_login_command"/>
-                <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
-                <span class="form-label">${login}: </span>
-                <input class="login-form-text"
-                       name="currentLogin"
-                       value="${sessionScope.currentUser.login}"
-                       maxlength="16"
-                       pattern="^[\w_]{4,16}$"
-                       title="${loginRegex}"
-                       value=""
-                       placeholder="${myUserNameIs}"
-                       required/>
-                <input type="submit" value="${changeLogin}" class="join-us-button">
+        <div class="horizontal-button-container">
+            <form>
+                <input type="button" value="${back}" class="join-us-button" onclick="history.back()">
             </form>
-            <form action="controller" name="changeRole" method="POST">
-                <input type="hidden" name="command" value="change_role_command"/>
-                <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
-                <span class="form-label">${role}: </span>
-                <c:choose>
-                    <c:when test="${sessionScope.currentUser.role == 'COURIER'}">
-                        <select class=form-dropdown name="role">
-                            <option class="form-option" value="Admin">${admin}</option>
-                            <option class="form-option" value="Courier" selected>${courier}</option>
-                            <option class="form-option" value="Customer">${customer}</option>
-                        </select>
-                    </c:when>
-                    <c:otherwise>
-                        <select class=form-dropdown name="role">
-                            <option class="form-option" value="Admin">${admin}</option>
-                            <option class="form-option" value="Courier">${courier}</option>
-                            <option class="form-option" value="Customer" selected>${customer}</option>
-                        </select>
-                    </c:otherwise>
-                </c:choose>
-                <input type="submit" value="${changeRole}" class="join-us-button">
-            </form>
-            <form action="controller" name="changeTransport" method="POST">
-                <input type="hidden" name="command" value="change_transport_command"/>
-                <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
-                <c:choose>
-                    <c:when test="${sessionScope.currentUser.role == 'COURIER'}">
-                        <c:choose>
-                            <c:when test="${sessionScope.currentUser.transport == 'TRUCK'}">
-                                <span class="form-label">${transport}: </span>
-                                <select class=form-dropdown name="transport">
-                                    <option class="form-option" value="Truck" selected>${truck}</option>
-                                    <option class="form-option" value="Car">${car}</option>
-                                    <option class="form-option" value="None">${withoutTransport}</option>
-                                </select>
-                            </c:when>
-                            <c:when test="${sessionScope.currentUser.transport == 'CAR'}">
-                                <span class="form-label">${transport}: </span>
-                                <select class=form-dropdown name="transport">
-                                    <option class="form-option" value="Truck">${truck}</option>
-                                    <option class="form-option" value="Car" selected>${car}</option>
-                                    <option class="form-option" value="None">${withoutTransport}</option>
-                                </select>
-                            </c:when>
-                            <c:otherwise>
-                                <span class="form-label">${transport}: </span>
-                                <select class=form-dropdown name="transport">
-                                    <option class="form-option" value="Truck">${truck}</option>
-                                    <option class="form-option" value="Car">${car}</option>
-                                    <option class="form-option" value="None" selected>${withoutTransport}</option>
-                                </select>
-                            </c:otherwise>
-                        </c:choose>
-                        <input type="submit" value="${changeTransport}" class="join-us-button">
-                    </c:when>
-                </c:choose>
-            </form>
-            <form action="controller" name="changeRating" method="POST">
-                <input type="hidden" name="command" value="change_rating_command"/>
-                <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
-                <c:choose>
-                    <c:when test="${sessionScope.currentUser.role == 'COURIER'}">
-                        <span class="form-label">${rating}: </span>
-                        <input class="login-form-text"
-                               name="rating"
-                               value="${sessionScope.currentUser.rating}">
-                        <input type="submit" value="${changeRating}" class="join-us-button">
-                    </c:when>
-                </c:choose>
-            </form>
-            <div class="horizontal-button-container">
-                <form>
-                    <input type="button" value="${back}" class="join-us-button" onclick="history.back()">
-                </form>
-            </div>
-            <div class="login-form-message">
-                <c:choose>
-                    <c:when test="${not empty requestScope.userExist}">
-                        ${userExist}
-                    </c:when>
-                </c:choose>
-            </div>
+        </div>
+        <div class="login-form-message">
+            <c:choose>
+                <c:when test="${not empty requestScope.userExist}">
+                    ${userExist}
+                </c:when>
+            </c:choose>
         </div>
     </div>
 </main>

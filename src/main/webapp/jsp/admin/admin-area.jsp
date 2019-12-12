@@ -22,10 +22,8 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
-    <div>
-        <br/>
-        <h2>${yourPersonalArea}</h2>
-    </div>
+    <br/>
+    <h2>${yourPersonalArea}</h2>
     <div class="logIn-form-box">
         <div class="login-form user-area-form">
             <div class="input-wrapper">

@@ -12,10 +12,13 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.distance" var="distance"/>
-    <fmt:message bundle="${locale}" key="locale.customer.table.rate" var="rate"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.rating" var="rating"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.transport" var="transport"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.done" var="doneStatus"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.express" var="express"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.regular" var="regular"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.refresh" var="refresh"/>
 
     <link rel="stylesheet" href="./css/style.css">
@@ -28,6 +31,7 @@
 <main class="main-form">
     <br>
     <h2>${rateDelivery}</h2>
+    <br>
     <div>
         <div class="table-container-head">
             <table class="head-table">
@@ -35,10 +39,9 @@
                     <th>${orderId}</th>
                     <th>${subject}</th>
                     <th>${courierName}</th>
-                    <th>${price}</th>
+                    <th>${price}, BYN</th>
                     <th>${distance}</th>
-                    <th>${rate}</th>
-                    <th>${transport}</th>
+                    <th>${rating}</th>
                     <th>${status}</th>
                 </tr>
             </table>
@@ -50,18 +53,28 @@
                     <td>${sessionScope.order.orderId}</td>
                     <td>${sessionScope.order.subject}</td>
                     <td>${sessionScope.order.user.login}</td>
-                    <td>${sessionScope.order.totalPrice} BYN</td>
+                    <td>${sessionScope.order.totalPrice}</td>
                     <td>${sessionScope.order.distance} km</td>
-                    <td>${sessionScope.order.rate}</td>
-                    <td>${sessionScope.order.transport}</td>
-                    <td>${sessionScope.order.status}</td>
+                    <c:choose>
+                        <c:when test="${sessionScope.order.rate = true}">
+                            <td>${express}</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>${regular}</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${sessionScope.order.status == 'DONE'}">
+                            <td>${doneStatus}</td>
+                        </c:when>
+                    </c:choose>
                 </tr>
             </table>
         </div>
     </div>
     <div class="logIn-form-box-3">
         <form action="controller" name="refreshOrder" method="POST" class="login-form">
-            <span class="form-label">RATING:</span>
+            <span class="form-label">${rating}:</span>
             <select class=form-dropdown name="rate">
                 <option value="5">5</option>
                 <option value="4">4</option>

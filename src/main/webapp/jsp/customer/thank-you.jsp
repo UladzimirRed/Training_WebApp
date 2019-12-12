@@ -7,6 +7,8 @@
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.courierRating" var="courierRating"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.voteCounted" var="voteCounted"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Rating</title>
@@ -16,14 +18,17 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
-    <br>
-    <h2>Спасибо, ваш голос учтён!</h2>
-    <h2>Рейтинг курьера ${sessionScope.login}: ${sessionScope.userRating}</h2>
-    <br>
-
-    <form action="customer-main" class="logIn-form-box-2">
-        <input type="submit" value="${personalRoom}" class="login-form-button">
-    </form>
+    <div class="logIn-form-box">
+        <br>
+        <h2>${voteCounted}</h2>
+        <br>
+        <h2>${courierRating} ${sessionScope.login}: ${sessionScope.userRating}</h2>
+        <br>
+        <br>
+        <form action="customer-main" class="logIn-form-box-2">
+            <input type="submit" value="${personalRoom}" class="login-form-button">
+        </form>
+    </div>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

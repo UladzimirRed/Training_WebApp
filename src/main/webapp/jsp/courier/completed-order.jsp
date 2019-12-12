@@ -13,13 +13,13 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
-    <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.take" var="take"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.rating" var="rating"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.express" var="express"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.regular" var="regular"/>
     <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.user.button.back" var="back"/>
-    <fmt:message bundle="${locale}" key="locale.user.text.yes" var="yes"/>
-    <fmt:message bundle="${locale}" key="locale.user.text.no" var="no"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Completed orders</title>
@@ -31,6 +31,7 @@
 <main class="main-form">
     <br>
     <h2>${completedOrders}</h2>
+    <br>
     <div class="table-container-head">
         <table class="head-table">
             <tr>
@@ -38,8 +39,8 @@
                 <th>${subject}</th>
                 <th>${customerName}</th>
                 <th>${distance}</th>
-                <th>${price}</th>
-                <th>${rate}</th>
+                <th>${price}, BYN</th>
+                <th>${rating}</th>
             </tr>
         </table>
     </div>
@@ -52,11 +53,12 @@
                     <td>${order.user.login}</td>
                     <td>${order.distance}</td>
                     <td>${order.totalPrice}</td>
-                        <%--                        fixme add local to rate delivery--%>
-                    <td>${order.rate}</td>
-                        <%--                        <c:when test="${order.rate == 'true'}">--%>
-                        <%--                        <td>${yes}</td></c:when>--%>
-                        <%--                        <c:otherwise><td>${no}</td></c:otherwise>--%>
+                    <c:if test="${order.rate == true}">
+                        <td>${express}</td>
+                    </c:if>
+                    <c:if test="${order.rate == false}">
+                        <td>${regular}</td>
+                    </c:if>
                 </tr>
             </c:forEach>
         </table>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration>
     <Appenders>
-        <RollingFile name="File" fileName="src/main/resources/logs/app.log" append="true"
+        <RollingFile name="File" fileName="src/main/resource/logs/app.log" append="true"
                      filePattern="src/main/resources/logs/app_%i.log">
             <PatternLayout>
                 <Pattern>%rms %-5level %logger{2} - %msg%n</Pattern>

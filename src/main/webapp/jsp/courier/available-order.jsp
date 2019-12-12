@@ -13,12 +13,13 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
-    <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.rating" var="rating"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.take" var="take"/>
     <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
     <fmt:message bundle="${locale}" key="locale.user.button.back" var="back"/>
-    <fmt:message bundle="${locale}" key="locale.user.text.yes" var="yes"/>
-    <fmt:message bundle="${locale}" key="locale.user.text.no" var="no"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.express" var="express"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.regular" var="regular"/>
+
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Available orders</title>
@@ -37,8 +38,8 @@
                 <th>${subject}</th>
                 <th>${customerName}</th>
                 <th>${distance}</th>
-                <th>${price}</th>
-                <th>${rate}</th>
+                <th>${price}, BYN</th>
+                <th>${rating}</th>
                 <th>${take}</th>
             </tr>
         </table>
@@ -52,11 +53,12 @@
                     <td>${order.user.login}</td>
                     <td>${order.distance}</td>
                     <td>${order.totalPrice}</td>
-                        <%--                        fixme add local to rate delivery--%>
-<%--                    <td>${order.rate}</td>--%>
-                                                <c:if test="${order.rate == true}">
-                                                <td>${yes}</td></c:if>
-                                                <c:if test="${order.rate == false}"><td>${no}</td></c:if>
+                    <c:if test="${order.rate == true}">
+                        <td>${express}</td>
+                    </c:if>
+                    <c:if test="${order.rate == false}">
+                        <td>${regular}</td>
+                    </c:if>
                     <td>
                         <form action="controller" method="POST">
                             <input type="hidden" name="command" value="take_order_command">

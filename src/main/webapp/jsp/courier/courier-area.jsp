@@ -8,13 +8,16 @@
 
     <fmt:message bundle="${locale}" key="locale.user.label.login" var="login"/>
     <fmt:message bundle="${locale}" key="locale.user.label.rating" var="rating"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.truck" var="truck"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.car" var="car"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.withoutTransport" var="withoutTransport"/>
+    <fmt:message bundle="${locale}" key="locale.courier.text.yourTransport" var="yourTransport"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.customer.text.yourPersonalArea" var="yourPersonalArea"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.accountId" var="accountId"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.changePass" var="changePass"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.updateData" var="updateData"/>
 
-    
     <link rel="stylesheet" href="./css/style.css">
     <title>Personal area</title>
 </head>
@@ -23,10 +26,8 @@
     <jsp:include page="/jsp/header.jsp"/>
 </header>
 <main class="main-form">
-    <div>
-        <br/>
-        <h2>${yourPersonalArea}</h2>
-    </div>
+    <br/>
+    <h2>${yourPersonalArea}</h2>
     <div class="logIn-form-box">
         <div class="login-form user-area-form">
             <div class="input-wrapper">
@@ -37,6 +38,21 @@
             </div>
             <div class="input-wrapper">
                 <p class="user-area-label">${rating}: ${sessionScope.user.rating}</p>
+            </div>
+            <div class="input-wrapper">
+                <p class="user-area-label">${yourTransport}:
+                    <c:choose>
+                        <c:when test="${sessionScope.user.transport == 'CAR'}">
+                            ${car}
+                        </c:when>
+                        <c:when test="${sessionScope.user.transport == 'TRUCK'}">
+                            ${truck}
+                        </c:when>
+                        <c:otherwise>
+                            ${withoutTransport}
+                        </c:otherwise>
+                    </c:choose>
+                </p>
             </div>
         </div>
         <form action="change-password">

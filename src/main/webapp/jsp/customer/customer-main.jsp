@@ -6,7 +6,6 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.message.helloMessage" var="hello"/>
     <fmt:message bundle="${locale}" key="locale.message.welcome" var="welcome"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.personalArea" var="personalArea"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.newOrder" var="newOrder"/>

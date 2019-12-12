@@ -6,21 +6,20 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <%--    fixme do something with locale--%>
     <fmt:message bundle="${locale}" key="locale.user.text.listOfUsers" var="listOfUsers"/>
-    <fmt:message bundle="${locale}" key="locale.customer.table.orderId" var="orderId"/>
-    <fmt:message bundle="${locale}" key="locale.customer.table.courierName" var="courierName"/>
-    <fmt:message bundle="${locale}" key="locale.customer.table.customerName" var="customerName"/>
-    <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
-    <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
-    <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
-    <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
-    <fmt:message bundle="${locale}" key="locale.customer.label.take" var="take"/>
-    <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.truck" var="truck"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.car" var="car"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.withoutTransport" var="withoutTransport"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
-    <fmt:message bundle="${locale}" key="locale.user.button.back" var="back"/>
-    <fmt:message bundle="${locale}" key="locale.user.text.yes" var="yes"/>
-    <fmt:message bundle="${locale}" key="locale.user.text.no" var="no"/>
+    <fmt:message bundle="${locale}" key="locale.admin.label.userId" var="userId"/>
+    <fmt:message bundle="${locale}" key="locale.admin.label.login" var="userLogin"/>
+    <fmt:message bundle="${locale}" key="locale.admin.label.userRole" var="userRole"/>
+    <fmt:message bundle="${locale}" key="locale.admin.label.transport" var="userTransport"/>
+    <fmt:message bundle="${locale}" key="locale.admin.label.rating" var="userRating"/>
+    <fmt:message bundle="${locale}" key="locale.admin.text.courier" var="courier"/>
+    <fmt:message bundle="${locale}" key="locale.admin.text.customer" var="customer"/>
+    <fmt:message bundle="${locale}" key="locale.admin.button.edit" var="edit"/>
+
 
     <link rel="stylesheet" href="./css/style.css">
     <title>List of users</title>
@@ -32,15 +31,16 @@
 <main class="main-form">
     <br>
     <h2>${listOfUsers}</h2>
+    <br>
     <div class="table-container-head">
         <table class="head-table">
             <tr>
-                <th>USER ID</th>
-                <th>USER LOGIN</th>
-                <th>ROLE</th>
-                <th>TRANSPORT</th>
-                <th>RATING</th>
-                <th>EDIT</th>
+                <th>${userId}</th>
+                <th>${userLogin}</th>
+                <th>${userRole}</th>
+                <th>${userTransport}</th>
+                <th>${userRating}</th>
+                <th>${edit}</th>
             </tr>
         </table>
     </div>
@@ -50,8 +50,28 @@
                 <tr>
                     <td>${user.id}</td>
                     <td>${user.login}</td>
-                    <td>${user.role}</td>
-                    <td>${user.transport}</td>
+                    <c:choose>
+                        <c:when test="${user.role == 'COURIER'}">
+                            <td>${courier}</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>${customer}</td>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${user.transport == 'CAR'}">
+                            <td>${car}</td>
+                        </c:when>
+                        <c:when test="${user.transport == 'TRUCK'}">
+                            <td>${truck}</td>
+                        </c:when>
+                        <c:when test="${user.transport == 'NONE'}">
+                            <td>${withoutTransport}</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td></td>
+                        </c:otherwise>
+                    </c:choose>
                     <td>${user.rating}</td>
                     <td>
                         <form action="controller" method="POST">

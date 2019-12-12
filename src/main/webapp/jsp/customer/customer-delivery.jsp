@@ -13,6 +13,9 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.new" var="newStatus"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.rated" var="rated"/>
+    <fmt:message bundle="${locale}" key="locale.user.text.processing" var="processing"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.refresh" var="refresh"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.rateCompletedOrders" var="rateCompletedOrders"/>
 
@@ -26,13 +29,14 @@
 <main class="main-form">
     <br>
     <h2>${myDelivery}</h2>
+    <br>
     <div class="table-container-head">
         <table class="head-table">
             <tr>
                 <th>${orderId}</th>
                 <th>${subject}</th>
                 <th>${courierName}</th>
-                <th>${price}</th>
+                <th>${price}, BYN</th>
                 <th>${status}</th>
             </tr>
         </table>
@@ -45,24 +49,34 @@
                     <td>${order.subject}</td>
                     <td>${order.user.login}</td>
                     <td>${order.totalPrice}</td>
-                    <td>${order.status}</td>
+                    <c:choose>
+                        <c:when test="${order.status == 'NEW'}">
+                            <td>${newStatus}</td>
+                        </c:when>
+                        <c:when test="${order.status == 'RATED'}">
+                            <td>${rated}</td>
+                        </c:when>
+                        <c:otherwise>
+                            <td>${processing}</td>
+                        </c:otherwise>
+                    </c:choose>
                 </tr>
             </c:forEach>
         </table>
     </div>
     <div class="horizontal-button-container">
-        <div style="width: 25%">
+        <div>
             <form action="controller" name="refreshOrder" method="GET">
                 <input type="hidden" name="command" value="show_active_order_command">
                 <input type="submit" value="${refresh}" class="join-us-button">
             </form>
         </div>
-        <div style="width: 25%">
+        <div>
             <form action="customer-main">
                 <input class="join-us-button" type="submit" value="${personalRoom}">
             </form>
         </div>
-        <div style="width: 25%">
+        <div>
             <form action="controller" name="doneOrder" method="GET">
                 <input type="hidden" name="command" value="show_done_order_command">
                 <input type="submit" value="${rateCompletedOrders}" class="join-us-button">

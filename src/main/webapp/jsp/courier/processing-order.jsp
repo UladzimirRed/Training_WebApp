@@ -13,10 +13,12 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.price" var="price"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
-    <fmt:message bundle="${locale}" key="locale.customer.label.rate" var="rate"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.rating" var="rating"/>
     <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.refresh" var="refresh"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.express" var="express"/>
+    <fmt:message bundle="${locale}" key="locale.customer.text.regular" var="regular"/>
 
     <link rel="stylesheet" href="./css/style.css">
     <title>Processing orders</title>
@@ -35,8 +37,8 @@
                 <th>${subject}</th>
                 <th>${customerName}</th>
                 <th>${distance}</th>
-                <th>${price}</th>
-                <th>${rate}</th>
+                <th>${price}, BYN</th>
+                <th>${rating}</th>
                 <th>DONE</th>
             </tr>
         </table>
@@ -50,7 +52,12 @@
                     <td>${order.user.login}</td>
                     <td>${order.distance}</td>
                     <td>${order.totalPrice}</td>
-                    <td>${order.rate}</td>
+                    <c:if test="${order.rate == true}">
+                        <td>${express}</td>
+                    </c:if>
+                    <c:if test="${order.rate == false}">
+                        <td>${regular}</td>
+                    </c:if>
                     <td>
                         <form action="controller" method="GET">
                             <input type="hidden" name="command" value="complete_order_command">
@@ -62,9 +69,9 @@
             </c:forEach>
         </table>
     </div>
-        <form action="courier-main" class="center-button-container">
-            <input class="join-us-button" type="submit" value="${personalRoom}">
-        </form>
+    <form action="courier-main" class="center-button-container">
+        <input class="join-us-button" type="submit" value="${personalRoom}">
+    </form>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

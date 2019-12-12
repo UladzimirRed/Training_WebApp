@@ -10,7 +10,6 @@
     <fmt:message bundle="${locale}" key="locale.user.button.asCustomer" var="asCustomer"/>
     <fmt:message bundle="${locale}" key="locale.user.button.asCourier" var="asCourier"/>
 
-
     <link rel="stylesheet" href="./css/style.css">
     <title>Register As</title>
 </head>
