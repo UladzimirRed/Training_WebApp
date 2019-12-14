@@ -20,7 +20,6 @@
     <fmt:message bundle="${locale}" key="locale.admin.text.customer" var="customer"/>
     <fmt:message bundle="${locale}" key="locale.admin.button.edit" var="edit"/>
 
-
     <link rel="stylesheet" href="./css/style.css">
     <title>List of users</title>
 </head>
