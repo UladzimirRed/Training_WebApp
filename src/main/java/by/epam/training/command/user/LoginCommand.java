@@ -13,9 +13,12 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * The type Login command.
+ */
 public class LoginCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
-    UserServiceImpl service = new UserServiceImpl();
+
 
     @Override
     public String execute(HttpServletRequest request) {
@@ -23,6 +26,7 @@ public class LoginCommand implements ActionCommand {
         String page;
         String login = request.getParameter(JspAttribute.PARAM_NAME_LOGIN);
         String password = request.getParameter(JspAttribute.PARAM_NAME_PASSWORD);
+        UserServiceImpl service = new UserServiceImpl();
         try {
             User user = service.logIn(login, password);
             if (user != null) {

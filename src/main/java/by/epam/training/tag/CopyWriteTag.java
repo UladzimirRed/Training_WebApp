@@ -4,6 +4,9 @@ import javax.servlet.jsp.*;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 
+/**
+ * The type Copy write tag.
+ */
 public class CopyWriteTag extends TagSupport {
 
     @Override

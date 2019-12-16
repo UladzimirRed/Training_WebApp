@@ -9,11 +9,17 @@ import by.epam.training.exception.UserExistsException;
 import by.epam.training.service.UserService;
 
 
+/**
+ * The type User service.
+ */
 public class UserServiceImpl implements UserService {
     private UserDaoImpl userDao = new UserDaoImpl();
     private final ConnectionPool pool;
 
 
+    /**
+     * Instantiates a new User service.
+     */
     public UserServiceImpl() {
         pool = ConnectionPool.getInstance();
     }

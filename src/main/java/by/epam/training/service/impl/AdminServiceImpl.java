@@ -12,8 +12,17 @@ import by.epam.training.service.AdminService;
 
 import java.util.List;
 
+/**
+ * The type Admin service.
+ */
 public class AdminServiceImpl implements AdminService {
+    /**
+     * The Admin dao.
+     */
     AdminDaoImpl adminDao = new AdminDaoImpl();
+    /**
+     * The User dao.
+     */
     UserDaoImpl userDao = new UserDaoImpl();
 
     @Override

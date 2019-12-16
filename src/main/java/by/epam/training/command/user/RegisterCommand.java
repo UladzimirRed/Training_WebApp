@@ -19,6 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
+/**
+ * The type Register command.
+ */
 public class RegisterCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

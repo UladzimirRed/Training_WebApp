@@ -13,6 +13,9 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * The type Confirm order command.
+ */
 public class ConfirmOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

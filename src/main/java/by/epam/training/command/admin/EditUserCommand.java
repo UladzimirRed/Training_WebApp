@@ -13,6 +13,9 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * The type Edit user command.
+ */
 public class EditUserCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * The type Complete order command.
+ */
 public class CompleteOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

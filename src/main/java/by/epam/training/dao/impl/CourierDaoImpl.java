@@ -16,10 +16,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Courier dao.
+ */
 public class CourierDaoImpl implements CourierDao {
 
     private final ConnectionPool pool;
 
+    /**
+     * Instantiates a new Courier dao.
+     */
     public CourierDaoImpl() {
         pool = ConnectionPool.getInstance();
     }

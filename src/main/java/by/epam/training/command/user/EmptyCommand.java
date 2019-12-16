@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import static by.epam.training.command.JspAddress.ERROR_PAGE;
 import static by.epam.training.command.JspAddress.HOME_PAGE;
 
+/**
+ * The type Empty command.
+ */
 public class EmptyCommand implements ActionCommand {
 
     @Override

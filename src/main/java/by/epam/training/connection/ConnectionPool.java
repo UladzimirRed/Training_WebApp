@@ -14,6 +14,9 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * The type Connection pool.
+ */
 public class ConnectionPool {
     private static Logger logger = LogManager.getLogger();
     private static ConnectionPool instance;
@@ -32,6 +35,11 @@ public class ConnectionPool {
         initPool();
     }
 
+    /**
+     * Gets instance.
+     *
+     * @return the instance
+     */
     public static ConnectionPool getInstance() {
         if (!isCreated.get()) {
             lock.lock();
@@ -56,6 +64,11 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Gets free connections size.
+     *
+     * @return the free connections size
+     */
     public int getFreeConnectionsSize() {
         return freeConnections.size();
     }
@@ -95,6 +108,11 @@ public class ConnectionPool {
         }
     }
 
+    /**
+     * Take connection proxy connection.
+     *
+     * @return the proxy connection
+     */
     public ProxyConnection takeConnection() {
         ProxyConnection connection;
         try {
@@ -107,16 +125,24 @@ public class ConnectionPool {
         return connection;
     }
 
+    /**
+     * Release connection.
+     *
+     * @param connection the connection
+     */
     public void releaseConnection(ProxyConnection connection) {
         givenAwayConnections.remove(connection);
         freeConnections.offer(connection);
     }
 
+    /**
+     * Destroy pool.
+     */
     public void destroyPool() {
         for (int i = 0; i < DEFAULT_POOL_CAPACITY; i++) {
             try {
                 freeConnections.take().reallyClose();
-            } catch (InterruptedException | ConnectionPoolException e) {
+            } catch (InterruptedException | SQLException e) {
                 logger.log(Level.ERROR, "Couldn't destroy pool");
             }
             deregisterDrivers();

@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * The type Show user list command.
+ */
 public class ShowUserListCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

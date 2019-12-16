@@ -7,6 +7,9 @@ import by.epam.training.command.JspAttribute;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * The type Logout command.
+ */
 public class LogoutCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) {

@@ -12,9 +12,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+/**
+ * The type User dao.
+ */
 public class UserDaoImpl implements UserDao {
     private final ConnectionPool pool;
 
+    /**
+     * Instantiates a new User dao.
+     */
     public UserDaoImpl() {
         pool = ConnectionPool.getInstance();
     }

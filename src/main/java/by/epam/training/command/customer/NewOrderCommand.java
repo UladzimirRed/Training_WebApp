@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * The type New order command.
+ */
 public class NewOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

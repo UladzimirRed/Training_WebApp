@@ -13,6 +13,9 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * The type Rate order command.
+ */
 public class RateOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

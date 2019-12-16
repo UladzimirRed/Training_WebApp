@@ -7,6 +7,9 @@ import by.epam.training.command.ActionCommand;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+/**
+ * The type Locale command.
+ */
 public class LocaleCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) {

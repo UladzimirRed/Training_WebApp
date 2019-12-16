@@ -8,6 +8,9 @@ import javax.servlet.http.HttpSession;
 
 import static by.epam.training.command.JspAddress.HOME_PAGE;
 
+/**
+ * The type Home command.
+ */
 public class HomeCommand implements ActionCommand {
     @Override
     public String execute(HttpServletRequest request) {

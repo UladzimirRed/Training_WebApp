@@ -13,6 +13,9 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * The type Change transport command.
+ */
 public class ChangeTransportCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

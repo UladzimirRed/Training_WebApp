@@ -1,24 +1,35 @@
 package by.epam.training.connection;
 
-import by.epam.training.exception.ConnectionPoolException;
-
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
+/**
+ * The type Proxy connection.
+ */
 public class ProxyConnection implements Connection {
     private Connection connection;
 
+    /**
+     * Instantiates a new Proxy connection.
+     *
+     * @param connection the connection
+     */
     ProxyConnection(Connection connection) {
         this.connection = connection;
     }
 
-    void reallyClose() throws ConnectionPoolException {
+    /**
+     * Really close.
+     *
+     * @throws SQLException the sql exception
+     */
+    void reallyClose() throws SQLException {
         try {
             connection.close();
         } catch (SQLException e) {
-            throw new ConnectionPoolException("Couldn't close connection", e);
+            throw new SQLException("Couldn't close connection", e);
         }
     }
 

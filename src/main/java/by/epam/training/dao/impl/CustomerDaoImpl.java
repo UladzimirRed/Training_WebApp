@@ -16,10 +16,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Customer dao.
+ */
 public class CustomerDaoImpl implements CustomerDao {
 
     private final ConnectionPool pool;
 
+    /**
+     * Instantiates a new Customer dao.
+     */
     public CustomerDaoImpl() {
         pool = ConnectionPool.getInstance();
     }

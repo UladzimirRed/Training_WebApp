@@ -13,9 +13,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The type Admin dao.
+ */
 public class AdminDaoImpl implements AdminDao {
     private final ConnectionPool pool;
 
+    /**
+     * Instantiates a new Admin dao.
+     */
     public AdminDaoImpl() {
         pool = ConnectionPool.getInstance();
     }

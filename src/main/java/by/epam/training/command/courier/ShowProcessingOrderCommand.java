@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * The type Show processing order command.
+ */
 public class ShowProcessingOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

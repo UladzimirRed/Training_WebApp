@@ -12,6 +12,9 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * The type Change role command.
+ */
 public class ChangeRoleCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

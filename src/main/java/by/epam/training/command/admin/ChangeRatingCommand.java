@@ -11,6 +11,9 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * The type Change rating command.
+ */
 public class ChangeRatingCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

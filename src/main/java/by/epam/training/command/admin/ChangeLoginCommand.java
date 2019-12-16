@@ -12,6 +12,9 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * The type Change login command.
+ */
 public class ChangeLoginCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 

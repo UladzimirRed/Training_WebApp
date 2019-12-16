@@ -10,6 +10,9 @@ import by.epam.training.util.ComparatorByOrderId;
 
 import java.util.List;
 
+/**
+ * The type Courier service.
+ */
 public class CourierServiceImpl implements CourierService {
     private CourierDaoImpl courierDao = new CourierDaoImpl();
 

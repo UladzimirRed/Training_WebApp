@@ -1,5 +1,8 @@
 package by.epam.training.entity;
 
+/**
+ * The type Order.
+ */
 public class Order {
     private int orderId;
     private String subject;
@@ -12,6 +15,15 @@ public class Order {
     private int distance;
 
 
+    /**
+     * Instantiates a new Order.
+     *
+     * @param subject   the subject
+     * @param user      the user
+     * @param transport the transport
+     * @param rate      the rate
+     * @param distance  the distance
+     */
     public Order(String subject, User user, Transport transport, boolean rate, int distance) {
         this.subject = subject;
         this.user = user;
@@ -20,6 +32,14 @@ public class Order {
         this.distance = distance;
     }
 
+    /**
+     * Instantiates a new Order.
+     *
+     * @param subject   the subject
+     * @param transport the transport
+     * @param rate      the rate
+     * @param distance  the distance
+     */
     public Order(String subject, Transport transport, boolean rate, int distance) {
         this.subject = subject;
         this.transport = transport;
@@ -27,6 +47,15 @@ public class Order {
         this.distance = distance;
     }
 
+    /**
+     * Instantiates a new Order.
+     *
+     * @param orderId    the order id
+     * @param subject    the subject
+     * @param courier    the courier
+     * @param status     the status
+     * @param totalPrice the total price
+     */
     public Order(int orderId, String subject, User courier, OrderStatus status, double totalPrice) {
         this.orderId = orderId;
         this.subject = subject;
@@ -35,12 +64,31 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
+    /**
+     * Instantiates a new Order.
+     *
+     * @param transport the transport
+     * @param rate      the rate
+     * @param distance  the distance
+     */
     public Order(Transport transport, boolean rate, int distance) {
         this.transport = transport;
         this.rate = rate;
         this.distance = distance;
     }
 
+    /**
+     * Instantiates a new Order.
+     *
+     * @param orderId    the order id
+     * @param subject    the subject
+     * @param user       the user
+     * @param totalPrice the total price
+     * @param distance   the distance
+     * @param rate       the rate
+     * @param transport  the transport
+     * @param status     the status
+     */
     public Order(int orderId, String subject, User user, double totalPrice, int distance, boolean rate, Transport transport, OrderStatus status) {
         this.orderId = orderId;
         this.subject = subject;
@@ -52,74 +100,164 @@ public class Order {
         this.distance = distance;
     }
 
+    /**
+     * Gets order id.
+     *
+     * @return the order id
+     */
     public int getOrderId() {
         return orderId;
     }
 
+    /**
+     * Sets order id.
+     *
+     * @param orderId the order id
+     */
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
+    /**
+     * Gets subject.
+     *
+     * @return the subject
+     */
     public String getSubject() {
         return subject;
     }
 
+    /**
+     * Sets subject.
+     *
+     * @param subject the subject
+     */
     public void setSubject(String subject) {
         this.subject = subject;
     }
 
+    /**
+     * Gets user.
+     *
+     * @return the user
+     */
     public User getUser() {
         return user;
     }
 
+    /**
+     * Sets user.
+     *
+     * @param user the user
+     */
     public void setUser(User user) {
         this.user = user;
     }
 
+    /**
+     * Gets courier.
+     *
+     * @return the courier
+     */
     public User getCourier() {
         return courier;
     }
 
+    /**
+     * Sets courier.
+     *
+     * @param courier the courier
+     */
     public void setCourier(User courier) {
         this.courier = courier;
     }
 
+    /**
+     * Gets status.
+     *
+     * @return the status
+     */
     public OrderStatus getStatus() {
         return status;
     }
 
+    /**
+     * Sets status.
+     *
+     * @param status the status
+     */
     public void setStatus(OrderStatus status) {
         this.status = status;
     }
 
+    /**
+     * Gets total price.
+     *
+     * @return the total price
+     */
     public double getTotalPrice() {
         return totalPrice;
     }
 
+    /**
+     * Sets total price.
+     *
+     * @param totalPrice the total price
+     */
     public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
+    /**
+     * Gets transport.
+     *
+     * @return the transport
+     */
     public Transport getTransport() {
         return transport;
     }
 
+    /**
+     * Sets transport.
+     *
+     * @param transport the transport
+     */
     public void setTransport(Transport transport) {
         this.transport = transport;
     }
 
+    /**
+     * Gets rate.
+     *
+     * @return the rate
+     */
     public boolean getRate() {
         return rate;
     }
 
+    /**
+     * Sets rate.
+     *
+     * @param rate the rate
+     */
     public void setRate(boolean rate) {
         this.rate = rate;
     }
 
+    /**
+     * Gets distance.
+     *
+     * @return the distance
+     */
     public int getDistance() {
         return distance;
     }
 
+    /**
+     * Sets distance.
+     *
+     * @param distance the distance
+     */
     public void setDistance(int distance) {
         this.distance = distance;
     }

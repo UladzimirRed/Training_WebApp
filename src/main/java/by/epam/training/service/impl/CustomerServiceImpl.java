@@ -9,6 +9,9 @@ import by.epam.training.util.ComparatorByOrderId;
 
 import java.util.List;
 
+/**
+ * The type Customer service.
+ */
 public class CustomerServiceImpl implements CustomerService {
     private CustomerDaoImpl customerDao = new CustomerDaoImpl();
 
