@@ -25,8 +25,7 @@
     <fmt:message bundle="${locale}" key="locale.user.title.passwordRegex" var="passwordRegex"/>
 
     <link rel="stylesheet" href="./css/style.css">
-    <script src="../js/main.js"></script>
-
+    <script src="./js/main.js"></script>
     <title>Register Page</title>
 </head>
 <body>
@@ -59,6 +58,7 @@
                    required/>
             <span class="form-label">${password} *</span>
             <input class="login-form-password"
+                   id="pass1"
                    type="password"
                    name="password"
                    maxlength="32"
@@ -69,6 +69,7 @@
                    required/>
             <span class="form-label">${confirmPassword} *</span>
             <input class="login-form-password"
+                   id="pass2"
                    type="password"
                    name="confirmPassword"
                    maxlength="32"
@@ -98,6 +99,9 @@
             </div>
         </form>
     </div>
+    <c:if test="${sessionScope.user.role != 'CUSTOMER'}">
+        <jsp:forward page="/jsp/error/illegal-access-error.jsp"/>
+    </c:if>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

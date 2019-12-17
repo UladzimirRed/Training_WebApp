@@ -43,6 +43,9 @@
             <input type="button" value="${back}" class="common-button" onclick="history.back()">
         </form>
     </div>
+    <c:if test="${sessionScope.user.role != 'ADMIN'}">
+        <jsp:forward page="/jsp/error/illegal-access-error.jsp"/>
+    </c:if>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

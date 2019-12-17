@@ -86,6 +86,9 @@
     <form action="admin-main" class="center-button-container">
         <input class="join-us-button" type="submit" value="${personalRoom}">
     </form>
+    <c:if test="${sessionScope.user.role != 'ADMIN'}">
+        <jsp:forward page="/jsp/error/illegal-access-error.jsp"/>
+    </c:if>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

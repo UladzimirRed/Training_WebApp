@@ -22,6 +22,7 @@
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js"></script>
     <title>Change password</title>
 </head>
 <body>
@@ -51,6 +52,7 @@
                        required/>
                 <span class="user-area-label">${newPass} *</span>
                 <input class="login-form-password"
+                       id="pass1"
                        type="password"
                        name="newPassword"
                        maxlength="32"
@@ -61,6 +63,7 @@
                        required/>
                 <span class="user-area-label">${newPassAgain} *</span>
                 <input class="login-form-password"
+                       id="pass2"
                        type="password"
                        name="confirmPassword"
                        maxlength="32"
@@ -115,6 +118,9 @@
             </c:choose>
         </div>
     </div>
+    <c:if test="${empty sessionScope.user.role}">
+        <jsp:forward page="/jsp/error/illegal-access-error.jsp"/>
+    </c:if>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

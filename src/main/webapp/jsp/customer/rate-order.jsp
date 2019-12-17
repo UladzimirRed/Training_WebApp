@@ -89,6 +89,9 @@
             <input class="login-form-button" type="submit" value="${personalRoom}">
         </form>
     </div>
+    <c:if test="${sessionScope.user.role != 'CUSTOMER'}">
+        <jsp:forward page="/jsp/error/illegal-access-error.jsp"/>
+    </c:if>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

@@ -116,10 +116,10 @@
             <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
             <c:choose>
                 <c:when test="${sessionScope.currentUser.role == 'COURIER'}">
-                    <span class="form-label">${rating}: </span>
+                    <label class="form-label">${rating}: </label>
                     <input class="login-form-text" style="width: 250px"
                            name="rating"
-                           pattern="^[0-5]*[.][0-9]+$"
+                           pattern="^[0-5][.][0-9]+$"
                            title="0.0 - 5.0"
                            value="${sessionScope.currentUser.rating}">
                     <input type="submit" value="${changeRating}" class="join-us-button" style="width: 170px;">
@@ -140,6 +140,9 @@
             </c:choose>
         </div>
     </div>
+    <c:if test="${sessionScope.user.role != 'ADMIN'}">
+        <jsp:forward page="/jsp/error/illegal-access-error.jsp"/>
+    </c:if>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

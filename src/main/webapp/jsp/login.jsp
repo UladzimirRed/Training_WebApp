@@ -24,11 +24,6 @@
 </head>
 
 <body>
-<c:choose>
-    <c:when test="${not empty sessionScope.user}">
-        <jsp:forward page="/main"/>
-    </c:when>
-</c:choose>
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
@@ -77,6 +72,9 @@
             <input type="submit" value="${signUp}" class="login-form-button"/>
         </form>
     </div>
+    <c:if test="${not empty sessionScope.user.role}">
+        <jsp:forward page="/jsp/error/illegal-access-error.jsp"/>
+    </c:if>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

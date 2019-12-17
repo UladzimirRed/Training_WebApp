@@ -73,6 +73,9 @@
     <form class="center-button-container">
         <input type="button" value="${back}" class="join-us-button" onclick="history.back()">
     </form>
+    <c:if test="${sessionScope.user.role != 'COURIER'}">
+        <jsp:forward page="/jsp/error/illegal-access-error.jsp"/>
+    </c:if>
 </main>
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>

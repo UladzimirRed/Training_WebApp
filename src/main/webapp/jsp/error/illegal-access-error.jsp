@@ -1,14 +1,14 @@
-<%@ page isErrorPage="true" isELIgnored="false" contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.message.error404" var="error404"/>
+    <fmt:message bundle="${locale}" key="locale.message.illegalAccess" var="illegalAccess"/>
     <fmt:message bundle="${locale}" key="locale.user.button.home" var="home"/>
 
-    <title>404 Error</title>
+    <title>Illegal access</title>
 </head>
 <body>
 <header>
@@ -17,7 +17,7 @@
 <main class="main-form">
     <div class="logIn-form-box">
         <br>
-        <h2>${error404}</h2>
+        <h2>${illegalAccess}</h2>
         <br>
         <br>
         <form action="home" class="center-button-container">
