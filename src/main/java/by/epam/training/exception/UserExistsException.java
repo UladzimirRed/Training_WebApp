@@ -4,6 +4,11 @@ package by.epam.training.exception;
  * The type User exists exception.
  */
 public class UserExistsException extends Exception {
+    /**
+     * Instantiates a new User exists exception.
+     */
+    public UserExistsException() {
+    }
 
     /**
      * Instantiates a new User exists exception.
@@ -24,14 +29,6 @@ public class UserExistsException extends Exception {
         super(message, cause);
     }
 
-    /**
-     * Instantiates a new User exists exception.
-     *
-     * @param cause the cause
-     */
-    public UserExistsException(Throwable cause) {
-        super(cause);
-    }
 
     /**
      * Instantiates a new User exists exception.

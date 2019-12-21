@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
     public User register(User user) throws ServiceException, UserExistsException {
         try {
             if (userDao.userExists(user.getLogin())) {
-                throw new UserExistsException("User with this login already exists");
+                throw new UserExistsException();
             }
             if (user.getTransport() == null){
                 userDao.registerCustomer(user);

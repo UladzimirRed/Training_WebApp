@@ -14,6 +14,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.table.status" var="status"/>
     <fmt:message bundle="${locale}" key="locale.customer.label.subject" var="subject"/>
     <fmt:message bundle="${locale}" key="locale.customer.table.rating" var="rating"/>
+    <fmt:message bundle="${locale}" key="locale.customer.table.done" var="done"/>
     <fmt:message bundle="${locale}" key="locale.user.label.distance" var="distance"/>
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
     <fmt:message bundle="${locale}" key="locale.customer.button.refresh" var="refresh"/>
@@ -39,7 +40,7 @@
                 <th>${distance}</th>
                 <th>${price}, BYN</th>
                 <th>${rating}</th>
-                <th>DONE</th>
+                <th>${done}</th>
             </tr>
         </table>
     </div>

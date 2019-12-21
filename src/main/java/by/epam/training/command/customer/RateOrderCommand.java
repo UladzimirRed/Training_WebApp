@@ -1,6 +1,7 @@
 package by.epam.training.command.customer;
 
 import by.epam.training.command.ActionCommand;
+import by.epam.training.command.CommandResult;
 import by.epam.training.entity.Order;
 import by.epam.training.exception.ServiceException;
 import by.epam.training.service.impl.CustomerServiceImpl;
@@ -11,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -20,19 +22,21 @@ public class RateOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         int orderId = Integer.parseInt(request.getParameter(JspAttribute.ORDER_ID));
+        String page;
         try {
             CustomerServiceImpl service = new CustomerServiceImpl();
             Order order = service.showCurrentDelivery(orderId);
+            logger.info("Order information with id " + orderId + " provided");
             session.setAttribute(JspAttribute.ORDER, order);
-            return JspAddress.RATE_ORDER;
+            page = JspAddress.RATE_ORDER;
         } catch (ServiceException e) {
-            logger.log(Level.ERROR, e);
-            return JspAddress.ERROR_PAGE;
+            logger.error("Service error occurred", e);
+            page = JspAddress.ERROR_PAGE;
         }
-
+        return new CommandResult(page);
     }
 }
 

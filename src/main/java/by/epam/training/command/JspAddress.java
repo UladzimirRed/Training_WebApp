@@ -15,7 +15,11 @@ public class JspAddress {
     /**
      * The constant ERROR_PAGE.
      */
-    public static final String ERROR_PAGE = "/error";
+    public static final String ERROR_PAGE = "/error-500";
+    /**
+     * The constant UNKNOWN_COMMAND.
+     */
+    public static final String UNKNOWN_COMMAND = "/unknown-command-error";
     /**
      * The constant HOME_PAGE.
      */

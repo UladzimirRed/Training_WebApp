@@ -1,6 +1,7 @@
 package by.epam.training.command.customer;
 
 import by.epam.training.command.ActionCommand;
+import by.epam.training.command.CommandResult;
 import by.epam.training.entity.Order;
 import by.epam.training.entity.User;
 import by.epam.training.exception.ServiceException;
@@ -12,6 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -22,19 +24,23 @@ public class ShowActiveOrderCommand implements ActionCommand {
     private static Logger logger = LogManager.getLogger();
 
     @Override
-    public String execute(HttpServletRequest request) {
+    public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute(JspAttribute.USER);
         int userId = user.getId();
+        String page;
         try {
             CustomerServiceImpl service = new CustomerServiceImpl();
             List<Order> orders = service.showActiveDelivery(userId);
+            logger.info("Active orders of user with login " + user.getLogin() + " provided");
             List<Order> sortedOrders = service.sortListOfOrdersByOrderId(orders);
+            logger.info("Active orders are sorted by id");
             session.setAttribute(JspAttribute.ORDERS, sortedOrders);
-            return JspAddress.CUSTOMER_DELIVERY;
+            page = JspAddress.CUSTOMER_DELIVERY;
         } catch (ServiceException e) {
-            logger.log(Level.ERROR, e);
-            return JspAddress.ERROR_PAGE;
+            logger.error("Service error occurred", e);
+            page = JspAddress.ERROR_PAGE;
         }
+        return new CommandResult(page);
     }
 }

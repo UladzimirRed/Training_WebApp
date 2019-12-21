@@ -5,10 +5,10 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.message.illegalAccess" var="illegalAccess"/>
+    <fmt:message bundle="${locale}" key="locale.message.unknownCommand" var="unknownCommand"/>
     <fmt:message bundle="${locale}" key="locale.user.button.home" var="home"/>
 
-    <title>Illegal access</title>
+    <title>Unknown command</title>
 </head>
 <body>
 <header>
@@ -17,7 +17,7 @@
 <main class="main-form">
     <div class="logIn-form-box">
         <br>
-        <h2>${illegalAccess}</h2>
+        <h2>${unknownCommand}</h2>
         <br>
         <br>
         <form action="home" class="center-button-container">

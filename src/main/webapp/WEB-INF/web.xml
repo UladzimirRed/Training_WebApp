@@ -5,7 +5,7 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          id="WebApp_ID" version="3.0">
 
-    <display-name> Exchange </display-name>
+    <display-name>Exchange</display-name>
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
@@ -210,9 +210,9 @@
     </servlet-mapping>
 
     <servlet>
-    <servlet-name>Completed-order</servlet-name>
-    <jsp-file>/jsp/courier/completed-order.jsp</jsp-file>
-</servlet>
+        <servlet-name>Completed-order</servlet-name>
+        <jsp-file>/jsp/courier/completed-order.jsp</jsp-file>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Completed-order</servlet-name>
         <url-pattern>/completed-order</url-pattern>
@@ -262,6 +262,34 @@
         <servlet-name>Change-success</servlet-name>
         <url-pattern>/change-success</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Illegal-access-error</servlet-name>
+        <jsp-file>/jsp/error/illegal-access-error.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Illegal-access-error</servlet-name>
+        <url-pattern>/illegal-access-error</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Unknown-command-error</servlet-name>
+        <jsp-file>/jsp/error/unknown-command-error.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Unknown-command-error</servlet-name>
+        <url-pattern>/unknown-command-error</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>Error-500</servlet-name>
+        <jsp-file>/jsp/error/error-500.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Error-500</servlet-name>
+        <url-pattern>/error-500</url-pattern>
+    </servlet-mapping>
+
 
     <jsp-config>
         <jsp-property-group>
