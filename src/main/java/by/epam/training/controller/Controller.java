@@ -2,11 +2,7 @@ package by.epam.training.controller;
 
 import by.epam.training.command.*;
 import by.epam.training.connection.ConnectionPool;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,7 +15,6 @@ import java.io.IOException;
  */
 @WebServlet(name = "MainController", urlPatterns = {"/controller"})
 public class Controller extends HttpServlet {
-    private static Logger logger = LogManager.getLogger();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
@@ -33,7 +28,7 @@ public class Controller extends HttpServlet {
         ActionCommand command = ActionFactory.defineCommand(request);
         CommandResult commandResult = command.execute(request, response);
         String page = commandResult.getPage();
-        if (!commandResult.isRedirect()){
+        if (!commandResult.isRedirect()) {
             request.getRequestDispatcher(page).forward(request, response);
         } else {
             response.sendRedirect(request.getContextPath() + page);
@@ -41,7 +36,7 @@ public class Controller extends HttpServlet {
     }
 
     @Override
-    public void destroy(){
+    public void destroy() {
         ConnectionPool.getInstance().destroyPool();
     }
 }

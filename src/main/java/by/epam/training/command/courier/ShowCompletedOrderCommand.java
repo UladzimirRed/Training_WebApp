@@ -8,7 +8,6 @@ import by.epam.training.exception.ServiceException;
 import by.epam.training.service.impl.CourierServiceImpl;
 import by.epam.training.command.JspAddress;
 import by.epam.training.command.JspAttribute;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,4 +42,3 @@ public class ShowCompletedOrderCommand implements ActionCommand {
         return new CommandResult(page);
     }
 }
-

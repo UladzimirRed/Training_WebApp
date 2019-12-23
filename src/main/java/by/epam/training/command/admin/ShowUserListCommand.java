@@ -7,7 +7,6 @@ import by.epam.training.exception.ServiceException;
 import by.epam.training.service.impl.AdminServiceImpl;
 import by.epam.training.command.JspAddress;
 import by.epam.training.command.JspAttribute;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,7 +33,7 @@ public class ShowUserListCommand implements ActionCommand {
             page = JspAddress.USER_LIST;
         } catch (ServiceException e) {
             logger.error("Service error occurred", e);
-            page =JspAddress.ERROR_PAGE;
+            page = JspAddress.ERROR_PAGE;
         }
         return new CommandResult(page);
     }

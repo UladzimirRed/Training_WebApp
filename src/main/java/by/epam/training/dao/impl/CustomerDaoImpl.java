@@ -134,7 +134,7 @@ public class CustomerDaoImpl implements CustomerDao {
             preparedStatement = connection.prepareStatement(SqlRequest.SQL_GET_USER_RATING);
             preparedStatement.setString(1, courierLogin);
             resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()){
+            if (resultSet.next()) {
                 courierCurrentRating = resultSet.getInt(1);
             }
             return courierCurrentRating;
@@ -147,7 +147,7 @@ public class CustomerDaoImpl implements CustomerDao {
     }
 
     @Override
-    public void wrightCourierRating (String courierLogin, double updatedRating) throws DaoException {
+    public void wrightCourierRating(String courierLogin, double updatedRating) throws DaoException {
         ProxyConnection connection = null;
         PreparedStatement preparedStatement = null;
         try {

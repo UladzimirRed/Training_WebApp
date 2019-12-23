@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * The enum Order status.
  */
-public enum  OrderStatus {
+public enum OrderStatus {
     /**
      * New order status.
      */
@@ -30,7 +30,7 @@ public enum  OrderStatus {
     private static final Map<String, OrderStatus> STRING_ORDER_STATUS_MAP = new HashMap<>();
 
     static {
-        for (OrderStatus orderStatus: values()) {
+        for (OrderStatus orderStatus : values()) {
             ORDER_STATUS_INTEGER_MAP.put(orderStatus, orderStatus.getCode());
             STRING_ORDER_STATUS_MAP.put(orderStatus.name(), orderStatus);
         }

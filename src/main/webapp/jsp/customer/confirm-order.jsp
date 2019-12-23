@@ -28,7 +28,6 @@
 <header>
     <jsp:include page="/jsp/header.jsp"/>
 </header>
-
 <main class="main-form">
     <br>
     <h2>${confirmOrder}</h2>
@@ -101,7 +100,6 @@
         <jsp:forward page="/jsp/error/illegal-access-error.jsp"/>
     </c:if>
 </main>
-
 <footer>
     <jsp:include page="/jsp/footer.jsp"/>
 </footer>

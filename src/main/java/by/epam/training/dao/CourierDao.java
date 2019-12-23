@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * The interface Courier dao.
  */
-public interface CourierDao extends BaseDao<User>{
+public interface CourierDao extends BaseDao<User> {
     /**
      * Select available delivery list.
      *

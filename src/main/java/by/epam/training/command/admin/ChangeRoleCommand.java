@@ -7,7 +7,6 @@ import by.epam.training.command.JspAttribute;
 import by.epam.training.entity.RoleType;
 import by.epam.training.exception.ServiceException;
 import by.epam.training.service.impl.AdminServiceImpl;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -37,4 +36,3 @@ public class ChangeRoleCommand implements ActionCommand {
         return new CommandResult(page, true);
     }
 }
-

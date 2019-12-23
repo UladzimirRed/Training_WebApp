@@ -7,7 +7,6 @@ import by.epam.training.exception.ServiceException;
 import by.epam.training.service.impl.UserServiceImpl;
 import by.epam.training.command.JspAddress;
 import by.epam.training.command.JspAttribute;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,7 +33,7 @@ public class LoginCommand implements ActionCommand {
                 request.setAttribute(JspAttribute.USER, login);
                 logger.info("User with login " + login + " logged in");
                 session.setAttribute(JspAttribute.USER, user);
-                switch (user.getRole()){
+                switch (user.getRole()) {
                     case CUSTOMER:
                         page = JspAddress.CUSTOMER_MAIN;
                         break;
@@ -45,7 +44,7 @@ public class LoginCommand implements ActionCommand {
                         page = JspAddress.ADMIN_MAIN;
                 }
             } else {
-                if(login.equals("") || password.equals("")){
+                if (login.equals("") || password.equals("")) {
                     logger.info("An attempt was made to send an empty required field");
                     session.setAttribute(JspAttribute.EMPTY_FIELDS, JspAttribute.EMPTY_FIELDS);
                 } else {

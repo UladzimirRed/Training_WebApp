@@ -3,7 +3,7 @@ package by.epam.training.entity;
 /**
  * The type User.
  */
-public class User extends Entity{
+public class User extends Entity {
     private int id;
     private String login;
     private String password;

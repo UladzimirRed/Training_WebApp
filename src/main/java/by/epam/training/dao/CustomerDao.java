@@ -61,7 +61,7 @@ public interface CustomerDao extends BaseDao<User> {
      * @param updatedRating the updated rating
      * @throws DaoException the dao exception
      */
-    void wrightCourierRating (String courierLogin, double updatedRating) throws DaoException;
+    void wrightCourierRating(String courierLogin, double updatedRating) throws DaoException;
 
     /**
      * Change order status to rated.

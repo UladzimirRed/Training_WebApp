@@ -25,8 +25,8 @@ public class ConfirmOrderCommand implements ActionCommand {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         String subject = request.getParameter(JspAttribute.SUBJECT)
                 .replace("<", "")
-                .replace("script","")
-                .replace(">","");
+                .replace("script", "")
+                .replace(">", "");
         Transport transport = Transport.getTransportByString(request.getParameter(JspAttribute.TRANSPORT));
         boolean rate = Boolean.parseBoolean(request.getParameter(JspAttribute.RATE));
         String distanceString = request.getParameter(JspAttribute.DISTANCE);

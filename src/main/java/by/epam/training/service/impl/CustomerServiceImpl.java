@@ -32,7 +32,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Order countTotalCost(Order order) {
         double totalCost = 0;
-        switch (order.getTransport()){
+        switch (order.getTransport()) {
             case CAR:
                 totalCost = order.getDistance() * CAR_PRICE_PER_KM;
                 break;
@@ -43,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
                 totalCost = order.getDistance() * FOOT_COURIER_PRICE_PER_KM;
                 break;
         }
-        if (order.getRate()){
+        if (order.getRate()) {
             totalCost = totalCost * EXPRESS_RATE_COEFFICIENT;
         }
         double roundedTotalCost = (double) Math.round(totalCost * 100) / 100;
@@ -55,7 +55,7 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Order> showActiveDelivery(int userId) throws ServiceException {
         try {
             return customerDao.selectActiveDelivery(userId);
-        } catch (DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
@@ -64,7 +64,7 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Order> showCompleteDelivery(int userId) throws ServiceException {
         try {
             return customerDao.selectCompleteDelivery(userId);
-        } catch (DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
     }
@@ -113,6 +113,4 @@ public class CustomerServiceImpl implements CustomerService {
         orders.sort(new ComparatorByOrderId());
         return orders;
     }
-
-
 }

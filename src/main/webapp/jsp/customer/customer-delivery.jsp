@@ -91,10 +91,10 @@
         <c:otherwise>
             <div class="empty-delivery-text">
                 <div style="text-align: center; color: #ffebcd;font-size: 23px; margin: 120px 0 200px;">
-                    ${noDeliveryYet}</div>
+                        ${noDeliveryYet}</div>
             </div>
             <div class="horizontal-button-container">
-                <form action="customer-main" >
+                <form action="customer-main">
                     <input class="join-us-button" type="submit" value="${personalRoom}">
                 </form>
                 <form action="new-order">

@@ -19,6 +19,7 @@ public enum Transport {
      * None transport.
      */
     NONE(3);
+
     Transport(Integer code) {
         this.code = code;
     }
@@ -61,7 +62,7 @@ public enum Transport {
      * @return the transport by string
      */
     public static Transport getTransportByString(String name) {
-        return name == null ? null: STRING_TRANSPORT_MAP.get(name.toUpperCase());
+        return name == null ? null : STRING_TRANSPORT_MAP.get(name.toUpperCase());
     }
 
 }

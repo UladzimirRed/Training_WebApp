@@ -23,7 +23,6 @@
     <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Login</title>
 </head>
-
 <body>
 <header>
     <jsp:include page="/jsp/header.jsp"/>

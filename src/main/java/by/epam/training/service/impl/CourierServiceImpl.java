@@ -66,5 +66,4 @@ public class CourierServiceImpl implements CourierService {
         orders.sort(new ComparatorByOrderId());
         return orders;
     }
-
 }

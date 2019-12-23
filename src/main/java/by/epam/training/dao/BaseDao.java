@@ -2,7 +2,6 @@ package by.epam.training.dao;
 
 import by.epam.training.entity.Entity;
 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,7 +30,7 @@ public interface BaseDao<T extends Entity> {
                 statement.close();
             }
         } catch (SQLException e) {
-            logger.log(Level.ERROR, "Couldn't close statement: " + e.getMessage());
+            logger.error("Couldn't close statement: ", e);
         }
     }
 }

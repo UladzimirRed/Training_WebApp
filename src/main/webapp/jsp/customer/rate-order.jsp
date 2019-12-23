@@ -46,7 +46,6 @@
                 </tr>
             </table>
         </div>
-
         <div class="table-current-container-body">
             <table class="body-table">
                 <tr>

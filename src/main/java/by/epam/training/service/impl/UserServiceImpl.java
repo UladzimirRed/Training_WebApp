@@ -8,14 +8,12 @@ import by.epam.training.exception.ServiceException;
 import by.epam.training.exception.UserExistsException;
 import by.epam.training.service.UserService;
 
-
 /**
  * The type User service.
  */
 public class UserServiceImpl implements UserService {
     private UserDaoImpl userDao = new UserDaoImpl();
     private final ConnectionPool pool;
-
 
     /**
      * Instantiates a new User service.
@@ -39,7 +37,7 @@ public class UserServiceImpl implements UserService {
             if (userDao.userExists(user.getLogin())) {
                 throw new UserExistsException();
             }
-            if (user.getTransport() == null){
+            if (user.getTransport() == null) {
                 userDao.registerCustomer(user);
                 return userDao.findCustomerByLogin(user.getLogin());
             } else {
@@ -56,9 +54,8 @@ public class UserServiceImpl implements UserService {
         User user = new User(login, oldPassword);
         try {
             return userDao.updateUserPassword(user, newPassword);
-        } catch (DaoException e){
+        } catch (DaoException e) {
             throw new ServiceException(e);
         }
-
     }
 }

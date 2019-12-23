@@ -6,7 +6,6 @@ import by.epam.training.dao.UserDao;
 import by.epam.training.entity.*;
 import by.epam.training.exception.DaoException;
 import by.epam.training.dao.SqlRequest;
-import by.epam.training.exception.UserExistsException;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -40,19 +40,19 @@
     <br>
     <div class="logIn-form-box">
         <form action="controller" name="changeLogin" method="POST" style="width: 100%">
-                <input type="hidden" name="command" value="change_login_command"/>
-                <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
-                <span class="form-label">${login}: </span>
-                <input class="login-form-text" style="width: 250px"
-                       name="currentLogin"
-                       value="${sessionScope.currentUser.login}"
-                       maxlength="16"
-                       pattern="^[\w_]{4,16}$"
-                       title="${loginRegex}"
-                       value=""
-                       placeholder="${myUserNameIs}"
-                       required/>
-                <input type="submit" value="${changeLogin}" class="join-us-button" style="width: 170px;">
+            <input type="hidden" name="command" value="change_login_command"/>
+            <input type="hidden" name="userId" value="${sessionScope.currentUser.id}">
+            <span class="form-label">${login}: </span>
+            <input class="login-form-text" style="width: 250px"
+                   name="currentLogin"
+                   value="${sessionScope.currentUser.login}"
+                   maxlength="16"
+                   pattern="^[\w_]{4,16}$"
+                   title="${loginRegex}"
+                   value=""
+                   placeholder="${myUserNameIs}"
+                   required/>
+            <input type="submit" value="${changeLogin}" class="join-us-button" style="width: 170px;">
         </form>
         <form action="controller" name="changeRole" method="POST" style="width: 100%">
             <input type="hidden" name="command" value="change_role_command"/>
@@ -84,29 +84,36 @@
                         <c:when test="${sessionScope.currentUser.transport == 'TRUCK'}">
                             <span class="form-label">${transport}: </span>
                             <select class=form-dropdown style="width: 250px" name="transport">
-                                <option class="form-option" style="width: 250px" value="Truck" selected>${truck}</option>
+                                <option class="form-option" style="width: 250px" value="Truck"
+                                        selected>${truck}</option>
                                 <option class="form-option" style="width: 250px" value="Car">${car}</option>
-                                <option class="form-option" style="width: 250px" value="None">${withoutTransport}</option>
+                                <option class="form-option" style="width: 250px"
+                                        value="None">${withoutTransport}</option>
                             </select>
-                            <input type="submit" value="${changeTransport}" class="join-us-button" style="width: 170px;">
+                            <input type="submit" value="${changeTransport}" class="join-us-button"
+                                   style="width: 170px;">
                         </c:when>
                         <c:when test="${sessionScope.currentUser.transport == 'CAR'}">
                             <span class="form-label">${transport}: </span>
                             <select class=form-dropdown style="width: 250px" name="transport">
                                 <option class="form-option" style="width: 250px" value="Truck">${truck}</option>
                                 <option class="form-option" style="width: 250px" value="Car" selected>${car}</option>
-                                <option class="form-option" style="width: 250px" value="None">${withoutTransport}</option>
+                                <option class="form-option" style="width: 250px"
+                                        value="None">${withoutTransport}</option>
                             </select>
-                            <input type="submit" value="${changeTransport}" class="join-us-button" style="width: 170px;">
+                            <input type="submit" value="${changeTransport}" class="join-us-button"
+                                   style="width: 170px;">
                         </c:when>
                         <c:otherwise>
                             <span class="form-label">${transport}: </span>
                             <select class=form-dropdown style="width: 250px" name="transport">
                                 <option class="form-option" style="width: 250px" value="Truck">${truck}</option>
                                 <option class="form-option" style="width: 250px" value="Car">${car}</option>
-                                <option class="form-option" style="width: 250px" value="None" selected>${withoutTransport}</option>
+                                <option class="form-option" style="width: 250px" value="None"
+                                        selected>${withoutTransport}</option>
                             </select>
-                            <input type="submit" value="${changeTransport}" class="join-us-button" style="width: 170px;">
+                            <input type="submit" value="${changeTransport}" class="join-us-button"
+                                   style="width: 170px;">
                         </c:otherwise>
                     </c:choose>
                 </c:when>
@@ -135,8 +142,9 @@
         </div>
         <div class="login-form-message">
             <c:choose>
-                <c:when test="${not empty requestScope.userExist}">
+                <c:when test="${not empty sessionScope.userExist}">
                     ${userExist}
+                    <c:remove var="userExist" scope="session"/>
                 </c:when>
             </c:choose>
         </div>

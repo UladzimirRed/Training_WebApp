@@ -25,5 +25,4 @@ public class CopyWriteTag extends TagSupport {
     public int doEndTag() {
         return EVAL_PAGE;
     }
-
 }

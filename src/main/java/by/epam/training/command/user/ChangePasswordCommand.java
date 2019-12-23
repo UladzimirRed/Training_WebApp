@@ -7,7 +7,6 @@ import by.epam.training.exception.ServiceException;
 import by.epam.training.service.impl.UserServiceImpl;
 import by.epam.training.command.JspAddress;
 import by.epam.training.command.JspAttribute;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,7 +30,7 @@ public class ChangePasswordCommand implements ActionCommand {
         String confirmPassword = request.getParameter(JspAttribute.CONFIRM_PASSWORD);
         String page;
         try {
-            if(!oldPassword.equals(newPassword)){
+            if (!oldPassword.equals(newPassword)) {
                 if (newPassword.equals(confirmPassword)) {
                     UserServiceImpl service = new UserServiceImpl();
                     User user = service.changePassword(login, oldPassword, newPassword);

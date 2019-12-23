@@ -7,12 +7,12 @@ import by.epam.training.command.JspAttribute;
 import by.epam.training.exception.ServiceException;
 import by.epam.training.exception.UserExistsException;
 import by.epam.training.service.impl.AdminServiceImpl;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * The type Change login command.
@@ -24,6 +24,7 @@ public class ChangeLoginCommand implements ActionCommand {
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
         int userId = Integer.parseInt(request.getParameter(JspAttribute.USER_ID));
         String currentLogin = request.getParameter(JspAttribute.CURRENT_LOGIN);
+        HttpSession session = request.getSession();
         String page;
         try {
             AdminServiceImpl service = new AdminServiceImpl();
@@ -35,7 +36,7 @@ public class ChangeLoginCommand implements ActionCommand {
             page = JspAddress.ERROR_PAGE;
         } catch (UserExistsException e) {
             logger.info("user with login " + currentLogin + " already exist");
-            request.setAttribute(JspAttribute.USER_EXIST, JspAttribute.USER_EXIST);
+            session.setAttribute(JspAttribute.USER_EXIST, JspAttribute.USER_EXIST);
             page = JspAddress.EDIT_USER;
         }
         return new CommandResult(page, true);

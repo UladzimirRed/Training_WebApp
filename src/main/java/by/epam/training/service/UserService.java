@@ -6,7 +6,6 @@ import by.epam.training.exception.UserExistsException;
 
 import java.sql.SQLException;
 
-
 /**
  * The interface User service.
  */

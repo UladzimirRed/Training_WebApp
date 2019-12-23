@@ -3,7 +3,7 @@ package by.epam.training.exception;
 /**
  * The type Connection pool exception.
  */
-public class ConnectionPoolException extends Exception{
+public class ConnectionPoolException extends Exception {
     /**
      * Instantiates a new Connection pool exception.
      */

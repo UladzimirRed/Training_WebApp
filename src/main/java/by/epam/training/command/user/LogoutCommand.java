@@ -3,13 +3,11 @@ package by.epam.training.command.user;
 import by.epam.training.command.ActionCommand;
 import by.epam.training.command.CommandResult;
 import by.epam.training.command.JspAddress;
-import by.epam.training.command.JspAttribute;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * The type Logout command.

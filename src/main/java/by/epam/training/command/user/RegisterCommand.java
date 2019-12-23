@@ -12,14 +12,12 @@ import by.epam.training.service.impl.UserServiceImpl;
 import by.epam.training.command.JspAddress;
 import by.epam.training.command.JspAttribute;
 import by.epam.training.util.validator.UserValidator;
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 /**
  * The type Register command.
@@ -39,7 +37,7 @@ public class RegisterCommand implements ActionCommand {
         try {
             if (password.equals(confirmPassword)) {
                 User user;
-                if (transport == null){
+                if (transport == null) {
                     user = new User(login, password, role);
                 } else {
                     user = new User(login, password, role, transport);
@@ -76,7 +74,7 @@ public class RegisterCommand implements ActionCommand {
 
     private String defineUserPage(Transport transport) {
         String page;
-        if (transport == null){
+        if (transport == null) {
             page = JspAddress.REGISTER_CUSTOMER;
         } else {
             page = JspAddress.REGISTER_COURIER;
