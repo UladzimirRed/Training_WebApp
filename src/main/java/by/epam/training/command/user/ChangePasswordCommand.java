@@ -23,7 +23,6 @@ public class ChangePasswordCommand implements ActionCommand {
 
     @Override
     public CommandResult execute(HttpServletRequest request, HttpServletResponse response) {
-
         HttpSession session = request.getSession();
         User userFromSession = (User) session.getAttribute(JspAttribute.USER);
         String login = userFromSession.getLogin();
@@ -39,18 +38,18 @@ public class ChangePasswordCommand implements ActionCommand {
                     if (user != null) {
                         logger.info("User password with login " + login + " changed");
                         session.setAttribute(JspAttribute.USER, user);
-                        request.setAttribute(JspAttribute.MESSAGE, JspAttribute.CHANGED_PASSWORD);
+                        session.setAttribute(JspAttribute.MESSAGE, JspAttribute.CHANGED_PASSWORD);
                     } else {
-                        logger.info("User password with login " + login + "not  changed: wrong old password");
-                        request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_PASSWORD);
+                        logger.info("User password with login " + login + " not changed: wrong old password");
+                        session.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_PASSWORD);
                     }
                 } else {
-                    logger.info("User password with login " + login + "not  changed: new and confirm passwords do not match");
-                    request.setAttribute(JspAttribute.PASSWORD_DOES_NOT_MATCH, JspAttribute.PASSWORD_DOES_NOT_MATCH);
+                    logger.info("User password with login " + login + " not changed: new and confirm passwords do not match");
+                    session.setAttribute(JspAttribute.PASSWORD_DOES_NOT_MATCH, JspAttribute.PASSWORD_DOES_NOT_MATCH);
                 }
             } else {
-                request.setAttribute(JspAttribute.PASSWORDS_EQUALS, JspAttribute.PASSWORDS_EQUALS);
-                logger.info("User password with login " + login + "not  changed: new and old passwords do not match");
+                logger.info("User password with login " + login + " not changed: new and old passwords do not match");
+                session.setAttribute(JspAttribute.PASSWORDS_EQUALS, JspAttribute.PASSWORDS_EQUALS);
             }
             page = JspAddress.CHANGE_PASSWORD;
         } catch (ServiceException e) {

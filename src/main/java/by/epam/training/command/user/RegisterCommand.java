@@ -56,7 +56,7 @@ public class RegisterCommand implements ActionCommand {
                 }
             } else {
                 logger.info("User with login " + login + " is not registered: passwords does not match");
-                request.setAttribute(JspAttribute.PASSWORD_DOES_NOT_MATCH, JspAttribute.PASSWORD_DOES_NOT_MATCH);
+                session.setAttribute(JspAttribute.PASSWORD_DOES_NOT_MATCH, JspAttribute.PASSWORD_DOES_NOT_MATCH);
                 page = defineUserPage(transport);
             }
         } catch (ServiceException e) {
@@ -64,11 +64,11 @@ public class RegisterCommand implements ActionCommand {
             page = JspAddress.ERROR_PAGE;
         } catch (UserExistsException e) {
             logger.info("user with login " + login + " already exist");
-            request.setAttribute(JspAttribute.USER_EXIST, JspAttribute.USER_EXIST);
+            session.setAttribute(JspAttribute.USER_EXIST, JspAttribute.USER_EXIST);
             page = defineUserPage(transport);
         } catch (ValidationException e) {
             logger.warn("Validation is not successful. check the correctness of the entered values");
-            request.setAttribute(JspAttribute.WRONG_PATTERN, JspAttribute.WRONG_PATTERN);
+            session.setAttribute(JspAttribute.WRONG_PATTERN, JspAttribute.WRONG_PATTERN);
             page = defineUserPage(transport);
         }
         return new CommandResult(page, true);

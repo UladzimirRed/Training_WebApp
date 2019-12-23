@@ -22,6 +22,7 @@
     <fmt:message bundle="${locale}" key="locale.user.button.personalRoom" var="personalRoom"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <script src="./js/main.js"></script>
     <title>Change password</title>
 </head>
@@ -36,7 +37,6 @@
             <div>
                 <br>
                 <h2>${ifYouWantChangePass}</h2>
-                <br>
                 <br>
             </div>
             <div class="change-password-form-box">
@@ -97,23 +97,27 @@
         </div>
         <div class="login-form-message">
             <c:choose>
-                <c:when test="${not empty requestScope.wrongData}">
+                <c:when test="${not empty sessionScope.wrongData}">
                     ${wrongOldPassword}
+                    <c:remove var="wrongData" scope="session"/>
                 </c:when>
             </c:choose>
             <c:choose>
-                <c:when test="${not empty requestScope.message}">
+                <c:when test="${not empty sessionScope.message}">
                     ${changedPassword}
+                    <c:remove var="message" scope="session"/>
                 </c:when>
             </c:choose>
             <c:choose>
-                <c:when test="${not empty requestScope.passwordDoesNotMatch}">
+                <c:when test="${not empty sessionScope.passwordDoesNotMatch}">
                     ${passwordDoesNotMatch}
+                    <c:remove var="passwordDoesNotMatch" scope="session"/>
                 </c:when>
             </c:choose>
             <c:choose>
-                <c:when test="${not empty requestScope.passwordsEquals}">
+                <c:when test="${not empty sessionScope.passwordsEquals}">
                     ${passwordsMustNotMatch}
+                    <c:remove var="passwordsEquals" scope="session"/>
                 </c:when>
             </c:choose>
         </div>

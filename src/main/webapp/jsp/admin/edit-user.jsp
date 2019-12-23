@@ -27,6 +27,7 @@
     <fmt:message bundle="${locale}" key="locale.message.userExist" var="userExist"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Edit user</title>
 </head>
 <body>

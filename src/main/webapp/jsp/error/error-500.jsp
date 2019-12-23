@@ -7,6 +7,8 @@
 
     <fmt:message bundle="${locale}" key="locale.message.error500" var="error500"/>
 
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>500 Error</title>
 </head>
 <body>

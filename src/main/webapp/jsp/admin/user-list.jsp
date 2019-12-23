@@ -21,6 +21,7 @@
     <fmt:message bundle="${locale}" key="locale.admin.button.edit" var="edit"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>List of users</title>
 </head>
 <body>
@@ -30,7 +31,6 @@
 <main class="main-form">
     <br>
     <h2>${listOfUsers}</h2>
-    <br>
     <div class="table-container-head">
         <table class="head-table">
             <tr>

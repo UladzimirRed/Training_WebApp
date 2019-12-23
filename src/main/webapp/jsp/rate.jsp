@@ -16,6 +16,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.button.rates" var="rates"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Rates</title>
 </head>
 <body>
@@ -25,7 +26,6 @@
 <main class="main-form">
     <br>
     <h2>${rates}</h2>
-    <br>
     <div class="table-container-head">
         <table class="head-table">
             <tr>

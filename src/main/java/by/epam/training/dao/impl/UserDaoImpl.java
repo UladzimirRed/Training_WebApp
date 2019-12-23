@@ -111,7 +111,7 @@ public class UserDaoImpl implements UserDao {
             preparedStatement = connection.prepareStatement(SqlRequest.FIND_COURIER_BY_LOGIN);
             preparedStatement.setString(1, login);
             resultSet = preparedStatement.executeQuery();
-            if (!resultSet.next()) {
+            if (resultSet.next()) {
                 return createUserFromQueryResult(resultSet);
             }
             return null;
@@ -157,8 +157,9 @@ public class UserDaoImpl implements UserDao {
                 preparedStatement.setString(2, user.getLogin());
                 preparedStatement.executeUpdate();
                 return findCourierByLogin(user.getLogin());
+            } else {
+                return null;
             }
-            return null;
         } catch (SQLException e) {
             throw new DaoException(e);
         } finally {

@@ -8,6 +8,8 @@
     <fmt:message bundle="${locale}" key="locale.message.error404" var="error404"/>
     <fmt:message bundle="${locale}" key="locale.user.button.home" var="home"/>
 
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>404 Error</title>
 </head>
 <body>

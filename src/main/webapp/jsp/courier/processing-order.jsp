@@ -22,6 +22,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.text.regular" var="regular"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Processing orders</title>
 </head>
 <body>

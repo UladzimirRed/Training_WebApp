@@ -20,6 +20,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.button.next" var="next"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>New Order</title>
 </head>
 <body>
@@ -29,7 +30,6 @@
 <main class="main-form">
     <br>
     <h2>${newOrder}</h2>
-    <br>
     <div class="logIn-form-box">
         <form action="controller" name="newOrder" method="POST">
             <div class="logIn-form-box-2">

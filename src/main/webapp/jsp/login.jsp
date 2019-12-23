@@ -20,6 +20,7 @@
     <fmt:message bundle="${locale}" key="locale.user.title.passwordRegex" var="passwordRegex"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Login</title>
 </head>
 
@@ -53,17 +54,18 @@
                    value=""
                    placeholder="${enterYourPassword}"
                    required/>
-            ${errorLoginPassMessage}
             <input type="submit" value="${log_in}" class="login-form-button"/>
             <div class="login-form-message">
                 <c:choose>
-                    <c:when test="${not empty requestScope.wrongData}">
+                    <c:when test="${not empty sessionScope.wrongData}">
                         ${wrongCredentials}
+                        <c:remove var="wrongData" scope="session"/>
                     </c:when>
                 </c:choose>
                 <c:choose>
-                    <c:when test="${not empty requestScope.emptyFields}">
+                    <c:when test="${not empty sessionScope.emptyFields}">
                         ${requiredFields}
+                        <c:remove var="emptyFields" scope="session"/>
                     </c:when>
                 </c:choose>
             </div>

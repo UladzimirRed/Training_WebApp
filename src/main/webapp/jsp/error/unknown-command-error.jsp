@@ -8,6 +8,8 @@
     <fmt:message bundle="${locale}" key="locale.message.unknownCommand" var="unknownCommand"/>
     <fmt:message bundle="${locale}" key="locale.user.button.home" var="home"/>
 
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Unknown command</title>
 </head>
 <body>

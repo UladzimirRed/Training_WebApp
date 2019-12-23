@@ -22,6 +22,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.button.newOrder" var="newOrder"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>My delivery</title>
 </head>
 <body>
@@ -31,7 +32,6 @@
 <main class="main-form">
     <br>
     <h2>${myDelivery}</h2>
-    <br>
     <c:choose>
         <c:when test="${not empty sessionScope.orders}">
             <div class="table-container-head">
@@ -90,7 +90,7 @@
         </c:when>
         <c:otherwise>
             <div class="empty-delivery-text">
-                <div style="text-align: center; color: #ffebcd;font-size: 23px; margin: 120px 0 250px;">
+                <div style="text-align: center; color: #ffebcd;font-size: 23px; margin: 120px 0 200px;">
                     ${noDeliveryYet}</div>
             </div>
             <div class="horizontal-button-container">

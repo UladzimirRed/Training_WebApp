@@ -19,6 +19,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.button.updateData" var="updateData"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Personal area</title>
 </head>
 <body>

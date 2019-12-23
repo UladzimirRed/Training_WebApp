@@ -11,6 +11,7 @@
     <fmt:message bundle="${locale}" key="locale.user.button.asCourier" var="asCourier"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Register As</title>
 </head>
 <body>

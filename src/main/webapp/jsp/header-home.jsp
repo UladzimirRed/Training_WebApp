@@ -13,6 +13,7 @@
     <fmt:message bundle="${locale}" key="locale.user.button.logout" var="logout"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Header</title>
 </head>
 <body>

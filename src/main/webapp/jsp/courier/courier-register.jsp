@@ -7,7 +7,6 @@
     <fmt:setLocale value="${sessionScope.local}"/>
     <fmt:setBundle basename="locale.locale" var="locale"/>
 
-    <fmt:message bundle="${locale}" key="locale.message.wrongCredentials" var="wrongCredentials"/>
     <fmt:message bundle="${locale}" key="locale.message.passwordDoesNotMatch" var="passwordDoesNotMatch"/>
     <fmt:message bundle="${locale}" key="locale.message.userExist" var="userExist"/>
     <fmt:message bundle="${locale}" key="locale.message.wrongPattern" var="wrongPattern"/>
@@ -29,6 +28,7 @@
     <fmt:message bundle="${locale}" key="locale.user.title.passwordRegex" var="passwordRegex"/>
 
     <link rel="stylesheet" href="././css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <script src="./js/main.js"></script>
     <title>Register Page</title>
 </head>
@@ -90,23 +90,21 @@
             <input type="submit" value="${signUp}" class="login-form-button"/>
             <div class="login-form-message">
                 <c:choose>
-                    <c:when test="${not empty requestScope.wrongData}">
-                        ${wrongCredentials}
-                    </c:when>
-                </c:choose>
-                <c:choose>
-                    <c:when test="${not empty requestScope.passwordDoesNotMatch}">
+                    <c:when test="${not empty sessionScope.passwordDoesNotMatch}">
                         ${passwordDoesNotMatch}
+                        <c:remove var="passwordDoesNotMatch" scope="session"/>
                     </c:when>
                 </c:choose>
                 <c:choose>
-                    <c:when test="${not empty requestScope.userExist}">
+                    <c:when test="${not empty sessionScope.userExist}">
                         ${userExist}
+                        <c:remove var="userExist" scope="session"/>
                     </c:when>
                 </c:choose>
                 <c:choose>
-                    <c:when test="${not empty requestScope.wrongPattern}">
+                    <c:when test="${not empty sessionScope.wrongPattern}">
                         ${wrongPattern}
+                        <c:remove var="wrongPattern" scope="session"/>
                     </c:when>
                 </c:choose>
             </div>

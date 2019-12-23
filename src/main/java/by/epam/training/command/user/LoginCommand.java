@@ -47,10 +47,10 @@ public class LoginCommand implements ActionCommand {
             } else {
                 if(login.equals("") || password.equals("")){
                     logger.info("An attempt was made to send an empty required field");
-                    request.setAttribute(JspAttribute.EMPTY_FIELDS, JspAttribute.EMPTY_FIELDS);
+                    session.setAttribute(JspAttribute.EMPTY_FIELDS, JspAttribute.EMPTY_FIELDS);
                 } else {
                     logger.info("User with login " + login + " did not logged in: wrong credentials");
-                    request.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_DATA);
+                    session.setAttribute(JspAttribute.WRONG_DATA, JspAttribute.WRONG_DATA);
                 }
                 page = JspAddress.LOGIN_PAGE;
             }

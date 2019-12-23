@@ -21,6 +21,7 @@
     <fmt:message bundle="${locale}" key="locale.customer.button.makeChanges" var="makeChanges"/>
 
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="SHORTCUT ICON" href="./assets/favicon.png" type="image/png">
     <title>Confirm order</title>
 </head>
 <body>
@@ -31,7 +32,6 @@
 <main class="main-form">
     <br>
     <h2>${confirmOrder}</h2>
-    <br>
     <div class="logIn-form-box">
         <form action="controller" name="newOrder" method="POST">
             <input type="hidden" name="command" value="new_order_command"/>
